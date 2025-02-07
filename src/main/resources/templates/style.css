@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+/* I dropdown menu si aprono al passaggio del mouse */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    visibility: visible;
+    opacity: 1; /* Imposta l'opacità a 1 per la visibilità */
+    transition: opacity 0.5s ease; /* Aggiungi la transizione di dissolvenza */
+   
+}
+
+.nav-item.dropdown .dropdown-menu {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    opacity: 0; /* Imposta l'opacità iniziale a 0 */
+    transition: opacity 0.5s ease; /* Aggiungi la transizione di dissolvenza */
+}
+
+/* Distanza tra i dropdown */
+.dropdown-menu {
+    display: flex !important;  /* Utilizza Flexbox per i menu a discesa */
+    flex-direction: row !important;  /* Dispone gli items orizzontalmente */
+    gap: 10px;  
+    padding: 10px !important;  
+    margin: 0 !important;  
+}
+
+/* Impedisce che il testo negli items vada a capo */
+.dropdown-item {
+    white-space: nowrap !important;  /* Impedisce il ritorno a capo */
+    display: inline-block !important;  /* Fa in modo che gli items siano trattati come inline-block */
+    transition: color 0.3s ease;  /* Aggiunge una transizione per il colore del testo */
+}
+
+.nav-link.dropdown-toggle:hover {
+    color: #ff007f !important;  /* Colore del testo rosa */
+    border: 2px solid #007bff;
+    transition: color 0.3s ease;  /* Transizione fluida per il colore del testo */
+}
+
+
+
