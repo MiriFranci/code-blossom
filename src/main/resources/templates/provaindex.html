@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/login}">Area riservata</a>
+    <a th:href="@{/registrazione}">Registrazione utente</a>
+
+</div>
+<table>
+    <tr th:each="prodotto : ${prodotti}">
+        <td th:text="${prodotto.nome}">Nome prodotto</td>
+
+        <td th:text="${prodotto.descrizione}">Descrizione prodotto</td>
+        <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA') }">Prezzo </td>
+        <td th:text="${prodotto.foto} ">Foto</td>
+    </tr>
+</table>
+</body>
+</html>
