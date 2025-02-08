@@ -26,7 +26,7 @@
     flex-direction: row !important;  /* Dispone gli items orizzontalmente */
     gap: 10px;  
     padding: 10px !important;  
-    margin: 0 !important;  
+    margin: 0 !important; 
 }
 
 /* Impedisce che il testo negli items vada a capo */
@@ -34,13 +34,43 @@
     white-space: nowrap !important;  /* Impedisce il ritorno a capo */
     display: inline-block !important;  /* Fa in modo che gli items siano trattati come inline-block */
     transition: color 0.3s ease;  /* Aggiunge una transizione per il colore del testo */
+    font-family: "Sofia", serif;
+}
+
+.fontcategorie {
+
+    font-family: "Sofia", serif;
+    font-size: 35px;
+    color: black;
+    margin-top: 8px;
 }
 
 .nav-link.dropdown-toggle:hover {
     color: #ff007f !important;  /* Colore del testo rosa */
     border: 2px solid #007bff;
     transition: color 0.3s ease;  /* Transizione fluida per il colore del testo */
+    
 }
 
+body {
+    background-color: #EDEDE9;
+}
+
+.footer {
+    background-color: #cdb7dd ;
+}
+
+#menulogo {
+
+    background-color: rgb(255, 218, 224);
+    height: 170px;
+    
+}
+
+#logo {
+    width: 450px;
+    
+   
+}
 
 

@@ -16,7 +16,7 @@ public class UtenteServiceImpl implements UtenteService{
 
     @Override
     public boolean loginUtente(String username, String password, HttpSession session) {
-        Utente utente = utenteDao.findByProfiloUsernameAndProfiloPassword(username, password);
+        Utente utente = utenteDao.findByUsernameAndPassword(username, password);
         if(utente != null){
             session.setAttribute("utente", utente);
             return true;
@@ -34,7 +34,7 @@ public class UtenteServiceImpl implements UtenteService{
     //da chiedere al prof perchè nell'implementazione del metodo in UtenteDao i lmetodo restitutisce un oggetto e invece qui restituisce un boolean
     @Override
     public boolean controlloUsername(String username) {
-        return utenteDao.findProfiloUsername(username) == null;
+        return utenteDao.findByUsername(username) == null;
     }
 
 
