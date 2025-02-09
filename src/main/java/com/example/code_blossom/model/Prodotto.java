@@ -12,7 +12,6 @@ import java.util.List;
 public class Prodotto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -29,7 +28,7 @@ public class Prodotto {
 
     @ManyToOne (cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
-    private Categoria categria;
+    private Categoria categoria;
 
     @ManyToMany (cascade = CascadeType.REFRESH)
     @JoinTable(name = "dettaglio_ordini",
@@ -77,12 +76,12 @@ public class Prodotto {
         this.foto = foto;
     }
 
-    public Categoria getCategria() {
-        return categria;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategria(Categoria categria) {
-        this.categria = categria;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public List<Ordine> getOrdini() {
@@ -92,4 +91,5 @@ public class Prodotto {
     public void setOrdini(List<Ordine> ordini) {
         this.ordini = ordini;
     }
+
 }

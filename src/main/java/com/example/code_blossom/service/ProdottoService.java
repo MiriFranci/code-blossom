@@ -6,13 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 public interface ProdottoService {
-
     Prodotto datiProdotto(int id);
     List<Prodotto> elencoProdotti();
     boolean aggiungiAlCarrello(int idProdotto, HttpSession session);
-    void rimozioneCarrello(int idProdotto, HttpSession session);
-    void totaleCarrello(HttpSession session);
-
+    public void rimozioneCarrello(int idProdotto, HttpSession session);
+    public double totaleCarrello(HttpSession session);
 }

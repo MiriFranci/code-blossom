@@ -2,12 +2,14 @@ package com.example.code_blossom.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "categorie")
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -15,6 +17,15 @@ public class Categoria {
 
     @Column
     private String foto;
+
+    @OneToMany
+            (
+                    mappedBy = "categoria",
+                    cascade = CascadeType.REMOVE,
+                    fetch = FetchType.EAGER,
+                    orphanRemoval = true
+            )
+    private List<Prodotto> prodotti = new ArrayList<>();
 
     public int getId() {
         return id;

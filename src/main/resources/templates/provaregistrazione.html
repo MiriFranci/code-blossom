@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrazione utente</title>
+</head>
+<body>
+<a th:href="@{/}">Abbandona registrazione</a>
+
+<form th:object="${utente}" method="post">
+   <input type="text" th:field="*{nome}" placeholder="Nome utente" required>
+   <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+   <br/>
+   <input type="text" th:field="*{cognome}" placeholder="Cognome Utente" required>
+   <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
+   <br/>
+   <input type="text" th:field="*{username}" placeholder="Username utente" required>
+   <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+   <p th:if="${duplicato != null}" th:text="${duplicato}"></p>
+   <br/>
+   <input type="password" th:field="*{password}" placeholder="Password Utente" required>
+   <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+   <br/>
+
+       <br/>
+   <input type="text" th:field="*{telefono}" placeholder="Telefono" required>
+   <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
+
+       <br/>
+   <input type="date" th:field="*{dataDiNascita}" placeholder="Data di Nascita" required>
+    <p th:if="${etaMinima}" th:text="${etaMinima}"></p>
+    <br/>
+   <input type="email" th:field="*{email}" placeholder="Email" required>
+   <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+          <div>
+              <label>
+                  <input type="radio" th:field="*{genere}" value="M" required> Maschio
+              </label>
+              <label>
+                  <input type="radio" th:field="*{genere}" value="F"> Femmina
+              </label>
+              <label>
+                  <input type="radio" th:field="*{genere}" value="A"> Altro
+              </label>
+          </div>
+
+          <p th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" class="error"></p>
+
+                  <br/>
+                  <input type="text" th:field="*{citta}" placeholder="Città" required>
+                  <p th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}"></p>
+                  <br/>
+                  <input type="text" th:field="*{indirizzo}" placeholder="Indirizzo" required>
+                  <p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></p>
+                  <br/>
+        <input type="submit" value="Registrati">
+    </form>
+</body>
+</html>

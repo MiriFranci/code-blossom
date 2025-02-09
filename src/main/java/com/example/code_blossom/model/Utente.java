@@ -16,26 +16,37 @@ public class Utente {
     private int id;
 
     @Column
-    @Pattern(regexp = "[a-zA-Z\\sàèìòù']{1,50}", message = "Caratteri non ammessi")
+    @Pattern(regexp = "[a-zA-Z\\sàèìòù']{2,50}", message = "Caratteri non ammessi")
     private String nome;
 
     @Column
-    @Pattern(regexp = "[a-zA-Z\\sàèìòù']{1,50}", message = "Caratteri non ammessi")
+    @Pattern(regexp = "[a-zA-Z\\sàèìòù']{2,50}", message = "Caratteri non ammessi")
     private String cognome;
 
     @Column
+    @Pattern(
+            regexp = "^\\+?[0-9]{7,15}$",
+            message = "Numero di cellulare non valido"
+    )
     private String telefono;
 
     @Column
     private LocalDate dataDiNascita;
 
     @Column
+    @Pattern(regexp = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}", message="Email non valida")
     private String email;
 
     @Column
+    @Pattern(regexp = "[a-zA-Z0-9._-]{1,30}", message = "Caratteri Non Ammessi")
     private String username;
 
     @Column
+    @Pattern
+            (
+                    regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,50}",
+                    message = "Password Troppo Debole"
+            )
     private String password;
 
     @Column
@@ -51,19 +62,14 @@ public class Utente {
     private String foto;
 
     @Column
-    private LocalDate dataDiRegistrazione;
+    private LocalDate dataRegistrazione;
 
-    @OneToMany(mappedBy = "utente", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(
+            mappedBy = "utente",
+            cascade = CascadeType.REMOVE,
+            fetch = FetchType.EAGER,
+            orphanRemoval = true)
     private List<Ordine> ordini = new ArrayList<>();
-
-
-    public List<Ordine> getOrdini() {
-        return ordini;
-    }
-
-    public void setOrdini(List<Ordine> ordini) {
-        this.ordini = ordini;
-    }
 
     public int getId() {
         return id;
@@ -161,13 +167,19 @@ public class Utente {
         this.foto = foto;
     }
 
-    public LocalDate getDataDiRegistrazione() {
-        return dataDiRegistrazione;
+    public LocalDate getDataRegistrazione() {
+        return dataRegistrazione;
     }
 
-    public void setDataDiRegistrazione(LocalDate dataDiRegistrazione) {
-        this.dataDiRegistrazione = dataDiRegistrazione;
+    public void setDataRegistrazione(LocalDate dataRegistrazione) {
+        this.dataRegistrazione = dataRegistrazione;
     }
 
+    public List<Ordine> getOrdini() {
+        return ordini;
+    }
 
+    public void setOrdini(List<Ordine> ordini) {
+        this.ordini = ordini;
+    }
 }

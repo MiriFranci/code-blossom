@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdottoServiceImpl implements ProdottoService {
@@ -17,6 +18,9 @@ public class ProdottoServiceImpl implements ProdottoService {
 
     @Override
     public Prodotto datiProdotto(int id) {
+        Optional<Prodotto> prodottoOptional = prodottoDao.findById(id);
+        if (prodottoOptional.isPresent())
+            return prodottoOptional.get();
         return null;
     }
 
@@ -29,22 +33,23 @@ public class ProdottoServiceImpl implements ProdottoService {
     public boolean aggiungiAlCarrello(int idProdotto, HttpSession session) {
         Prodotto prodotto = datiProdotto(idProdotto);
         List<Prodotto> carrello;
+
         if (session.getAttribute("carrello") != null) {
             carrello = (List<Prodotto>) session.getAttribute("carrello");
-            for (Prodotto p : carrello) {
-                if (p.getId() == idProdotto) {
-                    return false;
-                }
-            }
+            // dobbiamo trovare il modo di gestire le quantità per aggiungere un prodotto al carrello,
+            // perché nell'esempio del prof veniva impedita l'aggiunta ma non ha senso nel nostro caso
+
+            // for (Prodotto p : carrello)
+            //    if (p.getId() == idProdotto)
             carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;
-        } else
+        } else {
             carrello = new ArrayList<>();
-        carrello.add(prodotto);
-        session.setAttribute("carrello", carrello);
-        return true;
-
+            carrello.add(prodotto);
+            session.setAttribute("carrello", carrello);
+            return true;
+        }
     }
 
     @Override
@@ -53,10 +58,9 @@ public class ProdottoServiceImpl implements ProdottoService {
     }
 
     @Override
-    public void totaleCarrello(HttpSession session) {
-
+    public double totaleCarrello(HttpSession session) {
+        return 0;
     }
-
 
 }
 

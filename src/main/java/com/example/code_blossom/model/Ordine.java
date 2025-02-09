@@ -15,10 +15,6 @@ public class Ordine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "id_utente", referencedColumnName = "id")
-    private Utente utente;
-
     @Column
     private LocalDateTime dataOraOrdine;
 
@@ -36,6 +32,10 @@ public class Ordine {
 
     @Column
     private String note;
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "id_utente", referencedColumnName = "id")
+    private Utente utente;
 
     @ManyToMany (cascade = CascadeType.REFRESH)
     @JoinTable(name = "dettaglio_ordini",
