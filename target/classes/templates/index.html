@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
@@ -19,8 +20,8 @@
 </head>
 
 <body>
-  <!--inizio sezione navbar-->
-  <nav class="navbar navbar-expand-lg" id="menu">
+  <!-- Inizio sezione navbar -->
+  <nav class="navbar navbar-expand-lg container-fluid" id="menu">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,38 +29,38 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li class="nav-item1">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item1">
             <a class="nav-link" href="#">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Carrello</a> <!--sarà un bottone-->
+          <li class="nav-item1">
+            <a class="nav-link" href="#" id="cartButton">
+              <i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>
+              <span class="badge custom-badge" id="cartCount">0</span> <!-- Contatore del carrello -->
+            </a>
           </li>
-
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control form-control sm custom-search" type="search" aria-label="Search" placeholder="Cerca...">
+            <button class="btn btn-outline-none" type="submit"> <i class="bi bi-search search-icon"></i></button>
           </form>
+        </ul>
       </div>
     </div>
   </nav>
-  <nav class="navbar navbar-expand-lg" id="menulogo">
+
+  <nav class="navbar navbar-expand-lg container-fluid" id="menulogo">
     <div class="container-fluid">
       <div>
         <img src="../static/logo1centrale.png" id="logo">
       </div>
-
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent"> <!-- Centrata -->
-        <ul class="navbar-nav gap-3"> <!-- Aggiunto spazio tra gli elementi -->
-
-          <!-- Dropdown per Fiori sfusi -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav gap-3">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle fontcategorie" href="#" id="navbarDropdownFiori" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,12 +68,13 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownFiori">
               <li><a class="dropdown-item" href="#">Tutto il catalogo</a></li>
-              <li><a class="dropdown-item" href="#">Opzione 2</a></li>
-              <li><a class="dropdown-item" href="#">Opzione 3</a></li>
+              <li><a class="dropdown-item" href="#">Fiori rossi</a></li>
+              <li><a class="dropdown-item" href="#">Fiori bianchi</a></li>
+              <li><a class="dropdown-item" href="#">Fiori gialli</a></li>
+              <li><a class="dropdown-item" href="#">Fiori viola</a></li>
             </ul>
           </li>
 
-          <!-- Dropdown per Composizioni -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle fontcategorie" href="#" id="navbarDropdownComposizioni" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,7 +89,6 @@
             </ul>
           </li>
 
-          <!-- Dropdown per Piante -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle fontcategorie" href="#" id="navbarDropdownPiante" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -101,20 +102,12 @@
               <li><a class="dropdown-item" href="#">Piante da frutto</a></li>
             </ul>
           </li>
-
         </ul>
       </div>
     </div>
   </nav>
 
-
-
-
-
-
-
-  <!--fine sezione navbar-->
-  <!--inizio carosello-->
+  <!-- Inizio carosello -->
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="3000">
@@ -136,10 +129,11 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <!--fine carosello-->
-  <!--sezione dedicata alle cards dei prodotti-->
+  <!-- Fine carosello -->
+
+  <!-- Sezione dedicata alle cards dei prodotti -->
   <div class="container">
-    <!--4 prodotti per esempio prima categoria-->
+    <!-- 4 prodotti per esempio prima categoria -->
     <div class="row">
 
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
@@ -171,171 +165,99 @@
           </div>
         </div>
       </div>
-      <div class="row">
-
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!--fine prima categoria-->
-
-      <!--inizio seconda categoria-->
-
-      <!--fine seconda categoria-->
-
-      <!--inizio terza categoria-->
-
-      <!--fine terza categoria-->
     </div>
-    <!--fine sezione cards-->
-    <!--inizio sezione riempitiva-->
-    <section class="section section-neutral" aria-labelledby="titleEx4">
-      <div class="section-content">
-        <!-- contenuto di esempio START -->
-        <div class="container white-color">
-          <div class="row mb-3">
-            <div class="col-12">
-              <h2 id="titleEx4">Morbi fermentum amet</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-lg-6 col-xl-4 pe-0 pe-md-5 mb-3 font-serif">Platea dictumst vestibulum rhoncus est
-              pellentesque elit ullamcorper dignissim cras. Dictum sit amet justo donec enim diam vulputate ut. Eu nisl
-              nunc mi ipsum faucibus.</div>
-            <div class="col-12 col-lg-6 col-xl-4 pe-0 pe-md-5 mb-3 font-serif">Eget egestas purus viverra accumsan. Diam
-              maecenas ultricies mi eget mauris pharetra et. Etiam dignissim diam quis enim. Eu nisl nunc mi ipsum
-              faucibus.</div>
-            <div class="col-12 col-lg-6 col-xl-4 pe-0 pe-md-5 font-serif">Euismod lacinia at quis risus sed vulputate.
-              Scelerisque purus semper eget duis at tellus at urna condimentum. Mattis enim ut tellus elementum
-              sagittis.
-            </div>
+    <div class="row">
+
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
-        <!-- contenuto di esempio END -->
       </div>
-    </section>
-    <!--fine sezione riempitiva-->
 
-
-
-    <!--  Inizio Footer -->
-    <footer class="footer text-center text-lg-start text-muted mt-auto">         
-      <!-- Section: Social media -->
-
-      <!-- Section: Links  -->
-      <section class="">
-        <div class="container text-center text-md-start mt-5">
-          <!-- Grid row -->
-          <div class="row mt-3">
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <!-- Content -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fas fa-gem me-3"></i>Chi siamo
-              </h6>
-              <p>
-                Da Code Blossom, il nostro amore per i fiori si riflette in ogni nostro prodotto. Offriamo una vasta
-                selezione
-                di fiori freschi, piante e composizioni, consegnati direttamente a casa tua con cura e passione. Un
-                luogo
-                dove la bellezza naturale prende forma attraverso creazioni eleganti e raffinate, pensate per ogni
-                occasione
-              </p>
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                Prodotti
-              </h6>
-              <p>
-                <a href="#!" class="text-reset">Fiori sfusi</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Composizioni</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Piante</a>
-              </p>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                Links
-              </h6>
-              <p>
-                <a href="#!" class="text-reset">Contattaci</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Lavora con noi</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">FAQ</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Contatti</h6>
-              <p><i class="fas fa-home me-3"></i>Via delle Rose, 42 - 00123, Roma</p>
-              <p>
-                <i class="fas fa-envelope me-3"></i>
-                codeblossom@gmail.com
-              </p>
-              <p><i class="fas fa-phone me-3"></i> +39 06 1234567</p>
-              <p><i class="fas fa-print me-3"></i> +39 345 9876543</p>
-            </div>
-            <!-- Grid column -->
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-          <!-- Grid row -->
         </div>
-      </section>
-      <!-- Section: Links  -->
-
-      <!-- Copyright -->
-      <div class="text-center p-4">
-        © 2025 Copyright:
-        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">CodeBlossom.com</a>
       </div>
-      <!-- Copyright -->
-    </footer>
-    <!--  Fine Footer -->
 
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Fine sezione cards -->
+  </div>
+
+  <!--  Inizio Footer -->
+  <footer class="footer text-center text-lg-start text-muted container-fluid">         
+    <div class="container-fluid text-center text-md-start mt-auto">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Chi siamo
+          </h6>
+          <p>
+            Da Code Blossom, il nostro amore per i fiori si riflette in ogni nostro prodotto. Offriamo una vasta
+            selezione di fiori freschi, piante e composizioni, consegnati direttamente a casa tua con cura e passione. Un
+            luogo dove la bellezza naturale prende forma attraverso creazioni eleganti e raffinate, pensate per ogni occasione.
+          </p>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Prodotti
+          </h6>
+          <p><a href="#!" class="text-reset">Fiori sfusi</a></p>
+          <p><a href="#!" class="text-reset">Composizioni</a></p>
+          <p><a href="#!" class="text-reset">Piante</a></p>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Links
+          </h6>
+          <p><a href="#!" class="text-reset">Contattaci</a></p>
+          <p><a href="#!" class="text-reset">Lavora con noi</a></p>
+          <p><a href="#!" class="text-reset">FAQ</a></p>
+        </div>
+
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Contatti</h6>
+          <p><i class="fas fa-home me-3"></i>Via delle Rose, 42 - 00123, Roma</p>
+          <p><i class="fas fa-envelope me-3"></i>codeblossom@gmail.com</p>
+          <p><i class="fas fa-phone me-3"></i> +39 06 1234567</p>
+          <p><i class="fas fa-print me-3"></i> +39 345 9876543</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center p-4">
+      © 2025 Copyright:
+      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">CodeBlossom.com</a>
+    </div>
+  </footer>
 </body>
 
 </html>
+

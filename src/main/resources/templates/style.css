@@ -54,21 +54,27 @@
 
 body {
     background-color: #EDEDE9;
+
+  
 }
 
 .footer {
     background-color: #cdb7dd ;
+    width: 100%;
+    height: 400px;
+    
 }
 
 #menulogo {
 
     background-color: rgb(255, 218, 224);
-    height: 170px;
+    height: 140px;
+    width: 100%;
     
 }
 
 #logo {
-    width: 450px;
+    width: 400px;
     
    
 }
@@ -76,5 +82,37 @@ body {
 
 #menu {
     background-color: #cdb7dd;
+    width: 100%;
+    
 }
+
+.custom-badge {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+.search-icon {
+    color: green; /* Colore personalizzato */
+    font-size: 18px; /* Dimensione personalizzata */
+    
+}
+
+.custom-search {
+    width: 200px;  /* Imposta la larghezza fissa */
+    height: 40px;
+    margin-top: 10px;
+}
+
+ .nav-item1 {
+    margin-right: 50px;  /* Aggiunge spazio tra gli elementi della navbar */
+    font-size: 20px;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+  
+ 
+
+
 
