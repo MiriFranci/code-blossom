@@ -6,8 +6,10 @@
 </head>
 <body>
 <div>
-    <a th:href="@{/login}">Area riservata</a>
-    <a th:href="@{/registrazione}">Registrazione utente</a>
+    <a th:if="${utente == null}" th:href="@{/login}">Accedi</a>
+    <a th:if="${utente == null}" th:href="@{/registrazione}">Registrati</a>
+    <a th:if="${utente != null}" th:href="@{/profilo}">Profilo</a>
+    <a th:if="${utente != null}" th:href="@{/carrello}">Carrello</a>
 
 </div>
 <table>
@@ -17,6 +19,7 @@
         <td th:text="${prodotto.descrizione}">Descrizione prodotto</td>
         <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA') }">Prezzo </td>
         <td th:text="${prodotto.foto} ">Foto</td>
+        <td th:if="${utente != null}" ><a th:href="@{/dettaglio/aggiungi(id=${prodotto.id})}">Aggiungi a Carrello</a></td>
     </tr>
 </table>
 </body>

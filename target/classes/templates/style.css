@@ -17,7 +17,7 @@
     top: 100%;
     left: 0;
     opacity: 0; /* Imposta l'opacità iniziale a 0 */
-    transition: opacity 0.5s ease; /* Aggiungi la transizione di dissolvenza */
+    transition: opacity 0.30s ease; /* Aggiungi la transizione di dissolvenza */
 }
 
 /* Distanza tra i dropdown */
@@ -46,9 +46,9 @@
 }
 
 .nav-link.dropdown-toggle:hover {
-    color: #ff007f !important;  /* Colore del testo rosa */
-    border: 2px solid #007bff;
-    transition: color 0.3s ease;  /* Transizione fluida per il colore del testo */
+    color: green !important;  /* Colore del testo rosa */
+    border: 2px solid rgb(224, 96, 117);
+    transition: color 0.40s ease;  /* Transizione fluida per il colore del testo */
     
 }
 
@@ -73,4 +73,8 @@ body {
    
 }
 
+
+#menu {
+    background-color: #cdb7dd;
+}
 
