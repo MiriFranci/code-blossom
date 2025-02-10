@@ -50,7 +50,7 @@
 
 .nav-link.dropdown-toggle:hover {
     color: #368c71 !important;  /* Colore del testo rosa */
-    border: 2px solid #ea83ac;
+    
     transition: color 0.40s ease;  /* Transizione fluida per il colore del testo */
 }
 
@@ -63,16 +63,12 @@ body {
 }
 
 #menulogo {
-    background-color: rgb(255, 218, 224);
+    background-color: #cdb7dd ;
     height: 140px;
 }
 
 #logo {
     width: 400px;
-}
-
-#menu {
-    background-color: #cdb7dd;
 }
 
 .custom-badge {
@@ -173,12 +169,8 @@ body {
     }
 }
 
-#cards-container {
-    margin-left: 235px;
-}
 
-.card-img-top {
-    width: auto;
-  }
+
+
 
   

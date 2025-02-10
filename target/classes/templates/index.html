@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
@@ -42,7 +42,8 @@
             </a>
           </li>
           <form class="d-flex" role="search">
-            <input class="form-control form-control sm custom-search" type="search" aria-label="Search" placeholder="Cerca...">
+            <input class="form-control form-control sm custom-search" type="search" aria-label="Search"
+              placeholder="Cerca...">
             <button class="btn btn-outline-none" type="submit"> <i class="bi bi-search search-icon"></i></button>
           </form>
         </ul>
@@ -108,11 +109,14 @@
   </nav>
 
   <!-- Inizio carosello -->
-  <div id="carouselExampleCaptions" class="carousel slide">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" e data-bs-interval="4000">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
 
@@ -120,136 +124,174 @@
         <img src="../static/articolocurafuori.jpeg" class="d-block w-100" alt="giardinaggio">
         <div class="carousel-caption">
           <h5>OROSCOPO DEI FIORI</h5>
-          <p>Leggi quale fiore rappresenta il tuo segno</p>
+          <p>Quale fiore rappresenta il tuo segno? Cosa regalare ad un Capricorno ascendente Acquario?</p>
 
           <div class="cta">
-            <a button type="button" href="https://www.scelteperte.it/oroscopo-dei-fiori" target="_blank" class="btn btn-warning">Leggi l'articolo</a>
+            <a button type="button" href="https://www.scelteperte.it/oroscopo-dei-fiori" target="_blank"
+              class="btn btn-warning">Leggi l'articolo</a>
           </div>
         </div>
       </div>
 
       <div class="carousel-item">
-        <img src="../static/oroscopo_fiori.webp" class="d-block w-100" alt="...">
+        <img src="../static/Fiori-e-zodiaco.webp" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none-block">
-          <h5 class="text-xxl">The Builder</h5>
-          <p>With over 2 decade of connecting small and medium size company together</p>
+          <h5 class="text-xxl">COME CURARE IL TUO GIARDINO</h5>
+          <p>20 consigli per fare in modo che l'erba del tuo giardino sia più verde di quella del vicino</p>
 
           <div class="cta">
-            <button type="button" class="btn btn-warning">create an account</button>
+            <button type="button" class="btn btn-warning">Leggi l'articolo</button>
           </div>
         </div>
       </div>
 
       <div class="carousel-item">
-        <img src="../static/Carosello_3.jpg" class="d-block w-100" alt="...">
+        <img src="../static/Fiori-e-zodiaco.webp" class="d-block w-100" alt="...">
         <div class="carousel-caption d-md-block">
-          <h5>The Builder</h5>
-          <p>Become and insider</p>
+          <h5>ENCICLOPEDIA DEI FIORI</h5>
+          <p></p>
 
           <div class="cta">
-            <button type="button" class="btn btn-warning">create an account</button>
+            <button type="button" class="btn btn-warning">Leggi l'articolo</button>
           </div>
         </div>
       </div>
     </div>
 
     <div class="carousel-control">
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
   </div>
   <!-- Sezione dedicata alle cards dei prodotti -->
-  <div class="container" id="cards-container">
-    <!-- 4 prodotti per esempio prima categoria -->
-    <div class="row">
-
+  <div class="container mt-5" id="cards-container">
+    <!-- Prima Row (prima riga) con 3 cards -->
+    <div class="row justify-content-center g-4"> <!-- Aggiunto 'g-4' per aumentare lo spazio tra le card -->
+      <!-- Card 1 -->
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-        <div class="card">
-          <img src="../static/cuoreRose.jpg" class="card-img-top" alt="rose a forma di cuore">
+        <div class="card" style="width: 18rem;">
+          <img src="../static/cuoreRose.jpg" class="card-img-top img-fluid" alt="rose a forma di cuore">
           <div class="card-body">
             <h5 class="card-title">Composizione rose a forma di cuore</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text">Il regalo perfetto per la persona che ami!... ma anche per la persona che odi se gliela
+              regali dopo averla calpestata</p>
+            <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€49.99</p> <!-- Prezzo -->
             <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
           </div>
+          <!-- Footer della card -->
+          <div class="card-footer bg-transparent border-top-0">
+            <small class="text-muted">In saldo!</small>
+          </div>
         </div>
       </div>
 
+      <!-- Card 2 -->
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-        <div class="card">
-          <img src="../static/mazzorosev.jpg" class="card-img-top" alt="rose a forma di cuore">
+        <div class="card" style="width: 18rem;">
+          <img src="../static/mazzorosev.jpg" class="card-img-top img-fluid" alt="mazzo di rose">
           <div class="card-body">
             <h5 class="card-title">Mazzo di rose misto viola e rosso</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-danger">Aggiungi carrello</a>
+            <p class="card-text">Mazzo di rose misto viola e rosso - Smettila di farti il mazzo per scegliere i colori
+              giusti e fidati del nostro gusto! Rosso e viola sono una combinazione vincente! Credo... In realtà sono
+              daltonico.</p>
+            <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p> <!-- Prezzo -->
+            <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
+          </div>
+          <!-- Footer della card -->
+          <div class="card-footer bg-transparent border-top-0">
+            <small class="text-muted">In saldo!</small>
           </div>
         </div>
       </div>
 
+      <!-- Card 3 -->
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-        <div class="card">
-          <img src="../static/cuorerosa.jpg" class="card-img-top" alt="rose a forma di cuore">
+        <div class="card" style="width: 18rem;">
+          <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
           <div class="card-body">
             <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-danger">Aggiungi carrello</a>
+            <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o boy, perchè
+              qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
+            <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p> <!-- Prezzo -->
+            <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
+          </div>
+          <!-- Footer della card -->
+          <div class="card-footer bg-transparent border-top-0">
+            <small class="text-muted">In saldo!</small>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
 
+    <!-- Seconda Row (seconda riga) con 3 cards -->
+    <div class="row justify-content-center g-5"> <!-- Aggiunto 'g-4' per aumentare lo spazio tra le card -->
+      <!-- Card 4 -->
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-        <div class="card">
-          <img src="../static/limone.webp" class="card-img-top img fluid" alt="albero di limone">
+        <div class="card" style="width: 18rem;">
+          <img src="../static/limone.webp" class="card-img-top img-fluid" alt="albero di limone">
           <div class="card-body">
-            <h5 class="card-title">Albero di limoni </h5>
+            <h5 class="card-title">Albero di limoni</h5>
             <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
+            <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p> <!-- Prezzo -->
             <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+          </div>
+          <!-- Footer della card -->
+          <div class="card-footer bg-transparent border-top-0">
+            <small class="text-muted">In saldo!</small>
           </div>
         </div>
       </div>
 
+      <!-- Card 5 -->
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-        <div class="card">
-          <img src="../static/mammillaria_cactus.webp" class="card-img-top img fluid" alt="mammillaria cactus">
+        <div class="card" style="width: 18rem;">
+          <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid" alt="mammillaria cactus">
           <div class="card-body">
             <h5 class="card-title">Zamia</h5>
-            <p class="card-text"> Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo inizio</p>
+            <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo inizio</p>
+            <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p> <!-- Prezzo -->
             <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+          </div>
+          <!-- Footer della card -->
+          <div class="card-footer bg-transparent border-top-0">
+            <small class="text-muted">In saldo!</small>
           </div>
         </div>
       </div>
 
+      <!-- Card 6 -->
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-        <div class="card">
-          <img src="../static/zamia.webp" class="card-img-top img fluid" alt="zamia">
+        <div class="card" style="width: 18rem;">
+          <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
           <div class="card-body">
-            <h5 class="card-title">Mamillaria</h5>
-            <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti ingannare : punge!</p>
+            <h5 class="card-title">Mammillaria</h5>
+            <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti ingannare: punge!
+            </p>
+            <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p> <!-- Prezzo -->
             <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+          </div>
+          <!-- Footer della card -->
+          <div class="card-footer bg-transparent border-top-0">
+            <small class="text-muted">In saldo!</small>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
-    <!-- Fine sezione cards -->
   </div>
 
+
+
+
   <!--  Inizio Footer -->
-  <div class="footer text-center text-lg-start text-muted container-fluid d-flex align-items-center">         
+  <div class="footer text-center text-lg-start text-muted container-fluid d-flex align-items-center">
     <div class="container-fluid text-center text-md-start mt-auto">
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -258,8 +300,10 @@
           </h6>
           <p>
             Da Code Blossom, il nostro amore per i fiori si riflette in ogni nostro prodotto. Offriamo una vasta
-            selezione di fiori freschi, piante e composizioni, consegnati direttamente a casa tua con cura e passione. Un
-            luogo dove la bellezza naturale prende forma attraverso creazioni eleganti e raffinate, pensate per ogni occasione.
+            selezione di fiori freschi, piante e composizioni, consegnati direttamente a casa tua con cura e passione.
+            Un
+            luogo dove la bellezza naturale prende forma attraverso creazioni eleganti e raffinate, pensate per ogni
+            occasione.
           </p>
         </div>
 
@@ -291,12 +335,11 @@
       </div>
     </div>
   </div>
-    <div class=" footer text-center p-4">
-      © 2025 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">CodeBlossom.com</a>
-    </div>
+  <div class=" footer text-center p-4">
+    © 2025 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">CodeBlossom.com</a>
+  </div>
   </footer>
 </body>
 
 </html>
-
