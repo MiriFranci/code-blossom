@@ -36,12 +36,6 @@ public class ProdottoServiceImpl implements ProdottoService {
 
         if (session.getAttribute("carrello") != null) {
             carrello = (List<Prodotto>) session.getAttribute("carrello");
-            // dobbiamo trovare il modo di gestire le quantità per aggiungere un prodotto al carrello,
-            // perché nell'esempio del prof veniva impedita l'aggiunta ma non ha senso nel nostro caso
-
-             for (Prodotto p : carrello)
-               if (p.getId() == idProdotto)
-                   return false;
             carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;

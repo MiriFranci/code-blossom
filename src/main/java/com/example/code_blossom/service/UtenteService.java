@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public interface UtenteService {
+    Utente datiUtente(int id);
     boolean loginUtente(String username, String password, HttpSession session);
     void registrazioneUtente(Utente utente);
     boolean controlloUsername(String username);

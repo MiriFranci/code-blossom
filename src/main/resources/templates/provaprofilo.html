@@ -54,6 +54,18 @@
     </div>
     <input type="submit" value="Modifica dati">
 </form>
+
+<table>
+    <tr th:each="ordine : ${utente.ordini}">
+        <ul>
+            <li th:each="prodotto : ${ordine.prodotti}" th:text="${prodotto.nome}"></li>
+        </ul>
+        <td th:text="${ordine.destinazione}"></td>
+        <td th:text="${ordine.prezzoTotale}"></td>
+    </tr>
+</table>
+
+
 <script>
     document.addEventListener("DOMContentLoaded", function(){
         var pwd = document.getElementById("pwd");

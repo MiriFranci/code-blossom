@@ -26,7 +26,8 @@ public class ProfiloController {
             HttpSession session, Model model) {
         if(session.getAttribute("utente") == null)
             return "redirect:/login";
-        Utente utente = (Utente) session.getAttribute("utente");
+        Utente utentesessione = (Utente) session.getAttribute("utente");
+        Utente utente= utenteService.datiUtente(utentesessione.getId());
         model.addAttribute("utente", utente);
 
         return "provaprofilo";
@@ -50,7 +51,5 @@ public class ProfiloController {
 
     }
 
-    public List<Ordine> storicoAcqusti(HttpSession session){
 
-    }
 }
