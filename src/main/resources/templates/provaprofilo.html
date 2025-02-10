@@ -11,6 +11,61 @@
 </div>
 <!--<h1 th:text="|Questo è il profilo utente di ${utente.nome} nella tua Area Riservata|"></h1>-->
 <h1>Sei nell'area riservata</h1>
+<form th:object="${utente}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:field="*{nome}" placeholder="Nome utente" required>
+    <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+    <br>
+    <input type="text" th:field="*{cognome}" placeholder="Cognome utente" required>
+    <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
+    <br>
+    <input type="text" th:field="*{username}" readonly>
+    <br>
+    <input type="text" th:field="*{password}" placeholder="Password utente" id="pwd" required>
+    <button type="button" id="pwdButton">Mostra/nascondi</button>
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+    <br>
+    <br/>
+    <input type="text" th:field="*{telefono}" placeholder="Telefono" required>
+    <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
+
+    <br/>
+    <input type="text" th:field="*{dataDiNascita}" placeholder="Data di Nascita" readonly>
+    <p th:if="${etaMinima}" th:text="${etaMinima}"></p>
+    <br/>
+    <input type="email" th:field="*{email}" placeholder="Email" required>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    <br>
+    <input type="text" th:field="*{genere}" readonly>
+    <br>
+    <p th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" class="error"></p>
+
+    <br/>
+    <input type="text" th:field="*{citta}" placeholder="Città" required>
+    <p th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}"></p>
+    <br/>
+    <input type="text" th:field="*{indirizzo}" placeholder="Indirizzo" required>
+    <p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></p>
+    <br/>
+     <input type="text" th:field="*{dataRegistrazione}" placeholder="Data di Nascita" readonly>
+    <div th:each="ordine, stat : *{ordini}">
+        <input type="hidden" th:field="*{ordini[__${stat.index}__].id}">
+    </div>
+    <input type="submit" value="Modifica dati">
+</form>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        var pwd = document.getElementById("pwd");
+        pwd.type = "password";
+    });
+    document.getElementById("pwdButton").addEventListener("click", function(){
+        if(pwd.type == "password")
+            pwd.type = "text";
+        else
+            pwd.type = "password";
+    });
+</script>
 
 </body>
 </html>

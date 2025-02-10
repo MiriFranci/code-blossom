@@ -27,7 +27,8 @@ public class UtenteServiceImpl implements UtenteService{
 
     @Override
     public void registrazioneUtente(Utente utente) {
-        utente.setDataRegistrazione(LocalDate.now());
+        if(utente.getDataRegistrazione() == null)
+           utente.setDataRegistrazione(LocalDate.now());
         utenteDao.save(utente);
     }
 

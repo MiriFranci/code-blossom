@@ -59,9 +59,6 @@ public class Utente {
     private String indirizzo;
 
     @Column
-    private String foto;
-
-    @Column
     private LocalDate dataRegistrazione;
 
     @OneToMany(
@@ -157,14 +154,6 @@ public class Utente {
 
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     public LocalDate getDataRegistrazione() {
