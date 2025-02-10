@@ -142,13 +142,14 @@ body {
 }
 
 .carousel-caption {
-    font-size: 50px; /* Riduci la dimensione del testo */
+    font-size: 35px; /* Riduci la dimensione del testo */
     font-weight: bolder;
     color: orange;
     position: absolute;
-    top: 30%;
+    top: 10%;
     left: 20%;
     z-index: 2;
+
 }
 
 /* Centro anche i controlli del carosello (freccie) */
@@ -156,6 +157,8 @@ body {
 .carousel-control-next {
     width: 30px;
 }
+
+
 
 /* Modifica le dimensioni del carosello per schermi piccoli */
 @media all and (max-width: 767px) {
@@ -166,8 +169,10 @@ body {
 
     .carousel-caption {
         font-size: 30px; /* Riduci il testo su schermi piccoli */
+        
     }
 }
+
 
 
 
