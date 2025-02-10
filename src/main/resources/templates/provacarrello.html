@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrello</title>
+</head>
+<body>
+    <h1>Benvenuto nel tuo carrello!</h1>
+    <div>
+        <a th:href="@{/}">Torna in home page</a>
+    </div>
+    <h1></h1>
+    <h4 th:if="${carrello == null}">Non hai alcun prodotto nel carrello</h4>
+    <table th:if="${carrello != null}">
+        <tr th:each="prodotto : ${carrello}">
+            <td th:text="${prodotto.nome}"></td>
+            <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}"></td>
+            <td>
+                <a th:href="@{/carrello/rimuovi(id=${prodotto.id})}">Rimuovi</a>
+            </td>
+        </tr>
+    </table>
+  <!--  <form th:object="${ordine}" method="post">
+        <input type="text" th:field="*{destinazione}" placeholder="indirizzo di destinazione" required>
+        <p th:if="${#fields.hasErrors('destinazione')}" th:errors="*{destinazione}"></p>
+        <br/>
+        <input type="text" th:field="*{note}" placeholder="Inserisci note" required>
+        <p th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
+        <input type="submit" value="Invia ordine" th:if="${carrello != null}" th:href="@{/carrello/invio}">
+    </form>-->
+
+    <h5 th:if="${carrello != null}"
+        th:text="|Totale carrello ${#numbers.formatDecimal(totale, 0, 'POINT', 2, 'COMMA')} euro|"></h5>
+    <a th:if="${carrello != null}" th:href="@{/carrello/invio}">Invia Ordine</a>
+    <p th:if="${send != null}">Ordine Inviato!</p>
+
+
+
+</body>
+</html>
