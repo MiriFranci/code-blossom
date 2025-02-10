@@ -1,10 +1,14 @@
-# Output della compilazione
+# ==========================
+# OUTPUT COMPILAZIONE
+# ==========================
 target/
-
-# Compiled class file
+out/
+bin/
 *.class
 
-# File dell'IDE
+# ==========================
+# FILE DELL'IDE
+# ==========================
 .idea/
 *.iml
 *.ipr
@@ -13,24 +17,16 @@ target/
 .project
 .settings/
 .vscode/
+*.code-workspace
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# File dell'IDE
-.idea/
-*.iml
-*.ipr
-*.iws
-.classpath
-.project
-.settings/
-.vscode/
-
-# Package Files #
+# ==========================
+# TOOLS E BUILD
+# ==========================
+.mvn/
+.gradle/
+.build/
+node_modules/
+dist/
 *.jar
 *.war
 *.nar
@@ -38,21 +34,36 @@ target/
 *.zip
 *.tar.gz
 *.rar
+*.dll
+*.so
+*.dylib
 
-# Dipendenze Maven/Gradle
-.mvn/
-.gradle/
-.build/
-
-# File di sistema
+# ==========================
+# FILE DI SISTEMA
+# ==========================
 .DS_Store
 Thumbs.db
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# ==========================
+# LOG, CACHE E TEMPORANEI
+# ==========================
+*.log
+*.swp
+*.swo
+*.tmp
 hs_err_pid*
 replay_pid*
+.pytest_cache/
+coverage/
+.scannerwork/
 
-# Configurazioni locali
-*.log
-.env
+# ==========================
+# CONFIGURAZIONI LOCALI
+# ==========================
+*.env
+.env.local
+.env.*.local
+*.local
+secrets.*
+*.lock
 *.properties
