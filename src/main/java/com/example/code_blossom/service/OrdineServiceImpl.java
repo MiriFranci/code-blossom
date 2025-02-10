@@ -24,7 +24,7 @@ public class OrdineServiceImpl implements OrdineService{
 
 
     @Override
-    public void inoltroOrdine(HttpSession session) {
+    public void inoltroOrdine(HttpSession session, String destinazione, String note) {
         // ottenimento carrelllo e cliente loggato
         List<Prodotto> carrello = prodottoService.carrelloUtente(session);
         Utente utente = (Utente) session.getAttribute("utente");
@@ -44,6 +44,9 @@ public class OrdineServiceImpl implements OrdineService{
             ordine.setUtente(utente);
             //impostazione lista Libri
             ordine.setProdotti(carrello);
+            // 🆕 Impostazione destinazione e note
+            ordine.setDestinazione(destinazione);
+            ordine.setNote(note);
             //passaggio ordine a componente DAO per inserimento
             ordineDao.save(ordine);
             //eliminazione carrello diventato ordine

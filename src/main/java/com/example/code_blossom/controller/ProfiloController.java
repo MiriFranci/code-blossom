@@ -18,6 +18,7 @@ public class ProfiloController {
             return "redirect:/login";
         Utente utente = (Utente) session.getAttribute("utente");
         model.addAttribute("utente", utente);
+
         return "provaprofilo";
     }
 
