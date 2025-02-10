@@ -2,6 +2,7 @@ package com.example.code_blossom.controller;
 
 
 
+import com.example.code_blossom.model.Ordine;
 import com.example.code_blossom.model.Prodotto;
 import com.example.code_blossom.model.Utente;
 import com.example.code_blossom.service.OrdineService;
@@ -14,7 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Controller
@@ -28,8 +32,10 @@ public class CarrelloController {
     @Autowired
     private UtenteService utenteService;
 
+    @Autowired
     private OrdineService ordineService;
 
+    @GetMapping
     public String getPage(HttpSession session,
                           Model model,
                           @RequestParam(required = false)
@@ -48,6 +54,15 @@ public class CarrelloController {
 
     }
 
+    @GetMapping("/aggiungi")
+    public String aggiungiProdotto(@RequestParam int id,
+                                   HttpSession session){
+        if(!prodottoService.aggiungiAlCarrello(id, session))
+            return "redirect:/carrello?add=no&id=" + id;
+        return "redirect:/carrello?add=yes&id=" + id;
+
+    }
+
     @GetMapping("/rimuovi")
     public String rimozioneProdotto(
             @RequestParam int id,
@@ -61,6 +76,8 @@ public class CarrelloController {
         ordineService.inoltroOrdine(session);
         return "redirect:/carrello?send";
     }
+
+
 
 
 
