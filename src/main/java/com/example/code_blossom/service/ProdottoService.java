@@ -12,4 +12,5 @@ public interface ProdottoService {
     boolean aggiungiAlCarrello(int idProdotto, HttpSession session);
     public void rimozioneCarrello(int idProdotto, HttpSession session);
     public double totaleCarrello(HttpSession session);
+    List<Prodotto> carrelloUtente(HttpSession session);
 }

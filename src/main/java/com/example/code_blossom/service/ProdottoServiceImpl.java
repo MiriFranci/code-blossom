@@ -39,8 +39,9 @@ public class ProdottoServiceImpl implements ProdottoService {
             // dobbiamo trovare il modo di gestire le quantità per aggiungere un prodotto al carrello,
             // perché nell'esempio del prof veniva impedita l'aggiunta ma non ha senso nel nostro caso
 
-            // for (Prodotto p : carrello)
-            //    if (p.getId() == idProdotto)
+             for (Prodotto p : carrello)
+               if (p.getId() == idProdotto)
+                   return false;
             carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;
@@ -55,11 +56,37 @@ public class ProdottoServiceImpl implements ProdottoService {
     @Override
     public void rimozioneCarrello(int idProdotto, HttpSession session) {
 
+        //otteniamo la certezza di avere un carrello
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
+        //rimozione prodotto dal carrello
+        for(Prodotto prodotto : carrello)
+            if(prodotto.getId() == idProdotto){
+                carrello.remove(prodotto);
+                break;
+            }
+        if(carrello.size() > 0 )//abbiamo qualcosa e sovrascriviamo
+            session.setAttribute("carrello", carrello);
+        else session.removeAttribute("carrello");
     }
 
     @Override
     public double totaleCarrello(HttpSession session) {
+
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
+        if(carrello != null){
+            double totale = 0;
+            for(Prodotto prodotto : carrello)
+                totale += prodotto.getPrezzo();
+            return (totale + 5) ;
+        }
         return 0;
+    }
+
+    @Override
+    public List<Prodotto> carrelloUtente(HttpSession session) {
+        if(session.getAttribute("carrello") != null)
+            return (List<Prodotto>) session.getAttribute("carrello");
+        return null;
     }
 
 }
