@@ -6,7 +6,6 @@
     visibility: visible;
     opacity: 1; /* Imposta l'opacità a 1 per la visibilità */
     transition: opacity 0.5s ease; /* Aggiungi la transizione di dissolvenza */
-   
 }
 
 .nav-item.dropdown .dropdown-menu {
@@ -14,19 +13,22 @@
     visibility: hidden;
     position: absolute;
     z-index: 1000;
-    top: 100%;
-    left: 0;
-    opacity: 0; /* Imposta l'opacità iniziale a 0 */
+    top: 100%; /* Posiziona il menu appena sotto la voce di navigazione */
+    left: -10px; /* Posiziona il menu allineato con il bordo sinistro */
+    opacity: 0;
     transition: opacity 0.30s ease; /* Aggiungi la transizione di dissolvenza */
+    width: auto; /* Imposta la larghezza automatica in base al contenuto */
+    min-width: 200px; /* Larghezza minima per ogni dropdown */
+    max-width: calc(100vw ); /* Impedisce che il dropdown esca dalla pagina (100% della larghezza - margine) */
 }
 
 /* Distanza tra i dropdown */
 .dropdown-menu {
     display: flex !important;  /* Utilizza Flexbox per i menu a discesa */
-    flex-direction: row !important;  /* Dispone gli items orizzontalmente */
+    flex-direction: column;  /* Imposta gli items in colonna */
     gap: 10px;  
-    padding: 10px !important;  
-    margin: 0 !important; 
+    padding: 10px !important;
+    margin: 0 !important;
 }
 
 /* Impedisce che il testo negli items vada a capo */
@@ -39,7 +41,6 @@
 }
 
 .fontcategorie {
-
     font-family: "Sofia", serif;
     font-size: 35px;
     color: black;
@@ -48,54 +49,40 @@
 }
 
 .nav-link.dropdown-toggle:hover {
-    color: green !important;  /* Colore del testo rosa */
-    border: 2px solid rgb(224, 96, 117);
+    color: #368c71 !important;  /* Colore del testo rosa */
+    border: 2px solid #ea83ac;
     transition: color 0.40s ease;  /* Transizione fluida per il colore del testo */
-    
 }
 
 body {
     background-color: #EDEDE9;
-
-  
 }
 
 .footer {
     background-color: #cdb7dd ;
-   
-    
 }
 
 #menulogo {
-
     background-color: rgb(255, 218, 224);
     height: 140px;
-    
-    
 }
 
 #logo {
     width: 400px;
-    
-   
 }
-
 
 #menu {
     background-color: #cdb7dd;
-   
-    
 }
 
 .custom-badge {
-    background-color: #28a745; /* Verde */
+    background-color: #368c71; /* Verde */
     color: white;
 }
 
 .search-icon {
     color: green; /* Colore personalizzato */
     font-size: 18px; /* Dimensione personalizzata */
-    
 }
 
 .custom-search {
@@ -104,17 +91,108 @@ body {
     margin-top: 10px;
 }
 
- .nav-item1 {
+.nav-item1 {
     margin-right: 50px;  /* Aggiunge spazio tra gli elementi della navbar */
     font-size: 20px;
-  }
+}
 
-  .dropdown-toggle::after {
+.dropdown-toggle::after {
     display: none;
+}
+
+.dropdown-item:hover {
+    color: rgb(214, 68, 92);  /* Colore del testo */
+}
+
+.navbar-nav .nav-item {
+    margin-right: 30px;  /* Aggiunge 30px di spazio tra gli item */
+}
+
+
+.carousel {
+    position: relative;
+  }
+  .carousel-item img {
+    object-fit: cover;
+  }
+  #carousel-thumbs {
+    background: rgba(255,255,255,.3);
+    bottom: 0;
+    left: 0;
+    padding: 0 50px;
+    right: 0;
+  }
+  #carousel-thumbs img {
+    border: 5px solid transparent;
+    cursor: pointer;
+  }
+  #carousel-thumbs img:hover {
+    border-color: rgba(255,255,255,.3);
+  }
+  #carousel-thumbs .selected img {
+    border-color: #fff;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 50px;
+  }
+  @media all and (max-width: 767px) {
+    .carousel-container #carousel-thumbs img {
+      border-width: 3px;
+    }
+  }
+  @media all and (min-width: 576px) {
+    .carousel-container #carousel-thumbs {
+      position: absolute;
+    }
+  }
+  @media all and (max-width: 576px) {
+    .carousel-container #carousel-thumbs {
+      background: #ccccce;
+    }
   }
   
- 
- 
-  .dropdown-item:hover {
-    color: rgb(214, 68, 92);  /* Colore del testo */
+  .carousel-caption{
+    font-size: 100px;
+    font-weight: bolder;
+    color: orange;
   }
+  
+  .carousel-inner {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .carousel-inner .carousel-item {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel-inner .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .carousel-item::before {
+      width: 100%;
+      height: 100%;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #fff 0%, black 100%);
+      z-index: 1;
+      mix-blend-mode: multiply;
+      }
+  
+   .carousel-caption {
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        z-index: 2;
+   }
+
+
+
+
+
