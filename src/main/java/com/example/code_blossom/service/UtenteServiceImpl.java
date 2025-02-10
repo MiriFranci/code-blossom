@@ -16,6 +16,11 @@ public class UtenteServiceImpl implements UtenteService{
      private UtenteDao utenteDao;
 
     @Override
+    public Utente datiUtente(int id) {
+        return utenteDao.findById(id).get();
+    }
+
+    @Override
     public boolean loginUtente(String username, String password, HttpSession session) {
         Utente utente = utenteDao.findByUsernameAndPassword(username, password);
         if(utente != null){
