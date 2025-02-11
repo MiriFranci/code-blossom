@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    <!-- Inizio sezione navbar -->
     <nav class="navbar navbar-expand-lg container-fluid" id="menu">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,10 +31,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item1">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <i class="bi bi-house-door-fill" style="font-size: 1.5rem;"></i> <!-- Icona per Home -->
+                        </a>
                     </li>
                     <li class="nav-item1">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="">
+                            <i class="bi bi-person-fill" style="font-size: 1.5rem;"></i> <!-- Icona per Login -->
+                        </a>
                     </li>
                     <li class="nav-item1">
                         <a class="nav-link" href="#" id="cartButton">
@@ -41,28 +46,30 @@
                             <span class="badge custom-badge" id="cartCount">0</span> <!-- Contatore del carrello -->
                         </a>
                     </li>
-                    <form class="d-flex" role="search">
-                        <input class="form-control form-control sm custom-search" type="search" aria-label="Search"
+                    <form class="d-flex" role="search" id="searchForm">
+                        <input class="form-control form-control-sm custom-search" type="search" aria-label="Search"
                             placeholder="Cerca...">
-                        <button class="btn btn-outline-none" type="submit"> <i
-                                class="bi bi-search search-icon"></i></button>
+                        <button class="btn btn-outline-none" type="submit" id="searchButton">
+                            <i class="bi bi-search search-icon"></i>
+                        </button>
                     </form>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Seconda Navbar (Categorie) -->
     <nav class="navbar navbar-expand-lg container-fluid" id="menulogo">
         <div class="container-fluid">
             <div>
-                <img src="../static/logo1centrale.png" id="logo">
+                <img src="../static/logo1centrale.png" id="logo" class="img-fluid">
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent2">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fontcategorie" href="#" id="navbarDropdownFiori"
@@ -84,7 +91,7 @@
                             Composizioni
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownComposizioni">
-                            <li><a class="dropdown-item" href="#">Tutto il catalogo</a></li>
+                            <li><a class="dropdown-item" href="composizioni.html">Tutto il catalogo</a></li>
                             <li><a class="dropdown-item" href="#">Compleanno</a></li>
                             <li><a class="dropdown-item" href="#">San Valentino</a></li>
                             <li><a class="dropdown-item" href="#">Ricorrenze</a></li>
@@ -111,23 +118,39 @@
     </nav>
 
 
+
+    <!-- JavaScript per il funzionamento delle animazioni della ricerca e del menu -->
+    <script>
+        // Funzione per mostrare/nascondere la barra di ricerca
+        document.getElementById("searchButton").addEventListener("click", function () {
+            document.getElementById("searchForm").classList.toggle("active");
+            this.classList.toggle("active");
+        });
+
+        // Funzione per il toggle del menu a tendina (Mobile)
+        document.querySelector(".navbar-toggler").addEventListener("click", function () {
+            document.getElementById("navbarSupportedContent2").classList.toggle("active");
+        });
+    </script>
+    </div>
+    <!-- Sezione dedicata alle cards dei prodotti -->
     <div class="container mt-5" id="cards-container">
-        <!-- Prima Row (prima riga) con 3 cards -->
-        <div class="row justify-content-center g-4"> <!-- Aggiunto 'g-4' per aumentare lo spazio tra le card -->
+        <!-- Una sola Row con 5 righe di 4 cards ciascuna -->
+        <div class="row justify-content-center g-4">
+
             <!-- Card 1 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="../static/cuoreRose.jpg" class="card-img-top img-fluid" alt="rose a forma di cuore">
+                    <img src="../static/Compleanno/Arancione.jpg" class="card-img-top img-fluid"
+                        alt="Composizione fiori">
                     <div class="card-body">
-                        <h5 class="card-title">Composizione rose a forma di cuore</h5>
-                        <p class="card-text">Il regalo perfetto per la persona che ami!... ma anche per la persona che
-                            odi se gliela
-                            regali dopo averla calpestata</p>
+                        <h5 class="card-title">Composizione di fiori freschi "Esplosione di Colori"</h5>
+                        <p class="card-text">Con tulipani arancioni, gerbere rosa e margherite gialle, questa
+                            composizione porta energia e positività. Un regalo che esprime felicità e buonumore,
+                            perfetto per augurare il meglio a chi festeggia il proprio compleanno!</p>
                         <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€49.99</p>
-                        <!-- Prezzo -->
                         <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
                     </div>
-                    <!-- Footer della card -->
                     <div class="card-footer bg-transparent border-top-0">
                         <small class="text-muted">In saldo!</small>
                     </div>
@@ -135,21 +158,18 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="../static/mazzorosev.jpg" class="card-img-top img-fluid" alt="mazzo di rose">
+                    <img src="../static/Compleanno/ViolaBianco.jpg" class="card-img-top img-fluid" alt="mazzo di rose">
                     <div class="card-body">
-                        <h5 class="card-title">Mazzo di rose misto viola e rosso</h5>
-                        <p class="card-text">Mazzo di rose misto viola e rosso - Smettila di farti il mazzo per
-                            scegliere i colori
-                            giusti e fidati del nostro gusto! Rosso e viola sono una combinazione vincente! Credo... In
-                            realtà sono
-                            daltonico.</p>
+                        <h5 class="card-title">Composizione di fiori "Festa di Primavera"</h5>
+                        <p class="card-text">Un'armonia di fiori freschi di stagione, tra cui narcisi, margherite e
+                            fresie, che portano con sé la freschezza e la gioia della primavera. Questa composizione è
+                            perfetta per aggiungere un tocco di allegria e freschezza a qualsiasi festa di compleanno!
+                        </p>
                         <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p>
-                        <!-- Prezzo -->
                         <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
                     </div>
-                    <!-- Footer della card -->
                     <div class="card-footer bg-transparent border-top-0">
                         <small class="text-muted">In saldo!</small>
                     </div>
@@ -157,60 +177,37 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
+                    <img src="../static/Compleanno/Pinky.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
                     <div class="card-body">
-                        <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-                        <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o
-                            boy, perchè
-                            qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
+                        <h5 class="card-title">Composizione di fiori eleganti "Dolce Serenità"</h5>
+                        <p class="card-text">Un bouquet raffinato di rose bianche, peonie rosa e orchidee lilla,
+                            perfetto per un compleanno speciale. La delicatezza e l'eleganza dei fiori esprimono tutta
+                            la bellezza e la gioia del celebrare una nuova annata. Un regalo che conquista a prima
+                            vista!</p>
                         <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
-                        <!-- Prezzo -->
                         <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
                     </div>
-                    <!-- Footer della card -->
                     <div class="card-footer bg-transparent border-top-0">
                         <small class="text-muted">In saldo!</small>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
-                    <div class="card-body">
-                        <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-                        <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o
-                            boy, perchè
-                            qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seconda Row (seconda riga) con 3 cards -->
-        <div class="row justify-content-center g-5"> <!-- Aggiunto 'g-4' per aumentare lo spazio tra le card -->
             <!-- Card 4 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="../static/limone.webp" class="card-img-top img-fluid" alt="albero di limone">
+                    <img src="../static/Compleanno/Romance.jpg" class="card-img-top img-fluid" alt="albero di limone">
                     <div class="card-body">
-                        <h5 class="card-title">Albero di limoni</h5>
-                        <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
+                        <h5 class="card-title">Composizione di fiori "Romanticismo di Compleanno"</h5>
+                        <p class="card-text">Un bouquet romantico con rose rosa, ortensie e garofani bianchi, perfetto
+                            per un compleanno da ricordare. Ogni fiore è scelto con cura per simboleggiare l’amore, la
+                            passione e la bellezza, offrendo un regalo che farà battere il cuore!</p>
                         <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p>
-                        <!-- Prezzo -->
                         <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
                             carrello</a>
                     </div>
-                    <!-- Footer della card -->
                     <div class="card-footer bg-transparent border-top-0">
                         <small class="text-muted">In saldo!</small>
                     </div>
@@ -218,20 +215,15 @@
             </div>
 
             <!-- Card 5 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid"
-                        alt="mammillaria cactus">
+                    <img src="../static/cuoreRose.jpg" class="card-img-top img-fluid" alt="rose a forma di cuore">
                     <div class="card-body">
-                        <h5 class="card-title">Zamia</h5>
-                        <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo
-                            inizio</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
+                        <h5 class="card-title">Composizione rose a forma di cuore</h5>
+                    <p class="card-text">Il regalo perfetto per la persona che ami!... ma anche per la persona che odi se gliela regali dopo averla calpestata</p>
+                    <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€49.99</p> <!-- Prezzo -->
+                    <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
                     </div>
-                    <!-- Footer della card -->
                     <div class="card-footer bg-transparent border-top-0">
                         <small class="text-muted">In saldo!</small>
                     </div>
@@ -239,20 +231,15 @@
             </div>
 
             <!-- Card 6 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
+                    <img src="../static/mazzorosev.jpg" class="card-img-top img-fluid" alt="mazzo di rose">
                     <div class="card-body">
-                        <h5 class="card-title">Mammillaria</h5>
-                        <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti
-                            ingannare: punge!
-                        </p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
+                        <h5 class="card-title">Mazzo di rose misto viola e rosso</h5>
+                        <p class="card-text">Mazzo di rose misto viola e rosso - Smettila di farti il mazzo per scegliere i colori giusti e fidati del nostro gusto! Rosso e viola sono una combinazione vincente! Credo... In realtà sono daltonico.</p>
+                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p> <!-- Prezzo -->
+                        <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
                     </div>
-                    <!-- Footer della card -->
                     <div class="card-footer bg-transparent border-top-0">
                         <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In
                             saldo!</small>
@@ -260,275 +247,240 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
-                    <div class="card-body">
-                        <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-                        <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o
-                            boy, perchè
-                            qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
+            <div class="card-body">
+                <h5 class="card-title">Ghirlanda di rose pink edition</h5>
+                <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o boy, perchè qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p> <!-- Prezzo -->
+                <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
             </div>
         </div>
+    </div>
 
-        <!-- Seconda Row (seconda riga) con 3 cards -->
-        <div class="row justify-content-center g-5"> <!-- Aggiunto 'g-4' per aumentare lo spazio tra le card -->
-            <!-- Card 4 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/limone.webp" class="card-img-top img-fluid" alt="albero di limone">
-                    <div class="card-body">
-                        <h5 class="card-title">Albero di limoni</h5>
-                        <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
+    <!-- Card 2 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/mazzorosev.jpg" class="card-img-top img-fluid" alt="mazzo di rose">
+            <div class="card-body">
+                <h5 class="card-title">Mazzo di rose misto viola e rosso</h5>
+                <p class="card-text">Mazzo di rose misto viola e rosso - Smettila di farti il mazzo per scegliere i
+                    colori giusti e fidati del nostro gusto! Rosso e viola sono una combinazione vincente! Credo... In
+                    realtà sono daltonico.</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p>
+                <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
             </div>
-
-            <!-- Card 5 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid"
-                        alt="mammillaria cactus">
-                    <div class="card-body">
-                        <h5 class="card-title">Zamia</h5>
-                        <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo
-                            inizio</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
-                    <div class="card-body">
-                        <h5 class="card-title">Mammillaria</h5>
-                        <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti
-                            ingannare: punge!
-                        </p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In
-                            saldo!</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
-                    <div class="card-body">
-                        <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-                        <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o
-                            boy, perchè
-                            qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
             </div>
         </div>
-        <!-- Seconda Row (seconda riga) con 3 cards -->
-        <div class="row justify-content-center g-5"> <!-- Aggiunto 'g-4' per aumentare lo spazio tra le card -->
-            <!-- Card 4 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/limone.webp" class="card-img-top img-fluid" alt="albero di limone">
-                    <div class="card-body">
-                        <h5 class="card-title">Albero di limoni</h5>
-                        <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
-            </div>
+    </div>
 
-            <!-- Card 5 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid"
-                        alt="mammillaria cactus">
-                    <div class="card-body">
-                        <h5 class="card-title">Zamia</h5>
-                        <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo
-                            inizio</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
+    <!-- Card 3 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
+            <div class="card-body">
+                <h5 class="card-title">Ghirlanda di rose pink edition</h5>
+                <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o boy,
+                    perchè qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
+                <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
             </div>
-
-            <!-- Card 6 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
-                    <div class="card-body">
-                        <h5 class="card-title">Mammillaria</h5>
-                        <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti
-                            ingannare: punge!
-                        </p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In
-                            saldo!</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
-                    <div class="card-body">
-                        <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-                        <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o
-                            boy, perchè
-                            qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
             </div>
         </div>
-        <!-- Seconda Row (seconda riga) con 3 cards -->
-        <div class="row justify-content-center g-5"> <!-- Aggiunto 'g-4' per aumentare lo spazio tra le card -->
-            <!-- Card 4 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/limone.webp" class="card-img-top img-fluid" alt="albero di limone">
-                    <div class="card-body">
-                        <h5 class="card-title">Albero di limoni</h5>
-                        <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
-            </div>
+    </div>
 
-            <!-- Card 5 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid"
-                        alt="mammillaria cactus">
-                    <div class="card-body">
-                        <h5 class="card-title">Zamia</h5>
-                        <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo
-                            inizio</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
+    <!-- Card 4 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/limone.webp" class="card-img-top img-fluid" alt="albero di limone">
+            <div class="card-body">
+                <h5 class="card-title">Albero di limoni</h5>
+                <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
             </div>
-
-            <!-- Card 6 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
-                    <div class="card-body">
-                        <h5 class="card-title">Mammillaria</h5>
-                        <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti
-                            ingannare: punge!
-                        </p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                            carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In
-                            saldo!</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
-                    <div class="card-body">
-                        <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-                        <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o
-                            boy, perchè
-                            qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
-                        <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
-                        <!-- Prezzo -->
-                        <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer bg-transparent border-top-0">
-                        <small class="text-muted">In saldo!</small>
-                    </div>
-                </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
             </div>
         </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid" alt="mammillaria cactus">
+            <div class="card-body">
+                <h5 class="card-title">Zamia</h5>
+                <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo inizio</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
+            <div class="card-body">
+                <h5 class="card-title">Mammillaria</h5>
+                <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti ingannare:
+                    punge!</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/cuoreRose.jpg" class="card-img-top img-fluid" alt="rose a forma di cuore">
+            <div class="card-body">
+                <h5 class="card-title">Composizione rose a forma di cuore</h5>
+                <p class="card-text">Il regalo perfetto per la persona che ami!... ma anche per la persona che odi se
+                    gliela regali dopo averla calpestata</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€49.99</p>
+                <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/mazzorosev.jpg" class="card-img-top img-fluid" alt="mazzo di rose">
+            <div class="card-body">
+                <h5 class="card-title">Mazzo di rose misto viola e rosso</h5>
+                <p class="card-text">Mazzo di rose misto viola e rosso - Smettila di farti il mazzo per scegliere i
+                    colori giusti e fidati del nostro gusto! Rosso e viola sono una combinazione vincente! Credo... In
+                    realtà sono daltonico.</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p>
+                <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/cuorerosa.jpg" class="card-img-top img-fluid" alt="ghirlanda di rose">
+            <div class="card-body">
+                <h5 class="card-title">Ghirlanda di rose pink edition</h5>
+                <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o boy,
+                    perchè qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere plastica</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€29.99</p>
+                <a href="#" class="btn btn-danger">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/limone.webp" class="card-img-top img-fluid" alt="albero di limone">
+            <div class="card-body">
+                <h5 class="card-title">Albero di limoni</h5>
+                <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid" alt="mammillaria cactus">
+            <div class="card-body">
+                <h5 class="card-title">Zamia</h5>
+                <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo inizio</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
+            <div class="card-body">
+                <h5 class="card-title">Mammillaria</h5>
+                <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti ingannare:
+                    punge!</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In saldo!</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/mammillaria_cactus.webp" class="card-img-top img-fluid" alt="mammillaria cactus">
+            <div class="card-body">
+                <h5 class="card-title">Zamia</h5>
+                <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo inizio</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted">In saldo!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/zamia.webp" class="card-img-top img-fluid" alt="zamia">
+            <div class="card-body">
+                <h5 class="card-title">Mammillaria</h5>
+                <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti ingannare:
+                    punge!</p>
+                <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€14.99</p>
+                <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In saldo!</small>
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
     <!--  Inizio Footer -->
     <div class="footer text-center text-lg-start text-muted container-fluid d-flex align-items-center">
@@ -583,13 +535,6 @@
         <a class="text-reset fw-bold" href="https://mdbootstrap.com/">CodeBlossom.com</a>
     </div>
     </footer>
-</body>
-
-</html>
-
-
-
-
 
 </body>
 
