@@ -1,0 +1,45 @@
+
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+
+    body {
+        background-color: #EDEDE9;
+    }
+
+    section {
+        margin-bottom: 300px;
+        
+    }
+
+    .card-body {
+        background-color: #cdb7dd ;
+    }
+
+    .custom-button {
+        /* Colore di sfondo personalizzato */
+        background-color: rgb(46, 197, 46); /* Blu come esempio */
+        color: white; /* Colore del testo */
+        border: none; /* Rimuovi il bordo predefinito */
+        border-radius: 5px; /* Arrotondamento angoli */
+        padding: 10px 20px; /* Spaziatura interna */
+        font-size: 1.1rem; /* Dimensione del testo */
+        transition: background-color 0.3s, transform 0.3s; /* Effetto hover */
+      }
+      
+      /* Effetto hover per il bottone */
+      .custom-button:hover {
+        background-color: #0056b3; /* Colore blu scuro al passaggio del mouse */
+        transform: scale(1.05); /* Leggera espansione quando si passa sopra */
+      }
+      
+      /* Per un altro colore personalizzato per il bottone "Annulla" */
+      
+      
