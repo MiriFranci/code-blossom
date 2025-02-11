@@ -1,45 +1,5 @@
 @charset "utf-8";
 
-/* I dropdown menu si aprono al passaggio del mouse */
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-    visibility: visible;
-    opacity: 1; /* Imposta l'opacità a 1 per la visibilità */
-    transition: opacity 0.5s ease; /* Aggiungi la transizione di dissolvenza */
-}
-
-.nav-item.dropdown .dropdown-menu {
-    display: none;
-    visibility: hidden;
-    position: absolute;
-    z-index: 1000;
-    top: 100%; /* Posiziona il menu appena sotto la voce di navigazione */
-    left: -10px; /* Posiziona il menu allineato con il bordo sinistro */
-    opacity: 0;
-    transition: opacity 0.30s ease; /* Aggiungi la transizione di dissolvenza */
-    width: auto; /* Imposta la larghezza automatica in base al contenuto */
-    min-width: 200px; /* Larghezza minima per ogni dropdown */
-    max-width: calc(100vw ); /* Impedisce che il dropdown esca dalla pagina (100% della larghezza - margine) */
-}
-
-/* Distanza tra i dropdown */
-.dropdown-menu {
-    display: flex !important;  /* Utilizza Flexbox per i menu a discesa */
-    flex-direction: column;  /* Imposta gli items in colonna */
-    gap: 10px;  
-    padding: 10px !important;
-    margin: 0 !important;
-}
-
-/* Impedisce che il testo negli items vada a capo */
-.dropdown-item {
-    white-space: nowrap !important;  /* Impedisce il ritorno a capo */
-    display: inline-block !important;  /* Fa in modo che gli items siano trattati come inline-block */
-    transition: color 0.3s ease;  /* Aggiunge una transizione per il colore del testo */
-    font-family: "Sofia", serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 .fontcategorie {
     font-family: "Sofia", serif;
     font-size: 35px;
@@ -48,22 +8,26 @@
     margin-right: 90px;
 }
 
-.nav-link.dropdown-toggle:hover {
-    color: #368c71 !important;  /* Colore del testo rosa */
-    
-    transition: color 0.40s ease;  /* Transizione fluida per il colore del testo */
-}
-
 body {
     background-color: #EDEDE9;
 }
 
 .footer {
-    background-color: #cdb7dd ;
+    background-color: #cdb7dd;
+    padding: 20px 0; /* Aggiungi spazio sopra e sotto nel footer */
+    display: flex;
+    justify-content: space-between; /* Allinea gli elementi ai lati del footer */
+    align-items: center; /* Centra verticalmente gli elementi */
+}
+
+.footer .cart-price {
+    display: flex;
+    align-items: center; /* Allinea il carrello e il prezzo su una riga */
+    gap: 15px; /* Distanza tra il carrello e il prezzo */
 }
 
 #menulogo {
-    background-color: #cdb7dd ;
+    background-color: #cdb7dd;
     height: 140px;
 }
 
@@ -92,19 +56,24 @@ body {
     font-size: 20px;
 }
 
-.dropdown-toggle::after {
-    display: none;
-}
-
-.dropdown-item:hover {
-    color: rgb(214, 68, 92);  /* Colore del testo */
-}
-
 .navbar-nav .nav-item {
     margin-right: 30px;  /* Aggiunge 30px di spazio tra gli item */
 }
 
+/* Modifica per il colore di tutti i bottoni */
+.btn {
+    background-color: #9b7eaf !important; /* Lilla */
+    color: white !important;
+    border: none;
+    transition: background-color 0.3s ease;
+}
 
+.btn:hover {
+    background-color: #7e5d8d !important; /* Lilla scuro al passaggio del mouse */
+    color: white !important;
+}
+
+/* Carousel */
 .carousel {
     position: relative;
     width: 85vw; /* Imposta la larghezza al 60% della larghezza della finestra */
@@ -149,7 +118,6 @@ body {
     top: 10%;
     left: 20%;
     z-index: 2;
-
 }
 
 /* Centro anche i controlli del carosello (freccie) */
@@ -158,24 +126,107 @@ body {
     width: 30px;
 }
 
-
-
 /* Modifica le dimensioni del carosello per schermi piccoli */
-/*@media all and (max-width: 767px) {
-    .carousel {
-        width: 90vw; /* Rende il carosello più largo su schermi piccoli */
-        /*height: 30vh; /* Rende l'altezza del carosello più piccola su schermi piccoli */
-    /*}
+@media (max-width: 767px) {
+    #searchForm {
+        display: none;
+    }
 
-    /*.carousel-caption {
-        font-size: 30px; /* Riduci il testo su schermi piccoli */
-        
-   /* }
-}*/
+    #searchButton {
+        display: none;
+    }
 
+    #searchButton.active {
+        display: inline-block;
+    }
+
+    /* Quando il menu è attivo e viene cliccato la barra di ricerca compare */
+    #searchForm.active {
+        display: flex;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 80%;
+        transition: all 0.3s ease;
+    }
+
+    #menu .navbar-toggler {
+        display: inline-block;
+    }
+}
+
+/* Navbar logo sempre visibile */
+#menulogo .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    width: auto;
+    max-height: 50px;
+}
+
+.navbar-toggler {
+    display: none; /* Nasconde il toggle della navbar */
+}
+
+/* Modifica per le voci di collegamento ipertestuale */
+.nav-link {
+    color: black;
+    transition: color 0.3s ease; /* Transizione per il cambio colore */
+}
+
+.nav-link:hover {
+    color: rgb(80, 153, 80) !important; /* Diventa viola al passaggio del mouse */
+}
+
+/* Aggiungi un margine tra gli item della navbar */
+.nav-item {
+    margin-right: 30px;
+}
+
+/* Modifica la visualizzazione delle card */
 .card {
+    width: 400px; /* Larghezza fissa per le card */
+    height: 600px; /* Altezza fissa per le card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuisce equamente lo spazio tra gli elementi */
+    margin: 15px; /* Aggiungi margini tra le card */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
 
-    height: 100%;
+
+
+.card:hover {
+    transform: translateY(-20px); /* Effetto di sollevamento */
+}
+
+/* Titolo card */
+.card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 15px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin: 15px;
+    
+}
+
+/* Modifica la visualizzazione del footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .autori {
@@ -189,68 +240,9 @@ body {
         justify-content: center;
         align-items: center;
     }
-} 
+}
 
 
-@media (max-width: 767px) {
-    #searchForm {
-      display: none;
-    }
-
-    #searchButton {
-      display: none;
-    }
-
-    #searchButton.active {
-      display: inline-block;
-    }
-
-    /* Quando il menu è attivo e viene cliccato la barra di ricerca compare */
-    #searchForm.active {
-      display: flex;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 80%;
-      transition: all 0.3s ease;
-    }
-
-    #menu .navbar-toggler {
-      display: inline-block;
-    }
-  }
-
-  /* Navbar logo sempre visibile */
-  #menulogo .container-fluid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #logo {
-    width: auto;
-    max-height: 50px;
-  }
-
-  /* Icone navbar */
-  .nav-link i {
-    font-size: 1.5rem;
-  }
-
-  /* Aggiungi una classe per i dropdown del mobile */
-  @media (max-width: 767px) {
-    #navbarSupportedContent2 {
-      display: none;
-    }
-
-    #navbarSupportedContent2.active {
-      display: block;
-    }
-
-    .navbar-toggler {
-      display: block;
-    }
-  }
 
 
 
