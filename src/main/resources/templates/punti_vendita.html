@@ -16,7 +16,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Eater&family=Rubik+Wet+Paint&family=Sofia&display=swap"
     rel="stylesheet">
-  <title>Home page</title>
+  <title>Punti vendita</title>
+  <style>
+    .map-iframe {
+    display: block;
+    margin: 0 auto;
+}
+
+.store-image {
+    display: none; /* Nascondi l'immagine inizialmente */
+    text-align: center;
+    margin-top: 10px;
+}
+
+.list-group-item:hover .store-image {
+    display: block; /* Mostra l'immagine quando si passa il mouse sopra la voce della lista */
+}
+
+  </style>
 </head>
 
 <body>
@@ -142,16 +159,56 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <ul class="list-group text-center">
-                <li class="list-group-item"><b>Napoli:</b> Via Toledo, 150</li>
-                <li class="list-group-item"><b>Catania:</b> Corso Italia, 75</li>
-                <li class="list-group-item"><b>Bari:</b> Via Sparano, 20</li>
-                <li class="list-group-item"><b>Roma:</b> Via del Corso, 101</li>
-                <li class="list-group-item"><b>Firenze:</b> Piazza della Repubblica, 5</li>
-                <li class="list-group-item"><b>Milano:</b> Galleria Vittorio Emanuele, 12</li>
-                <li class="list-group-item"><b>Venezia:</b> Via Santa Lucia, 1</li>
-                <li class="list-group-item"><b>Torino:</b> Via Roma, 88</li>
-            </ul>
+          <ul class="list-group text-center">
+            <li class="list-group-item">
+              Napoli: Via Toledo, 150 - <a href="tel:+390811234567">+39 081 1234567</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/napoli-store.jpg" alt="Negozio Napoli" width="200">
+              </div>
+            </li>
+            <li class="list-group-item">
+              Catania: Corso Italia, 75 - <a href="tel:+390952345678">+39 095 2345678</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/catania-store.jpg" alt="Negozio Catania" width="200">
+              </div>
+            </li>
+            <li class="list-group-item">
+              Bari: Via Sparano, 20 - <a href="tel:+390803456789">+39 080 3456789</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/bari-store.jpg" alt="Negozio Bari" width="200">
+              </div>
+            </li>
+            <li class="list-group-item">
+              Roma: Via del Corso, 101 - <a href="tel:+39064567890">+39 06 4567890</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/roma-store.jpg" alt="Negozio Roma" width="200">
+              </div>
+            </li>
+            <li class="list-group-item">
+              Firenze: Piazza della Repubblica, 5 - <a href="tel:+390555678901">+39 055 5678901</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/firenze-store.jpg" alt="Negozio Firenze" width="200">
+              </div>
+            </li>
+            <li class="list-group-item">
+              Milano: Galleria Vittorio Emanuele, 12 - <a href="tel:+39026789012">+39 02 6789012</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/milano-store.jpg" alt="Negozio Milano" width="200">
+              </div>
+            </li>
+            <li class="list-group-item">
+              Venezia: Via Santa Lucia, 1 - <a href="tel:+390417890123">+39 041 7890123</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/venezia-store.jpg" alt="Negozio Venezia" width="200">
+              </div>
+            </li>
+            <li class="list-group-item">
+              Torino: Via Roma, 88 - <a href="tel:+390118901234">+39 011 8901234</a>
+              <div class="store-image">
+                <img src="../static/puntivendita/torino-store.jpg" alt="Negozio Torino" width="200">
+              </div>
+            </li>
+          </ul>
         </div>
     </div>
 </div>
@@ -166,7 +223,7 @@
         </div>
         <div class="modal-body">
           <!-- Google Maps -->
-          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Dw2j1Qx6wxImki9MfKwDK0f5XNAIAfU&ehbc=2E312F" width="640" height="480"></iframe>
+          <iframe class="map-iframe" src="https://www.google.com/maps/d/u/0/embed?mid=1Dw2j1Qx6wxImki9MfKwDK0f5XNAIAfU&ehbc=2E312F" width="640" height="480"></iframe>
         </div>
       </div>
     </div>
