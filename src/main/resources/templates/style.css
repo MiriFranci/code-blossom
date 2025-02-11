@@ -161,23 +161,92 @@ body {
 
 
 /* Modifica le dimensioni del carosello per schermi piccoli */
-@media all and (max-width: 767px) {
+/*@media all and (max-width: 767px) {
     .carousel {
         width: 90vw; /* Rende il carosello più largo su schermi piccoli */
-        height: 30vh; /* Rende l'altezza del carosello più piccola su schermi piccoli */
-    }
+        /*height: 30vh; /* Rende l'altezza del carosello più piccola su schermi piccoli */
+    /*}
 
-    .carousel-caption {
+    /*.carousel-caption {
         font-size: 30px; /* Riduci il testo su schermi piccoli */
         
-    }
-}
+   /* }
+}*/
 
 .card {
 
     height: 100%;
 }
 
+@media (max-width: 768px) {
+    .single-card-row {
+        height: 100vh; /* Altezza pari a tutta l'altezza della finestra */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+} 
+
+
+@media (max-width: 767px) {
+    #searchForm {
+      display: none;
+    }
+
+    #searchButton {
+      display: none;
+    }
+
+    #searchButton.active {
+      display: inline-block;
+    }
+
+    /* Quando il menu è attivo e viene cliccato la barra di ricerca compare */
+    #searchForm.active {
+      display: flex;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 80%;
+      transition: all 0.3s ease;
+    }
+
+    #menu .navbar-toggler {
+      display: inline-block;
+    }
+  }
+
+  /* Navbar logo sempre visibile */
+  #menulogo .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #logo {
+    width: auto;
+    max-height: 50px;
+  }
+
+  /* Icone navbar */
+  .nav-link i {
+    font-size: 1.5rem;
+  }
+
+  /* Aggiungi una classe per i dropdown del mobile */
+  @media (max-width: 767px) {
+    #navbarSupportedContent2 {
+      display: none;
+    }
+
+    #navbarSupportedContent2.active {
+      display: block;
+    }
+
+    .navbar-toggler {
+      display: block;
+    }
+  }
 
 
 
