@@ -178,6 +178,10 @@ body {
     height: 100%;
 }
 
+.autori {
+    margin-left: 300px;
+}
+
 @media (max-width: 768px) {
     .single-card-row {
         height: 100vh; /* Altezza pari a tutta l'altezza della finestra */
