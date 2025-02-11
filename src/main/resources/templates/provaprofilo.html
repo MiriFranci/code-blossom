@@ -9,10 +9,8 @@
     <a th:href="@{/}">Torna in Home Page</a>
     <a th:href="@{/profilo/logout}">Logout</a>
 </div>
-<!--<h1 th:text="|Questo è il profilo utente di ${utente.nome} nella tua Area Riservata|"></h1>-->
-<h1>Sei nell'area riservata</h1>
+<h1>Il mio profilo</h1>
 <form th:object="${utente}" method="post">
-    <input type="hidden" th:field="*{id}">
     <input type="hidden" th:field="*{id}">
     <input type="text" th:field="*{nome}" placeholder="Nome utente" required>
     <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
@@ -54,16 +52,28 @@
     </div>
     <input type="submit" value="Modifica dati">
 </form>
-
+<br />
+<h1>Storico degli ordini</h1>
+<h3>Il totale comprende un costo di consegna di 5€</h3>
 <table>
     <tr th:each="ordine : ${utente.ordini}">
-        <ul>
-            <li th:each="prodotto : ${ordine.prodotti}" th:text="${prodotto.nome}"></li>
-        </ul>
-        <td th:text="${ordine.destinazione}"></td>
-        <td th:text="${ordine.prezzoTotale}"></td>
+        <td th:text="'Numero ordine: ' + ${ordine.id}"></td>
+        <td>
+            <ul>
+                <li th:each="prodotto : ${ordine.prodotti}"
+                    th:text="${prodotto.nome + ' - ' + prodotto.prezzo + ' €'}">
+                </li>
+            </ul>
+            <strong>Totale: </strong><span th:text="${ordine.prezzoTotale + ' €'}"></span>
+        </td>
+        <td>
+            <strong>Indirizzo consegna: </strong><span th:text="${ordine.destinazione}"></span>
+            <hr>
+        </td>
     </tr>
 </table>
+
+
 
 
 <script>

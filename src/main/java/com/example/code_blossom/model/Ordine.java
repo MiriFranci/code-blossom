@@ -1,8 +1,8 @@
 package com.example.code_blossom.model;
 
 import jakarta.persistence.*;
-import org.springframework.cglib.core.Local;
-
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,6 +22,7 @@ public class Ordine {
     @Column
     private LocalDate dataConsegnaPrevista;
 
+    @Pattern(regexp = "^[a-zA-Z0-9,\\s]+$", message = "L\' indirizzo di destinazione deve contenere solo lettere, numeri e virgole.")
     @Column
     private String destinazione;
 
@@ -31,6 +32,7 @@ public class Ordine {
     @Column
     private double prezzoTotale;
 
+    @Size(max = 200, message = "Le note non possono superare i 200 caratteri.")
     @Column
     private String note;
 

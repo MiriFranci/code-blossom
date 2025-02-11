@@ -8,10 +8,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
 
 @Service
 public class OrdineServiceImpl implements OrdineService{
@@ -22,34 +20,34 @@ public class OrdineServiceImpl implements OrdineService{
     @Autowired
     private ProdottoService prodottoService;
 
-
     @Override
     public void inoltroOrdine(HttpSession session, String destinazione, String note) {
-        // ottenimento carrelllo e cliente loggato
+        // ottenimento carrello e dell' utente loggato
         List<Prodotto> carrello = prodottoService.carrelloUtente(session);
         Utente utente = (Utente) session.getAttribute("utente");
-        //verifica validità carrello e utente
+
+        // verifica validità carrello e utente
         if(carrello != null && utente != null){
-            //creazione oggetto ordine
+            // creazione oggetto ordine
             Ordine ordine = new Ordine();
-            //impostazione data
+            // impostazione data e ora dell'ordine
             ordine.setDataOraOrdine(LocalDateTime.now());
-            //impostiamo la data di consegna
+            // impostazione data di consegna
             ordine.setDataConsegnaPrevista(ordine.getDataOraOrdine().toLocalDate().plusDays(3));
-            //impostazione costo fisso di consegna, 5 euro
+            // impostazione costo fisso di consegna, 5 €
             ordine.setCostoConsegna(5);
-            //imposazione importo
+            // impostazione prezzo totale
             ordine.setPrezzoTotale(prodottoService.totaleCarrello(session));
-            //impostazione Utente associato a Ordine
+            // impostazione Utente associato a Ordine
             ordine.setUtente(utente);
-            //impostazione lista Libri
+            // impostazione lista dei Prodotti
             ordine.setProdotti(carrello);
-            // 🆕 Impostazione destinazione e note
+            // impostazione destinazione e note
             ordine.setDestinazione(destinazione);
             ordine.setNote(note);
-            //passaggio ordine a componente DAO per inserimento
+            // passaggio ordine a componente DAO per l'inserimento del record nella tabella "ordini"
             ordineDao.save(ordine);
-            //eliminazione carrello diventato ordine
+            // il carrello viene svuotato, dopo aver effettuato l'ordine
             session.removeAttribute("carrello");
         }
     }

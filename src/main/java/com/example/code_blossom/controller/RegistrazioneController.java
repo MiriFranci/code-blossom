@@ -35,12 +35,15 @@ public class RegistrazioneController {
             @Valid @ModelAttribute Utente utente,
             BindingResult result,
             Model model, RedirectAttributes redirectAttributes) {
+
         if(result.hasErrors())
             return "provaregistrazione";
+
         if(!utenteService.controlloUsername(utente.getUsername())) {
             model.addAttribute("duplicato", "Username Occupato");
             return "provaregistrazione";
         }
+
         if (Period.between(utente.getDataDiNascita(), LocalDate.now()).getYears() < 16) {
             model.addAttribute("etaMinima", "Devi avere almeno 16 anni");
             return "provaregistrazione";

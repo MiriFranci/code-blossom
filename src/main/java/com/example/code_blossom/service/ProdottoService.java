@@ -2,7 +2,6 @@ package com.example.code_blossom.service;
 
 import com.example.code_blossom.model.Prodotto;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

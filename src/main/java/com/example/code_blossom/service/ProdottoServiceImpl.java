@@ -34,13 +34,14 @@ public class ProdottoServiceImpl implements ProdottoService {
         Prodotto prodotto = datiProdotto(idProdotto);
         List<Prodotto> carrello;
 
+        // Controlliamo se esiste già un carrello nella sessione
         if (session.getAttribute("carrello") != null) {
-            carrello = (List<Prodotto>) session.getAttribute("carrello");
+            carrello = (List<Prodotto>) session.getAttribute("carrello"); // se il carrello esiste, lo recuperiamo dalla sessione
             carrello.add(prodotto);
-            session.setAttribute("carrello", carrello);
+            session.setAttribute("carrello", carrello); // aggiorniamo il carrello della sessione, dopo l'aggiunta del prodotto
             return true;
         } else {
-            carrello = new ArrayList<>();
+            carrello = new ArrayList<>();  // se il carrello non esiste, creiamo una nuova lista di prodotti
             carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;
@@ -49,40 +50,48 @@ public class ProdottoServiceImpl implements ProdottoService {
 
     @Override
     public void rimozioneCarrello(int idProdotto, HttpSession session) {
-
-        //otteniamo la certezza di avere un carrello
+        // recuperiamo il carrello dalla sessione (se esiste)
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
-        //rimozione prodotto dal carrello
+
+        // cicliamo tra i prodotti nel carrello per trovare quello da rimuovere
         for(Prodotto prodotto : carrello)
             if(prodotto.getId() == idProdotto){
                 carrello.remove(prodotto);
                 break;
             }
-        if(carrello.size() > 0 )//abbiamo qualcosa e sovrascriviamo
+
+        // se ci sono ancora prodotti nel carrello, aggiorniamo la sessione
+        if(carrello.size() > 0 )
             session.setAttribute("carrello", carrello);
+
+        // altrimenti se il carrello è vuoto, rimuoviamo l'attributo dalla sessione
         else session.removeAttribute("carrello");
     }
 
     @Override
     public double totaleCarrello(HttpSession session) {
-
+        // recuperiamo il carrello dalla sessione (se esiste)
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
         if(carrello != null){
             double totale = 0;
+
+            // cicliamo attraverso i prodotti nel carrello e sommiamo i prezzi
             for(Prodotto prodotto : carrello)
                 totale += prodotto.getPrezzo();
+            // aggiungiamo 5 € di spedizione al prezzo totale
             return (totale + 5) ;
         }
+        // se il carrello è vuoto o non esiste, ritorniamo 0
         return 0;
     }
 
     @Override
     public List<Prodotto> carrelloUtente(HttpSession session) {
+        // verifica se esiste un carrello nella sessione dell'utente
         if(session.getAttribute("carrello") != null)
-            return (List<Prodotto>) session.getAttribute("carrello");
+            return (List<Prodotto>) session.getAttribute("carrello"); // se il carrello esiste, lo recuperiamo e lo ritorniamo
         return null;
     }
-
 }
 
 

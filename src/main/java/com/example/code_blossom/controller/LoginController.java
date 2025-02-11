@@ -22,6 +22,7 @@ public class LoginController {
             @RequestParam(required = false) String errore,
             Model model,
             HttpSession session) {
+
         if(session.getAttribute("utente") != null)
             return "redirect:/profilo";
         model.addAttribute("errore", errore);
@@ -33,9 +34,9 @@ public class LoginController {
             @RequestParam String username,
             @RequestParam String password,
             HttpSession session) {
+
         if(!utenteService.loginUtente(username, password, session))
             return "redirect:/login?errore";
         return "redirect:/profilo";
     }
-
 }

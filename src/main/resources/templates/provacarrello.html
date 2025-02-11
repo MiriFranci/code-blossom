@@ -22,14 +22,14 @@
 
 <h5 th:if="${carrello != null}" th:text="|Totale carrello ${#numbers.formatDecimal(totale, 0, 'POINT', 2, 'COMMA')} euro|"></h5>
 
-<form action="/carrello/invio" method="post" th:if="${carrello != null}">
-    <label for="destinazione">Indirizzo di destinazione (solo via):</label>
-    <input type="text" id="destinazione" name="destinazione" required>
-
-    <label for="note">Note per l'ordine (opzionale):</label>
-    <textarea id="note" name="note"></textarea>
-
-    <button type="submit">Invia Ordine</button>
+<form th:object="${ordine}" method="post" th:if="${carrello != null}">
+    <input type="text" th:field="*{destinazione}" placeholder="Indirizzo di destinazione" required>
+    <p th:if="${#fields.hasErrors('destinazione')}" th:errors="*{destinazione}"></p>
+    <br/>
+    <input type="text" th:field="*{note}" placeholder="Note per l'ordine (opzionale):">
+    <p th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
+    <br/>
+    <input type="submit" value="Invia ordine">
 </form>
 
 <p th:if="${send != null}">Il pagamento con Paypal è andato a buon fine. L'ordine verrà gestito dal punto vendita più vicino.</p>
