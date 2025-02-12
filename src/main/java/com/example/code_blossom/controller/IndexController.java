@@ -64,4 +64,6 @@ public class IndexController {
     public String registrati() {
         return "registrati";
     }
+
+
 }
