@@ -32,6 +32,29 @@
     <input type="submit" value="Invia ordine">
 </form>
 
-<p th:if="${send != null}">Il pagamento con Paypal è andato a buon fine. L'ordine verrà gestito dal punto vendita più vicino.</p>
+<p th:if="${send != null}" id="successMessage">Il pagamento con Paypal è andato a buon fine. L'ordine verrà gestito dal punto vendita più vicino.</p>
+
+<!-- Script per gestire il messaggio di "successo" e il redirect alla pagina iniziale -->
+<script th:if="${send != null}">
+    document.addEventListener("DOMContentLoaded", function() {
+        var displayTime = 3000;
+
+        setTimeout(function() {
+            var messageElement = document.getElementById("successMessage");
+            if (messageElement) {
+                messageElement.style.transition = "opacity 1s";
+                messageElement.style.opacity = "0";
+                setTimeout(function() {
+                    messageElement.style.display = "none";
+                }, 1000); // Tempo per completare la dissolvenza
+            }
+        }, displayTime);
+
+        setTimeout(function() {
+            window.location.href = "/";
+        }, displayTime + 2000);
+    });
+</script>
+
 </body>
 </html>
