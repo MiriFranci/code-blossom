@@ -25,6 +25,7 @@ public class IndexController {
             Utente utente = (Utente) session.getAttribute("utente");
             model.addAttribute("utente", utente);
         }
+        model.addAttribute("cartCount", session.getAttribute("carrelloCount"));
         List<Prodotto> prodotti = prodottoService.elencoProdotti();
         model.addAttribute("prodotti", prodotti);
         return "index";
@@ -59,11 +60,4 @@ public class IndexController {
     public String piante() {
         return "piante";
     }
-
-    @GetMapping("/registrati")
-    public String registrati() {
-        return "registrati";
-    }
-
-
 }

@@ -49,6 +49,8 @@ public class OrdineServiceImpl implements OrdineService{
             ordineDao.save(ordine);
             // il carrello viene svuotato, dopo aver effettuato l'ordine
             session.removeAttribute("carrello");
+            // anche il contatore del carrello
+            session.removeAttribute("carrelloCount");
         }
     }
 }

@@ -18,7 +18,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/carrello")
-
 public class CarrelloController {
 
     @Autowired
@@ -46,17 +45,16 @@ public class CarrelloController {
         model.addAttribute("totale", totaleCarrello);
         model.addAttribute("send", send);
         model.addAttribute("ordine", ordine);  // Aggiungi l'oggetto Ordine al modello
-        return "provacarrello";
+        return "carrello";
     }
 
 
     @GetMapping("/aggiungi")
     public String aggiungiProdotto(@RequestParam int id,
-                                   HttpSession session,
-                                   @RequestHeader(value = "Referer", defaultValue = "/") String referer){
+                                   HttpSession session){
         if(!prodottoService.aggiungiAlCarrello(id, session))
-            return "redirect:" + referer + "#prodotto-" + id + "?add=no&id=" + id;
-        return "redirect:" + referer + "#prodotto-" + id + "?add=yes&id=" + id;
+            return "redirect:/carrello?add=no&id=" + id;
+        return "redirect:/carrello?add=yes&id=" + id;
     }
 
     @GetMapping("/rimuovi")
@@ -80,7 +78,7 @@ public class CarrelloController {
             model.addAttribute("utente", utente);
             model.addAttribute("carrello", carrello);
             model.addAttribute("totale", totaleCarrello);
-            return "provacarrello";  // Torna alla pagina del carrello con gli errori
+            return "carrello";  // Torna alla pagina del carrello con gli errori
         }
 
         // Inoltra l'ordine

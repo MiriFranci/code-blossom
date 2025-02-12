@@ -27,7 +27,7 @@
                 <li class="nav-item1" th:if="${utente != null}">
                     <a class="nav-link" th:href="@{/carrello}">
                         <i class="bi bi-cart-fill menu-icon"></i>
-                        <span class="badge custom-badge" id="cartCount">0</span>
+                        <span class="badge custom-badge" th:text="${cartCount}"></span>
                     </a>
                 </li>
                 <li class="nav-item1">

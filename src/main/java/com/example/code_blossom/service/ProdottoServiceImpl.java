@@ -31,21 +31,23 @@ public class ProdottoServiceImpl implements ProdottoService {
 
     @Override
     public boolean aggiungiAlCarrello(int idProdotto, HttpSession session) {
-        Prodotto prodotto = datiProdotto(idProdotto);
+        Prodotto prodotto = datiProdotto(idProdotto); // Recupera il prodotto dal database o da un'altra fonte
         List<Prodotto> carrello;
 
         // Controlliamo se esiste già un carrello nella sessione
         if (session.getAttribute("carrello") != null) {
-            carrello = (List<Prodotto>) session.getAttribute("carrello"); // se il carrello esiste, lo recuperiamo dalla sessione
-            carrello.add(prodotto);
-            session.setAttribute("carrello", carrello); // aggiorniamo il carrello della sessione, dopo l'aggiunta del prodotto
-            return true;
+            carrello = (List<Prodotto>) session.getAttribute("carrello"); // Se il carrello esiste, lo recuperiamo dalla sessione
         } else {
-            carrello = new ArrayList<>();  // se il carrello non esiste, creiamo una nuova lista di prodotti
-            carrello.add(prodotto);
-            session.setAttribute("carrello", carrello);
-            return true;
+            carrello = new ArrayList<>(); // Se il carrello non esiste, creiamo una nuova lista di prodotti
         }
+        carrello.add(prodotto); // Aggiungi il prodotto al carrello
+
+        // Aggiorna il contatore del carrello
+        int carrelloCount = carrello.size();
+        session.setAttribute("carrelloCount", carrelloCount); // Aggiorna il contatore nella sessione
+        session.setAttribute("carrello", carrello); // Aggiorna il carrello nella sessione
+
+        return true; // Restituisci true per indicare che l'operazione è riuscita
     }
 
     @Override
@@ -60,12 +62,19 @@ public class ProdottoServiceImpl implements ProdottoService {
                 break;
             }
 
-        // se ci sono ancora prodotti nel carrello, aggiorniamo la sessione
-        if(carrello.size() > 0 )
-            session.setAttribute("carrello", carrello);
+        // Aggiorniamo il contatore del carrello
+        int carrelloCount = carrello.size();
+        session.setAttribute("carrelloCount", carrelloCount); // Aggiorna il contatore nella sessione
 
-        // altrimenti se il carrello è vuoto, rimuoviamo l'attributo dalla sessione
-        else session.removeAttribute("carrello");
+        // se ci sono ancora prodotti nel carrello, aggiorniamo la sessione
+        if (carrello.size() > 0) {
+            session.setAttribute("carrello", carrello);
+        } else {
+            // Altrimenti, se il carrello è vuoto, rimuoviamo l'attributo dalla sessione
+            session.removeAttribute("carrello");
+            session.removeAttribute("carrelloCount"); // Rimuovi anche il contatore
+        }
+        System.out.println("Prodotto rimosso! cartCount attuale: " + carrelloCount);
     }
 
     @Override

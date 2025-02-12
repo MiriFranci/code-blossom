@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Utente</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/}">Abbandona Login</a>
+</div>
+<div th:if="${successMessage}" class="alert alert-success">
+    <p th:text="${successMessage}"></p>
+</div>
+<p th:if="${errore != null}">Accesso Negato! Credenziali Errate</p>
+<form action="/login" method="post">
+    <input type="text" name="username" placeholder="Username..." required>
+    <br>
+    <input type="password" name="password" placeholder="Password..." required>
+    <br>
+    <input type="submit" value="Accedi">
+</form>
+</body>
+</html>

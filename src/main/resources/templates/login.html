@@ -36,59 +36,54 @@
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center h-100">
+
                 <div class="col-12 col-lg-9 col-xl-7">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
                             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Login</h3>
-                            <form>
+
+
+                            <form action="/login" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" id="username" name="username" class="form-control form-control-lg"
+                                                   placeholder="Inserisci username"/>
+                                            <label class="form-label" for="username">Username</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="password" id="password" name="password" class="form-control form-control-lg"
+                                                   placeholder="Inserisci password"/>
+                                            <label class="form-label" for="password">Password</label>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
-
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="text" id="firstName" class="form-control form-control-lg"
-                                                   placeholder="Inserisci username"/>
-                                            <label class="form-label" for="firstName">Username</label>
-                                        </div>
-
+                                        <!-- Bottone Registrati con classe personalizzata -->
+                                        <input data-mdb-ripple-init class="btn btn-lg custom-button" type="submit"
+                                               value="Accedi"/>
                                     </div>
-
                                 </div>
-
-                                <div class="col-md-6 mb-4">
-
-                                    <div data-mdb-input-init class="form-outline">
-                                        <input type="password" id="lastName" class="form-control form-control-lg"
-                                               placeholder="Inserisci password"/>
-                                        <label class="form-label" for="lastName">Password</label>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <!-- Bottone Registrati con classe personalizzata -->
-                                            <input data-mdb-ripple-init class="btn btn-lg custom-button" type="submit"
-                                                   value="Accedi"/>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <!-- Bottone Annulla con classe personalizzata -->
-                                            <a th:href="index.html">
-                                                <button data-mdb-ripple-init class="btn btn-lg custom-button" type="button"
-                                                        value="Abbandona login">
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </div>
-
                             </form>
+
+                            <div>
+                                <div th:if="${successMessage}" class="alert alert-success">
+                                    <p th:text="${successMessage}"></p>
+                                </div>
+                                <p th:if="${errore != null}">Accesso Negato! Credenziali Errate</p>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
 
 </div> <!-- FINE del contenuto-->

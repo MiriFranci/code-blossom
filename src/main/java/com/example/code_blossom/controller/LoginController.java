@@ -26,7 +26,7 @@ public class LoginController {
         if(session.getAttribute("utente") != null)
             return "redirect:/profilo";
         model.addAttribute("errore", errore);
-        return "provalogin";
+        return "login";
     }
 
     @PostMapping
