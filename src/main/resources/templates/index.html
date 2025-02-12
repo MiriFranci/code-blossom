@@ -100,7 +100,7 @@
         <div class="row justify-content-center g-4">
 
             <!-- CARD DEL PRODOTTO -->
-                <div class="card shadow-sm hover-effect custom-card" th:each="prodotto : ${prodotti}">
+                <div id="#prodotto-" class="card shadow-sm hover-effect custom-card" th:each="prodotto : ${prodotti}">
                     <img th:src="${prodotto.foto}" class="card-img-top img-fluid">
                     <div class="card-body d-flex flex-column">
                         <h5 th:text="${prodotto.nome}" class="card-title">Nome prodotto</h5>

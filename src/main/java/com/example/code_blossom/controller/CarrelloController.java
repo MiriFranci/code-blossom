@@ -52,10 +52,11 @@ public class CarrelloController {
 
     @GetMapping("/aggiungi")
     public String aggiungiProdotto(@RequestParam int id,
-                                   HttpSession session){
+                                   HttpSession session,
+                                   @RequestHeader(value = "Referer", defaultValue = "/") String referer){
         if(!prodottoService.aggiungiAlCarrello(id, session))
-            return "redirect:/carrello?add=no&id=" + id;
-        return "redirect:/carrello?add=yes&id=" + id;
+            return "redirect:" + referer + "#prodotto-" + id + "?add=no&id=" + id;
+        return "redirect:" + referer + "#prodotto-" + id + "?add=yes&id=" + id;
     }
 
     @GetMapping("/rimuovi")
