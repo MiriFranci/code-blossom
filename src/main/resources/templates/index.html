@@ -96,129 +96,28 @@
 
 <!-- INIZIO del contenuto-->
 <div class="main-content">
-
-    <!-- Sezione dedicata alle cards dei prodotti -->
     <div class="container mt-5" id="cards-container">
         <div class="row justify-content-center g-4">
-            <!-- Card 1 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card shadow-sm hover-effect custom-card">
-                    <img th:src="@{/san-valentino/cuoreRose.jpg}" class="card-img-top img-fluid" alt="rose a forma di cuore">
+
+            <!-- CARD DEL PRODOTTO -->
+                <div class="card shadow-sm hover-effect custom-card" th:each="prodotto : ${prodotti}">
+                    <img th:src="${prodotto.foto}" class="card-img-top img-fluid">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Composizione rose a forma di cuore</h5>
-                        <p class="card-text">Il regalo perfetto per la persona che ami!... ma anche per la persona
-                            che odi se gliela regali dopo averla calpestata</p>
+                        <h5 th:text="${prodotto.nome}" class="card-title">Nome prodotto</h5>
+                        <p th:text="${prodotto.descrizione}" class="card-text">Descrizione prodotto</p>
                     </div>
                     <!-- Footer della card -->
                     <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p class="card-price">€49.99</p>
-                        <a href="#" class="btn btn-chart btn-sm d-flex align-items-center">
-                            <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
-                        </a>
+                        <p th:text="'€ ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="card-price"></p>
+                        <a th:if="${utente != null}" th:href="@{/carrello/aggiungi(id=${prodotto.id})}" class="btn btn-chart btn-sm d-flex align-items-center">
+                                <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
+                            </a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 2 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card shadow-sm hover-effect custom-card">
-                    <img th:src="@{/san-valentino/mazzorosev.jpg}" class="card-img-top img-fluid" alt="mazzo di rose">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Mazzo di rose misto viola e rosso</h5>
-                        <p class="card-text">Mazzo di rose misto viola e rosso - Smettila di farti il mazzo per
-                            scegliere i colori giusti e fidati del nostro gusto! Rosso e viola sono una combinazione
-                            vincente! Credo... In realtà sono daltonico.</p>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p class="card-price">€39.99</p>
-                        <a href="#" class="btn btn-chart btn-sm d-flex align-items-center">
-                            <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card shadow-sm hover-effect custom-card">
-                    <img th:src="@{/san-valentino/cuorerosa.jpg}" class="card-img-top img-fluid" alt="ghirlanda di rose">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Ghirlanda di rose pink edition</h5>
-                        <p class="card-text">Ghirlanda di rose Barbie edition - Se ti senti un po' una Barbie Girl (o
-                            boy, perché qua siamo inclusivi!) questa è la ghirlanda che fa per te! Potrebbe contenere
-                            plastica</p>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p class="card-price">€29.99</p>
-                        <a href="#" class="btn btn-chart btn-sm d-flex align-items-center">
-                            <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4-->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card shadow-sm hover-effect custom-card">
-                    <img th:src="@{/piante/limone.webp}" class="card-img-top img-fluid" alt="albero di limone">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Albero di limoni</h5>
-                        <p class="card-text">Albero di limoni in vaso, da piantare successivamente nel terreno</p>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p class="card-price">€24.99</p>
-                        <a href="#" class="btn btn-chart btn-sm d-flex align-items-center">
-                            <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5-->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card shadow-sm hover-effect custom-card">
-                    <img th:src="@{/piante/mammillaria_cactus.webp}" class="card-img-top img-fluid"
-                         alt="mammillaria cactus">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Zamia</h5>
-                        <p class="card-text">Perfetta per un regalo a qualcuno o a sé stessi, simboleggia un nuovo
-                            inizio</p>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p class="card-price">€19.99</p>
-                        <a href="#" class="btn btn-chart btn-sm d-flex align-items-center">
-                            <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6-->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card shadow-sm hover-effect custom-card">
-                    <img th:src="@{/piante/zamia.webp}" class="card-img-top img-fluid" alt="zamia">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Mammillaria</h5>
-                        <p class="card-text">Mammillaria - Un cactus tanto spinoso quanto carino! Non lasciarti
-                            ingannare: punge!</p>
-                    </div>
-                    <!-- Footer della card -->
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p class="card-price">€14.99</p>
-                        <a href="#" class="btn btn-chart btn-sm d-flex align-items-center">
-                            <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div> <!-- FINE del contenuto-->
+            </div><!-- FINE della row -->
+        </div> <!-- FINE del container -->
+    </div> <!-- FINE del contenuto main content-->
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
