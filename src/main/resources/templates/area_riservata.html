@@ -82,7 +82,7 @@
                             <label for="pwd">Password</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                <input type="password" th:field="*{password}" class="form-control" id="pwd"
+                                <input type="text" th:field="*{password}" class="form-control" id="pwd"
                                        placeholder="Password utente" required>
                                 <button type="button" id="pwdButton" class="btn btn-outline-secondary">
                                     <i class="fas fa-eye"></i>
@@ -164,6 +164,7 @@
                 <div th:each="ordine, stat : *{ordini}">
                     <input type="hidden" th:field="*{ordini[__${stat.index}__].id}">
                 </div>
+                    <br/>
                 <!-- Bottone di invio -->
                 <div class="form-group text-center">
                     <button id="conferma" type="submit" class="btn btn-outline-primary btn-lg">
@@ -181,7 +182,7 @@
                 <table class="table table-bordered table-hover shadow">
                     <thead class="custom-header">
                     <tr>
-                        <th>Numero Ordine</th>
+                        <th>#</th>
                         <th>Prodotti</th>
                         <th>Totale</th>
                         <th>Indirizzo di Consegna</th>
@@ -192,11 +193,15 @@
                         <td th:text="${ordine.id}"></td>
                         <td>
                             <ul class="list-unstyled mb-0">
-                                <li th:each="prodotto : ${ordine.prodotti}"
-                                    th:text="${prodotto.nome + ' - ' + prodotto.prezzo + ' €'}"></li>
+                                <li th:each="prodotto : ${ordine.prodotti}">
+                                    <span th:text="${prodotto.nome}"></span>
+                                    <span style="margin-left: 6px; font-size: 0.9em; color: gray;"
+                                          th:text="${'(' + #numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA') + ' €)'}"></span>
+                                </li>
+
                             </ul>
                         </td>
-                        <td class="fw-bold text-success" th:text="${ordine.prezzoTotale + ' €'}"></td>
+                        <td class="fw-bold" th:text="${#numbers.formatDecimal(ordine.prezzoTotale, 0, 'POINT', 2, 'COMMA') + ' €'}"></td>
                         <td th:text="${ordine.destinazione}"></td>
                     </tr>
                     </tbody>
