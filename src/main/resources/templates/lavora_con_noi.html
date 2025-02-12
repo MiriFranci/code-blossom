@@ -32,6 +32,119 @@
 <div th:replace="~{fragments/header :: header}"></div>
 <!-- INIZIO del contenuto-->
 <div class="main-content">
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Lavora con noi</h3>
+                            <form>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" id="firstName" class="form-control form-control-lg"
+                                                   placeholder="Inserisci il tuo nome" required/>
+                                            <label class="form-label" for="firstName" >Nome</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" id="lastName" class="form-control form-control-lg"
+                                                   placeholder="Inserisci il tuo cognome" required/>
+                                            <label class="form-label" for="lastName">Cognome</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                        <div data-mdb-input-init class="form-outline datepicker w-100">
+                                            <input type="date" class="form-control form-control-lg" id="birthdayDate" rrquired/>
+                                            <label for="birthdayDate" class="form-label">Data di nascita</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="tel" id="phoneNumber" class="form-control form-control-lg"
+                                                   placeholder="Inserisci il tuo numero" required/>
+                                            <label class="form-label" for="phoneNumber">Numero di telefono</label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" id="firstName" class="form-control form-control-lg"
+                                                   placeholder="Inserisci la tua città" required/>
+                                            <label class="form-label" for="firstName">Città</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" id="lastName" class="form-control form-control-lg"
+                                                   placeholder="Inserisci il tuo indirizzo" required/>
+                                            <label class="form-label" for="lastName">Indirizzo</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="email" id="emailAddress" class="form-control form-control-lg"
+                                                   placeholder="Inserisci la tua e-mail" required/>
+                                            <label class="form-label" for="emailAddress">Email</label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <label for="cv">Carica il tuo Curriculum:</label>
+                                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,.txt" required><br><br>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <!-- Bottone Registrati con classe personalizzata -->
+                                        <input data-mdb-ripple-init class="btn btn-lg custom-button" type="submit"
+                                               value="Invia"/>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <!-- Bottone Annulla con classe personalizzata -->
+                                        <a href="index.html">
+                                            <button data-mdb-ripple-init class="btn btn-lg custom-button" type="button"
+                                                    value="Annulla">Annulla
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
