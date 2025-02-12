@@ -1,0 +1,368 @@
+@charset "utf-8";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #EDEDE9;
+}
+
+a.text-reset {
+    text-decoration: none !important;
+}
+
+.main-content {
+    flex: 1; /* Fa sì che il contenuto occupi lo spazio rimanente, spingendo il footer in basso */
+    margin-bottom: 80px; /* Distanza tra il contenuto e il footer */
+}
+
+/* NAVBAR 1: su schermi (>768px) */
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.nav-item1 {
+    margin-left: 4rem; /* Aumenta la distanza tra le icone (modifica a piacere) */
+}
+
+.nav-item1 .nav-link {
+    font-size: 2rem; /* Aumenta la dimensione delle icone */
+    padding: 1rem; /* Spaziatura maggiore per rendere cliccabile */
+    position: relative;
+}
+
+.menu-icon {
+    font-size: 1.8rem !important; /* Ingrandisce le icone per il miglior effetto */
+}
+
+.nav-item1 .nav-link i {
+    font-size: 2.5rem; /* Impostazione per dimensioni icone */
+}
+
+
+/* NAVBAR 1: su schermi (≤768px) */
+
+@media (max-width: 768px) {
+
+    .nav-item1 {
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .nav-item1 .nav-link {
+        display: block;
+        font-size: 1.4rem;
+        padding: 1rem 0;
+    }
+
+    .menu-icon {
+        font-size: 2.4rem !important;
+        /* Icone più grandi */
+    }
+
+}
+
+/* NAVBAR 1: stile del badge dell'icona del CARRELLO su schermi (>768px) */
+
+.custom-badge {
+    position: absolute; /* Mantieni il posizionamento assoluto */
+    top: 1px; /* Sposta il badge più in basso (aumenta il valore per spostarlo ulteriormente) */
+    left: -5px; /* Sposta il badge più a sinistra (usa un valore negativo) */
+    background-color: #368c71; /* Colore di sfondo */
+    color: white; /* Colore del testo */
+    font-size: 1rem; /* Dimensione del testo */
+    padding: 0.2rem 0.4rem; /* Spaziatura interna */
+    border-radius: 20%; /* Rende il badge circolare */
+}
+
+
+/* NAVBAR 1: stile dell'icona del CARRELLO su schermi (≤768px) */
+@media (max-width: 768px) {
+
+    .custom-badge {
+        position: absolute;
+        margin-left: 10px;
+        border-radius: 20%;
+    }
+}
+
+
+/* NAVBAR 1: bottone (per effettuare la ricerca) */
+#cerca {
+    color: #ffffff;
+    background-color: #cdb7dd;
+    border-color: #cdb7dd;
+  }
+
+#cerca:hover,
+#cerca:focus,
+#cerca:active,
+#cerca.active {
+  color: #ffffff;
+  background-color: #a454ac;
+  border-color: #9830dd;
+}
+
+/* NAVBAR 2 su schermi (>768px) */
+#menulogo {
+    background-color: #cdb7dd; /* Colore di sfondo */
+    padding: 10px;
+    text-align: center; /* Centra gli elementi nel container */
+}
+
+#logo {
+    width: 450px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#menulogo .navbar-nav .nav-item {
+    margin-right: 40px;
+}
+
+.categorie {
+    font-family: "Sofia", serif;
+    font-size: 33px;
+    white-space: nowrap; /* Evita che le scritte vadano a capo */
+    transition: font-size 0.3s ease-in-out; /* Effetto fluido nel cambio dimensione */
+}
+
+#menulogo .navbar-nav .nav-link {
+    color: #333;
+    font-weight: bold;
+}
+
+#menulogo .navbar-nav .nav-link:hover {
+    color: #368c71;
+}
+
+/* NAVBAR 2: allineamento centrale quando il toggle è attivo */
+@media (max-width: 1400px) {
+    #menulogo .navbar-collapse {
+        text-align: center;
+    }
+
+    #menulogo .navbar-nav {
+        display: flex;
+        flex-direction: row; /* Mantiene le voci in linea */
+        justify-content: center; /* Centra le voci orizzontalmente */
+        align-items: center; /* Centra le voci verticalmente */
+        flex-wrap: nowrap; /* Permette il wrapping su più righe se necessario */
+    }
+
+    #menulogo .navbar-nav .nav-item {
+        margin-right: 10px; /* Aggiunge spazio tra le voci */
+    }
+
+    #menulogo .navbar-nav .nav-link {
+        padding: 22px; /* Mantieni il padding per migliorare il tocco */
+    }
+}
+
+/* NAVBAR 2: allineamento centrale quando il toggle è attivo, negli schermi più piccoli */
+@media (max-width: 720px) {
+
+    #menulogo .navbar-toggler {
+        display: block;
+        margin: 0 auto 10px auto; /* Centra e aggiunge margine sotto */
+    }
+
+    #menulogo .navbar-collapse {
+        text-align: center;
+    }
+
+    #menulogo .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra le voci nel menu */
+    }
+
+    #menulogo .navbar-nav .nav-item {
+        width: 100%;
+        margin-right: 0; /* Rimuove la distanza tra voci su schermi piccoli */
+    }
+
+    #menulogo .navbar-nav .nav-link {
+        display: block;
+        padding: 12px;
+    }
+}
+
+/* CAROSELLO */
+.carousel {
+    position: relative;
+    width: 85vw; /* Imposta la larghezza al 60% della larghezza della finestra */
+    height: 70vh; /* Imposta l'altezza al 40% dell'altezza della finestra */
+    margin: 0 auto; /* Centra il carosello orizzontalmente */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner .carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-item::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #fff 0%, black 100%);
+    z-index: 1;
+    mix-blend-mode: multiply;
+}
+
+.carousel-caption {
+    font-size: 35px; /* Riduci la dimensione del testo */
+    font-weight: bolder;
+    color: orange;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    z-index: 2;
+}
+
+/* Centro anche i controlli del carosello (freccie) */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 30px;
+}
+
+/* INIZIO DELLE CARD
+--------------------------------------------------*/
+
+/* Modifica la visualizzazione delle card */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-right:10px;
+}
+
+.card:hover {
+    transform: translateY(-20px); /* Effetto di sollevamento */
+}
+
+.card-img-top {
+    height: 250px; /* Altezza fissa per le immagini */
+    object-fit: contain; /* Assicura che l'immagine si adatti senza distorsioni */
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 15px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin: 15px;
+}
+
+  .card-price {
+    margin-top:9px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .btn-chart {
+      background-color: #9b7eaf !important; /* Lilla */
+      color: white !important;
+      border: none;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn-chart:hover {
+      background-color: #7e5d8d !important; /* Lilla scuro al passaggio del mouse */
+      color: white !important;
+  }
+
+  /* Centraggio verticale del prezzo */
+  .card-footer .card-price {
+    display: flex;
+    align-items: center;
+    margin-top:15px;
+  }
+
+  /* Piccola correzione del bottone "Aggiungi al carrello" */
+  .card-footer .btn {
+    font-size: 14px; /* Rende il bottone più compatto */
+    padding: 5px 15px; /* Riduce la larghezza del bottone */
+  }
+
+/* Stile per le card su schermi grandi */
+@media (min-width: 992px) {
+    .custom-card {
+        max-width: 380px; /* Larghezza massima su schermi grandi */
+        min-height: 500px; /* Larghezza massima su schermi grandi */
+        width: 100%; /* Larghezza al 100% su schermi più piccoli */
+    }
+}
+
+/* FINE SEZIONE DELLE CARD
+--------------------------------------------------*/
+
+/* Sezione del FOOTER */
+.footer {
+    background-color: #cdb7dd;
+    color: #333;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Media query per schermi più piccoli di 1040px */
+@media (max-width: 1040px) {
+    .footer .row {
+        flex-wrap: wrap; /* Permette ai div di andare a capo quando non c'è spazio sufficiente */
+    }
+
+    /* Fornisce un po' di distanza tra i div, se necessario */
+    .footer .col-md-3,
+    .footer .col-md-2,
+    .footer .col-md-4 {
+        margin-bottom: 20px; /* Distanza tra le colonne quando sono su righe separate */
+    }
+
+    /* Ridurre la dimensione del testo per schermi più piccoli */
+    .footer h6 {
+        font-size: 16px;
+    }
+
+    .footer p {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+  

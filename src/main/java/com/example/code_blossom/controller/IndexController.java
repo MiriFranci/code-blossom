@@ -27,6 +27,41 @@ public class IndexController {
         }
         List<Prodotto> prodotti = prodottoService.elencoProdotti();
         model.addAttribute("prodotti", prodotti);
-        return "provaindex";
+        return "index";
+    }
+
+    @GetMapping("/punti-vendita")
+    public String puntiVendita() {
+        return "punti_vendita";
+    }
+
+    @GetMapping("/contattaci")
+    public String contattaci() {
+        return "contattaci";
+    }
+
+    @GetMapping("/lavora-con-noi")
+    public String lavoraConNoi() {
+        return "lavora_con_noi";
+    }
+
+    @GetMapping("/composizioni")
+    public String composizioni() {
+        return "composizioni";
+    }
+
+    @GetMapping("/fiori-sfusi")
+    public String fioriSfusi() {
+        return "fiori_sfusi";
+    }
+
+    @GetMapping("/piante")
+    public String piante() {
+        return "piante";
+    }
+
+    @GetMapping("/registrati")
+    public String registrati() {
+        return "registrati";
     }
 }

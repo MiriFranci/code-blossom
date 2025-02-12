@@ -1,286 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <link rel="icon" href="../static/IMG_8942.PNG" type="image/x-icon">
-  <link href="style.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Eater&family=Rubik+Wet+Paint&family=Sofia&display=swap"
-    rel="stylesheet">
-  <title>Punti vendita</title>
-  <style>
-    .map-iframe {
-    display: block;
-    margin: 0 auto;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Aggiungi Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap JS (con Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 
-.store-image {
-    display: none; /* Nascondi l'immagine inizialmente */
-    text-align: center;
-    margin-top: 10px;
-}
-
-.list-group-item:hover .store-image {
-    display: block; /* Mostra l'immagine quando si passa il mouse sopra la voce della lista */
-}
-
-  </style>
+    <!-- Indirizzo della favicon del sito -->
+    <link rel="icon" th:href="@{/favicon.png}" type="image/x-icon">
+    <!-- Collegamento al foglio di stile-->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/external.css}" rel="stylesheet">
+    <!-- font personalizzato per le voci del menu-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Eater&family=Rubik+Wet+Paint&family=Sofia&display=swap"
+          rel="stylesheet">
+    <title>Contattaci</title>
 </head>
 
 <body>
-  <!-- Inizio sezione navbar -->
-  <nav class="navbar navbar-expand-lg container-fluid" id="menu">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item1">
-            <a class="nav-link active" aria-current="page" href="#">
-              <i class="bi bi-house-door-fill" style="font-size: 1.5rem;"></i> <!-- Icona per Home -->
-            </a>
-          </li>
-          <li class="nav-item1">
-            <a class="nav-link" href="#">
-              <i class="bi bi-person-fill" style="font-size: 1.5rem;"></i> <!-- Icona per Login -->
-            </a>
-          </li>
-          <li class="nav-item1">
-            <a class="nav-link" href="#" id="cartButton">
-              <i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>
-              <span class="badge custom-badge" id="cartCount">0</span> <!-- Contatore del carrello -->
-            </a>
-          </li>
-          <form class="d-flex" role="search" id="searchForm">
-            <input class="form-control form-control-sm custom-search" type="search" aria-label="Search" placeholder="Cerca...">
-            <button class="btn btn-outline-none" type="submit" id="searchButton"> 
-              <i class="bi bi-search search-icon"></i>
+<div th:replace="~{fragments/header :: header}"></div>
+<!-- INIZIO del contenuto-->
+<div class="main-content">
+
+    <!-- Sezione Punti Vendita -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">I Nostri Punti Vendita</h2>
+
+        <div class="text-center mb-4">
+            <button id="mappa" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mapModal">
+                <i class="bi bi-geo-alt-fill"></i> Mostra Mappa
             </button>
-          </form>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  <!-- Seconda Navbar (Categorie) -->
-  <nav class="navbar navbar-expand-lg container-fluid" id="menulogo">
-    <div class="container-fluid">
-      <div>
-        <img src="../static/logo1centrale.png" id="logo" class="img-fluid">
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2"
-        aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent2">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle fontcategorie" href="#" id="navbarDropdownFiori" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Fiori sfusi
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownFiori">
-              <li><a class="dropdown-item" href="fiori_sfusi.html">Tutto il catalogo</a></li>
-              <li><a class="dropdown-item" href="#">Fiori rossi</a></li>
-              <li><a class="dropdown-item" href="#">Fiori bianchi</a></li>
-              <li><a class="dropdown-item" href="#">Fiori gialli</a></li>
-              <li><a class="dropdown-item" href="#">Fiori viola</a></li>
-            </ul>
-          </li>
-  
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle fontcategorie" href="#" id="navbarDropdownComposizioni" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Composizioni
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownComposizioni">
-              <li><a class="dropdown-item" href="composizioni.html">Tutto il catalogo</a></li>
-              <li><a class="dropdown-item" href="#">Compleanno</a></li>
-              <li><a class="dropdown-item" href="#">San Valentino</a></li>
-              <li><a class="dropdown-item" href="#">Ricorrenze</a></li>
-              <li><a class="dropdown-item" href="#">Celebrazioni religiose</a></li>
-            </ul>
-          </li>
-  
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle fontcategorie" href="#" id="navbarDropdownPiante" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Piante
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownPiante">
-              <li><a class="dropdown-item" href="piante.html">Tutto il catalogo</a></li>
-              <li><a class="dropdown-item" href="#">Piante da appartamento</a></li>
-              <li><a class="dropdown-item" href="#">Piante da giardino</a></li>
-              <li><a class="dropdown-item" href="#">Piante grasse</a></li>
-              <li><a class="dropdown-item" href="#">Piante da frutto</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        </div>
 
-
-
-<!-- JavaScript per il funzionamento delle animazioni della ricerca e del menu -->
-<script>
-  // Funzione per mostrare/nascondere la barra di ricerca
-  document.getElementById("searchButton").addEventListener("click", function() {
-    document.getElementById("searchForm").classList.toggle("active");
-    this.classList.toggle("active");
-  });
-
-  // Funzione per il toggle del menu a tendina (Mobile)
-  document.querySelector(".navbar-toggler").addEventListener("click", function() {
-    document.getElementById("navbarSupportedContent2").classList.toggle("active");
-  });
-</script>
-
-<!-- Sezione Punti Vendita -->
-<div class="container my-5">
-    <h2 class="text-center mb-4">I Nostri Punti Vendita</h2>
-    
-    <div class="text-center mb-4">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mapModal">
-            <i class="bi bi-geo-alt-fill"></i> Mostra Mappa
-        </button>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-          <ul class="list-group text-center">
-            <li class="list-group-item">
-              Napoli: Via Toledo, 150 - <a href="tel:+390811234567">+39 081 1234567</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/napoli-store.jpg" alt="Negozio Napoli" width="200">
-              </div>
-            </li>
-            <li class="list-group-item">
-              Catania: Corso Italia, 75 - <a href="tel:+390952345678">+39 095 2345678</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/catania-store.jpg" alt="Negozio Catania" width="200">
-              </div>
-            </li>
-            <li class="list-group-item">
-              Bari: Via Sparano, 20 - <a href="tel:+390803456789">+39 080 3456789</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/bari-store.jpg" alt="Negozio Bari" width="200">
-              </div>
-            </li>
-            <li class="list-group-item">
-              Roma: Via del Corso, 101 - <a href="tel:+39064567890">+39 06 4567890</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/roma-store.jpg" alt="Negozio Roma" width="200">
-              </div>
-            </li>
-            <li class="list-group-item">
-              Firenze: Piazza della Repubblica, 5 - <a href="tel:+390555678901">+39 055 5678901</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/firenze-store.jpg" alt="Negozio Firenze" width="200">
-              </div>
-            </li>
-            <li class="list-group-item">
-              Milano: Galleria Vittorio Emanuele, 12 - <a href="tel:+39026789012">+39 02 6789012</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/milano-store.jpg" alt="Negozio Milano" width="200">
-              </div>
-            </li>
-            <li class="list-group-item">
-              Venezia: Via Santa Lucia, 1 - <a href="tel:+390417890123">+39 041 7890123</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/venezia-store.jpg" alt="Negozio Venezia" width="200">
-              </div>
-            </li>
-            <li class="list-group-item">
-              Torino: Via Roma, 88 - <a href="tel:+390118901234">+39 011 8901234</a>
-              <div class="store-image">
-                <img src="../static/puntivendita/torino-store.jpg" alt="Negozio Torino" width="200">
-              </div>
-            </li>
-          </ul>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <ul class="list-group text-center">
+                    <li class="list-group-item">
+                        Napoli: Via Toledo, 150 - <a class="text-reset fw-bold" href="tel:+390811234567">+39 081 1234567</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/napoli-store.jpg}" alt="Negozio Napoli" width="200">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Catania: Corso Italia, 75 - <a class="text-reset fw-bold" href="tel:+390952345678">+39 095 2345678</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/catania-store.jpg}" alt="Negozio Catania" width="200">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Bari: Via Sparano, 20 - <a class="text-reset fw-bold" href="tel:+390803456789">+39 080 3456789</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/bari-store.jpg}" alt="Negozio Bari" width="200">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Roma: Via del Corso, 101 - <a class="text-reset fw-bold" href="tel:+39064567890">+39 06 4567890</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/roma-store.jpg}" alt="Negozio Roma" width="200">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Firenze: Piazza della Repubblica, 5 - <a class="text-reset fw-bold" href="tel:+390555678901">+39 055 5678901</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/firenze-store.jpg}" alt="Negozio Firenze" width="200">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Milano: Galleria Vittorio Emanuele, 12 - <a class="text-reset fw-bold" href="tel:+39026789012">+39 02 6789012</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/milano-store.jpg}" alt="Negozio Milano" width="200">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Venezia: Via Santa Lucia, 1 - <a class="text-reset fw-bold" href="tel:+390417890123">+39 041 7890123</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/venezia-store.jpg}" alt="Negozio Venezia" width="200">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Torino: Via Roma, 88 - <a class="text-reset fw-bold" href="tel:+390118901234">+39 011 8901234</a>
+                        <div class="store-image">
+                            <img th:src="@{/punti-vendita/torino-store.jpg}" alt="Negozio Torino" width="200">
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-  
-  <!-- Modal con Google Maps -->
-  <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="mapModalLabel">Mappa dei Punti Vendita</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+    <!-- Modal con Google Maps -->
+    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mapModalLabel">Mappa dei Punti Vendita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Google Maps -->
+                    <iframe class="map-iframe"
+                            src="https://www.google.com/maps/d/u/0/embed?mid=1Dw2j1Qx6wxImki9MfKwDK0f5XNAIAfU&ehbc=2E312F"
+                            width="640" height="480"></iframe>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <!-- Google Maps -->
-          <iframe class="map-iframe" src="https://www.google.com/maps/d/u/0/embed?mid=1Dw2j1Qx6wxImki9MfKwDK0f5XNAIAfU&ehbc=2E312F" width="640" height="480"></iframe>
-        </div>
-      </div>
     </div>
-  </div>
-  
+</div> <!-- FINE del contenuto-->
 
-  <!--  Inizio Footer -->
-  <div class="footer text-center text-lg-start text-muted container-fluid d-flex align-items-center">
-    <div class="container-fluid text-center text-md-start mt-auto">
-      <div class="row mt-3">
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Chi siamo
-          </h6>
-          <p>
-            Da Code Blossom, il nostro amore per i fiori si riflette in ogni nostro prodotto. Offriamo una vasta
-            selezione di fiori freschi, piante e composizioni, consegnati direttamente a casa tua con cura e passione.
-            Un
-            luogo dove la bellezza naturale prende forma attraverso creazioni eleganti e raffinate, pensate per ogni
-            occasione.
-          </p>
-        </div>
-
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            Prodotti
-          </h6>
-          <p><a href="#!" class="text-reset">Fiori sfusi</a></p>
-          <p><a href="#!" class="text-reset">Composizioni</a></p>
-          <p><a href="#!" class="text-reset">Piante</a></p>
-        </div>
-
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            Links
-          </h6>
-          <p><a href="#!" class="text-reset">Contattaci</a></p>
-          <p><a href="#!" class="text-reset">Lavora con noi</a></p>
-          <p><a href="#!" class="text-reset">FAQ</a></p>
-        </div>
-
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">Contatti</h6>
-          <p><i class="fas fa-home me-3"></i>Via delle Rose, 42 - 00123, Roma</p>
-          <p><i class="fas fa-envelope me-3"></i>codeblossom@gmail.com</p>
-          <p><i class="fas fa-phone me-3"></i> +39 06 1234567</p>
-          <p><i class="fas fa-print me-3"></i> +39 345 9876543</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=" footer text-center p-4">
-    © 2025 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">CodeBlossom.com</a>
-  </div>
-  </footer>
-
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
-
 </html>

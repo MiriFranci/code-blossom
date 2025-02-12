@@ -21,45 +21,49 @@ public class ProfiloController {
 
     @GetMapping
     public String getPage(HttpSession session, Model model) {
-        if (session.getAttribute("utente") == null) {
+        if (session.getAttribute("utente") == null)
             return "redirect:/login";
-        }
-        // ottieni l'utente dalla sessione
-        Utente utenteSessione = (Utente) session.getAttribute("utente");
 
-        // se il model contiene già un utente (ad esempio, dopo un errore di validazione), usa quello
-        if (model.containsAttribute("utente")) {
-            Utente utenteModel = (Utente) model.getAttribute("utente"); // recuperare l'oggetto Utente dal model
-            utenteModel.setOrdini(utenteService.datiUtente(utenteModel.getId()).getOrdini());  // aggiorna l'oggetto utenteModel con gli ordini associati all'utente
+        if (model.containsAttribute("utente")) { // verifica se l'attributo "utente" è presente nel Model dopo il redirect
+
+            Utente utenteModel = (Utente) model.getAttribute("utente"); // è l'utente che contiene gli errori di validazione (quello passato con RedirectAttributes nel metodo formManager)
+            Utente utenteCompleto = utenteService.datiUtente(utenteModel.getId()); //  è l'utente ricaricato dal database, quindi contiene gli ordini.
+            utenteModel.setOrdini(utenteCompleto.getOrdini()); // Copiamo gli ordini da utenteCompleto a utenteModel, in modo che lo storico ordini sia visibile.
             model.addAttribute("utente", utenteModel);
+
         } else {
-            // altrimenti, carica l'utente completo dal database
+            // Se la pagina viene caricata normalmente, carichiamo tutto l'utente
+            Utente utenteSessione = (Utente) session.getAttribute("utente");
             Utente utenteCompleto = utenteService.datiUtente(utenteSessione.getId());
             model.addAttribute("utente", utenteCompleto);
         }
-        return "provaprofilo";
+        return "area_riservata";
     }
 
-    @GetMapping("/logout")
-    public String logoutUtente(HttpSession session) {
+
+    @GetMapping ("/logout") //distruggiamo la sessione e poi ne creiamo un'altra futuro o distruggiamo l'attributo
+    public String logoutUtente(HttpSession session){
         session.removeAttribute("utente");
         return "redirect:/";
     }
 
     @PostMapping
-    public String formManager(@Valid @ModelAttribute("utente") Utente utente,
+    public String formManager(@Valid @ModelAttribute Utente utente,
                               BindingResult result,
                               HttpSession session,
                               RedirectAttributes redirectAttributes) {
-        // verifica se ci sono errori di validazione
         if (result.hasErrors()) {
-            // aggiungi gli errori e l'utente al modello per il redirect
+            // Recuperiamo l'utente dalla sessione per mantenere gli ordini
+            Utente utenteSessione = (Utente) session.getAttribute("utente");
+            if (utenteSessione != null)
+                utente.setOrdini(utenteSessione.getOrdini()); // Riporta gli ordini nel nuovo utente
+
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.utente", result);
             redirectAttributes.addFlashAttribute("utente", utente);
             return "redirect:/profilo";
         }
 
-        // se non ci sono errori, aggiorna l'utente nel database e nella sessione
+        // Se non ci sono errori, aggiorniamo l'utente nel database e in sessione
         utenteService.registrazioneUtente(utente);
         session.setAttribute("utente", utente);
         return "redirect:/profilo";

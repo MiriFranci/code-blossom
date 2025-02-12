@@ -1,0 +1,96 @@
+<div th:fragment="header">
+<navbar>
+<!-- INIZIO Navbar 1 -->
+<nav class="navbar navbar-expand container-fluid">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item1">
+                    <a class="nav-link active" th:href="@{/}">
+                        <i class="bi bi-house-door-fill menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item1">
+                    <a class="nav-link" th:href="@{/profilo}">
+                        <i class="bi bi-person-fill menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item1">
+                    <a class="nav-link" th:href="@{/carrello}">
+                        <i class="bi bi-cart-fill menu-icon"></i>
+                        <span class="badge custom-badge" id="cartCount">0</span>
+                    </a>
+                </li>
+                <li class="nav-item1">
+                    <a class="nav-link" href="#" id="searchIcon">
+                        <i class="bi bi-search menu-icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Modal (Popup) di ricerca -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Che stai cercando?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="searchForm">
+                    <input class="form-control" type="search" placeholder="Inserisci il prodotto di tuo interesse..."
+                           aria-label="Search">
+                    <button id="cerca" class="btn btn-primary mt-2" type="submit">Cerca</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchIcon = document.getElementById("searchIcon");
+      const searchModal = new bootstrap.Modal(document.getElementById("searchModal"));
+
+      // Apri il modal al click sull'icona di ricerca
+      searchIcon.addEventListener("click", function (e) {
+        e.preventDefault(); // Previene il comportamento di default del link
+        searchModal.show(); // Mostra il modal
+      });
+    });
+</script>
+
+<!-- FINE Navbar 1 -->
+
+<!-- INIZIO Navbar 2 (Categorie) -->
+<nav class="navbar navbar-expand-xl container-fluid" id="menulogo">
+    <div class="container-fluid">
+        <div>
+            <img src="logo.png" id="logo" class="img-fluid">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link categorie" th:href="@{/fiori-sfusi}">Fiori sfusi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link categorie" th:href="@{/composizioni}">Composizioni</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link categorie" th:href="@{/piante}">Piante</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- FINE Navbar 2 (Categorie) -->
+</navbar>
+</div>

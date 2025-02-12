@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+/* PUNTI VENDITA */
+    .map-iframe {
+    display: block;
+    margin: 0 auto;
+}
+
+.store-image {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.list-group-item:hover .store-image {
+    display: block;
+}
+
+#mappa {
+    background-color: #9b7eaf !important;
+    color: white !important;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#mappa:hover {
+    background-color: #7e5d8d !important;
+    color: white !important;
+}
+
+/* AREA RISERVATA */
+
+.input-group-text {
+    background-color: #9b7eaf;
+    color: white; 
+}
+
+
+input[readonly] {
+    background-color: #e9ecef !important; 
+    color: #495057 !important;
+    border: 1px solid #501575;
+    cursor: not-allowed;
+}
+
+.form-control[type="password"] {
+    background-color: #f0f0f0 !important;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.form-control[type="password"]:focus {
+    background-color: #e0e0e0 !important;
+    border-color: #9b7eaf;
+    outline: none;
+    box-shadow: 0 0 5px rgba(155, 126, 175, 0.5);
+}
+
+
+.custom-header {
+    background-color: #cdb7dd !important; 
+    color: white !important;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f9f6fb; 
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e6d5f3 !important; 
+}
+
+.text-success {
+    font-size: 1.1rem;
+}
+
+#logout-btn {
+      background-color: #9b7eaf !important;
+      color: white !important;
+      border: none;
+      transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+      background-color: #7e5d8d !important; 
+      color: white !important;
+}
+
+#conferma {
+    background-color: #9b7eaf !important;
+    color: white !important;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#conferma:hover {
+    background-color: #7e5d8d !important;
+    color: white !important;
+}
+
+/* ----LOGIN----- */
+
+
