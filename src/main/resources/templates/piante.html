@@ -32,274 +32,29 @@
 <div th:replace="~{fragments/header :: header}"></div>
 <!-- INIZIO del contenuto-->
 <div class="main-content">
-
-    <!-- Sezione dedicata alle cards dei prodotti -->
     <div class="container mt-5" id="cards-container">
-      <div class="row justify-content-center g-4">
-  
-          <!-- Card 1 -->
-          <div class="col-lg-3 col-md-6 col-12 mb-3 d-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                  <img th:src="@{/piante/Anthurium.webp}" class="card-img-top img-fluid" alt="Composizione fiori">
-                  <div class="card-body">
-                      <h5 class="card-title">Anthurium</h5>
-                        <p class="card-text">Un fiore decisamente carino. Perchè diamine dovresti rovinarlo chiamandolo così?</p>
-                      <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€17.99</p>
-                      <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-                  </div>
-                  <div class="card-footer bg-transparent border-top-0">
-                      <small class="text-muted">In saldo!</small>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Card 2 -->
-          <div class="col-lg-3 col-md-6 col-12 mb-3 d-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                  <img th:src="@{/piante/orchidea.jpg}" class="card-img-top img-fluid" alt="mazzo di rose">
-                  <div class="card-body">
-                      <h5 class="card-title">Orchidea</h5>
-                      <p class="card-text">Regalare questa pianta è tutt'altro che un'idea da orchi!</p>
-                      <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€12,99</p>
-                      <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-                  </div>
-                  <div class="card-footer bg-transparent border-top-0">
-                      <small class="text-muted">In saldo!</small>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Card 3 -->
-          <div class="col-lg-3 col-md-6 col-12 mb-3 d-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                  <img th:src="@{/piante/avocado.jpg}" class="card-img-top img-fluid" alt="ghirlanda di rose">
-                  <div class="card-body">
-                      <h5 class="card-title">Avocado</h5>
-                      <p class="card-text">Invece di buttare i semi del tuo avocado, conservali la rpossima volta!</p>
-                      <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€7.99</p>
-                      <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-                  </div>
-                  <div class="card-footer bg-transparent border-top-0">
-                      <small class="text-muted">In saldo!</small>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Card 4 -->
-          <div class="col-lg-3 col-md-6 col-12 mb-3 d-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                  <img th:src="@{/piante/Bonsai Plant.webp}" class="card-img-top img-fluid" alt="albero di limone">
-                  <div class="card-body">
-                      <h5 class="card-title">Bonsai</h5>
-                      <p class="card-text">L'alberello più figo di tutti! Se lo compri fai guadagnare automaticamente 10 punti a Grifondoro</p>
-                      <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€24.99</p>
-                      <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al
-                          carrello</a>
-                  </div>
-                  <div class="card-footer bg-transparent border-top-0">
-                      <small class="text-muted">In saldo!</small>
-                  </div>
-              </div>
-          </div>
+        <div class="row justify-content-center g-4">
 
-          <!-- Card 5 -->
-          <div class="col-lg-3 col-md-6 col-sm-12 mb-3 d-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                  <img th:src="@{/piante/Cactus-Plant.webp}" class="card-img-top img-fluid" alt="rose a forma di cuore">
-                  <div class="card-body">
-                      <h5 class="card-title">Cactus</h5>
-                      <p class="card-text">Un cactus che punge. Quindi non toccarlo</p>
-                      <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€5.99</p>
-                      <!-- Prezzo -->
-                      <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-                  </div>
-                  <div class="card-footer bg-transparent border-top-0">
-                      <small class="text-muted">In saldo!</small>
-                  </div>
-              </div>
-          </div>
+            <!-- CARD DEL PRODOTTO -->
+            <div class="card shadow-sm hover-effect custom-card" th:each="prodotto : ${prodotti}">
+                <img th:src="${prodotto.foto}" class="card-img-top img-fluid">
+                <div class="card-body d-flex flex-column">
+                    <h5 th:text="${prodotto.nome}" class="card-title">Nome prodotto</h5>
+                    <p th:text="${prodotto.descrizione}" class="card-text">Descrizione prodotto</p>
+                </div>
+                <!-- Footer della card -->
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <p th:text="'€ ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="card-price"></p>
+                    <a th:if="${utente != null}" th:href="@{/carrello/aggiungi(id=${prodotto.id})}" class="btn btn-chart btn-sm d-flex align-items-center">
+                        <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
+                    </a>
+                </div>
+            </div>
 
-          <!-- Card 6 -->
-          <div class="col-lg-3 col-md-6 col-sm-12 mb-3 d-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                  <img th:src="@{/piante/Dionaea_muscipula_Cactus.webp}" class="card-img-top img-fluid" alt="mazzo di rose">
-                  <div class="card-body">
-                      <h5 class="card-title">Dionaea</h5>
-                      <p class="card-text">Un cactus che sembra un po' quella pianta di Super Mario. Quindi se sei nerd non puoi fartela scappare!</p>
-                      <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€12,00</p>
-                      <!-- Prezzo -->
-                      <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-                  </div>
-                  <div class="card-footer bg-transparent border-top-0">
-                      <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In
-                          saldo!</small>
-                  </div>
-              </div>
-          </div>
-<!--Card 7-->
-  <div class="col-lg-3 col-md-6 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/Giada.jpg}" class="card-img-top img-fluid" alt="ghirlanda di rose">
-          <div class="card-body">
-              <h5 class="card-title">Giada</h5>
-              <p class="card-text">Palese chi l'ha scoperta o si chiamava Giada o voleva impressionare una ragazza di nome Giada</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€11.99</p>
-              <!-- Prezzo -->
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
+        </div><!-- FINE della row -->
+    </div> <!-- FINE del container -->
+</div> <!-- FINE del contenuto main content-->
 
-  <!-- Card 8 -->
-  <div class="col-lg-3 col-md-6 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/graptosedum.png}" class="card-img-top img-fluid" alt="mazzo di rose">
-          <div class="card-body">
-              <h5 class="card-title">Graptosedum</h5>
-              <p class="card-text">Voglio conoscere lo scienziato che ha dato 'sto nome ad una pianta. Comunque comprala che è carina e ha dei bei colori</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€8,99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  <!-- Card 9 -->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/limone.webp}" class="card-img-top img-fluid" alt="ghirlanda di rose">
-          <div class="card-body">
-              <h5 class="card-title">Albero di Limone in vaso</h5>
-              <p class="card-text">Se la vita ti da dei limoni... Tu buttali che sicuro sono del supermercato e non sono buoni. Comprati un albero tutto tuo e coltivali!</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  <!-- Card 10 -->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/arance.png}" class="card-img-top img-fluid" alt="albero di limone">
-          <div class="card-body">
-              <h5 class="card-title">Albero di Arance in vaso</h5>
-              <p class="card-text">Un albero di arance in vaso e nulla di più. Non è che si può sempre essere simpatici oh</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  <!-- Card 11 -->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/mammillaria_cactus.webp}" class="card-img-top img-fluid" alt="mammillaria cactus">
-          <div class="card-body">
-              <h5 class="card-title">Mammillaria</h5>
-              <p class="card-text">Un cactus dal nome singolare! Da non confondere assolutamente e da NON regalare ad una donna in fase di allattamento</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€9.99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  <!-- Card 12 -->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/pachira.jpg}" class="card-img-top img-fluid" alt="zamia">
-          <div class="card-body">
-              <h5 class="card-title">Pachira</h5>
-              <p class="card-text">"Pachira" non era il nome della tigre de "Il libro della giungla"? No? Pachira? Pachera? Boh </p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€20,00</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted" style="font-size: 18px; color: red; font-weight: bold;">In saldo!</small>
-          </div>
-      </div>
-  </div>
-  <!--Card 13-->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/Philodendron.webp}" class="card-img-top img-fluid" alt="rose a forma di cuore">
-          <div class="card-body">
-              <h5 class="card-title">Philodendron</h5>
-              <p class="card-text">Ha un nome così lungo e complicato che mi secca pensare ad una battuta adeguata. Se ti chiami Phil, comprala </p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€12,99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  <!-- Card 14 -->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/pothos.webp}" class="card-img-top img-fluid" alt="mazzo di rose">
-          <div class="card-body">
-              <h5 class="card-title">Pothos</h5>
-              <p class="card-text">Una pianta che lascia in sospeso... Ah no, quello è il "pAthos". Vabbè, comprala e zitto</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€39.99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  <!-- Card 15 -->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/sanseveria.jpg}" class="card-img-top img-fluid" alt="ghirlanda di rose">
-          <div class="card-body">
-              <h5 class="card-title">Sanseveria</h5>
-              <p class="card-text">Mi chiedo se questa pianta festeggi l'onomastico... Se così dovesse essere, ricordati di annaffiarla una volta in più quel giorno!</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€15,99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  <!-- Card 16 -->
-  <div class="col-lg-3 col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img th:src="@{/piante/zamia.webp}" class="card-img-top img-fluid" alt="albero di limone">
-          <div class="card-body">
-              <h5 class="card-title">Zamia</h5>
-              <p class="card-text">Zamia, una pianta che inizia con la z e che sicuramente contribuirà a farti vincere a "nomi,cose e città"! Ed è anche bellina</p>
-              <p class="card-price" style="font-size: 18px; font-weight: bold; color: #e74c3c;">€19.99</p>
-              <a href="#" class="btn" style="background-color: #cdb7dd; color: black;">Aggiungi al carrello</a>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-              <small class="text-muted">In saldo!</small>
-          </div>
-      </div>
-  </div>
-
-  </div>
-  </div>
-
-    </div> <!-- FINE del contenuto-->
 
     <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
