@@ -10,7 +10,16 @@
                         <i class="bi bi-house-door-fill menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item1">
+                <li th:if="${utente == null}" class="nav-item1 dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-fill menu-icon"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+                        <li><a class="dropdown-item" th:href="@{/login}">Login</a></li>
+                        <li><a class="dropdown-item" th:href="@{/registrazione}">Registrati</a></li>
+                    </ul>
+                </li>
+                <li th:if="${utente != null}" class="nav-item1">
                     <a class="nav-link" th:href="@{/profilo}">
                         <i class="bi bi-person-fill menu-icon"></i>
                     </a>

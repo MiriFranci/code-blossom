@@ -27,7 +27,7 @@ public class RegistrazioneController {
     public String getPage(Model model) {
         Utente utente = new Utente();
         model.addAttribute("utente", utente);
-        return "provaregistrazione";
+        return "registrati";
     }
 
     @PostMapping
@@ -37,16 +37,16 @@ public class RegistrazioneController {
             Model model, RedirectAttributes redirectAttributes) {
 
         if(result.hasErrors())
-            return "provaregistrazione";
+            return "registrati";
 
         if(!utenteService.controlloUsername(utente.getUsername())) {
             model.addAttribute("duplicato", "Username Occupato");
-            return "provaregistrazione";
+            return "registrati";
         }
 
         if (Period.between(utente.getDataDiNascita(), LocalDate.now()).getYears() < 16) {
             model.addAttribute("etaMinima", "Devi avere almeno 16 anni");
-            return "provaregistrazione";
+            return "registrati";
         }
         utenteService.registrazioneUtente(utente);
         redirectAttributes.addFlashAttribute("successMessage", "Registrazione avvenuta con successo! Ora puoi accedere.");
