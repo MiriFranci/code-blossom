@@ -204,64 +204,78 @@ a.text-reset {
     }
 }
 
-/* CAROSELLO */
-.carousel {
-    position: relative;
-    width: 85vw; /* Imposta la larghezza al 60% della larghezza della finestra */
-    height: 70vh; /* Imposta l'altezza al 40% dell'altezza della finestra */
-    margin: 0 auto; /* Centra il carosello orizzontalmente */
-    margin-top: 20px;
-    margin-bottom: 20px;
+/* CAROSELLO DEL POMERIGGIO */
+
+/*
+
+#carouselExampleCaptions {
+    height: 650px;
 }
 
 .carousel-inner {
-    width: 100%;
     height: 100%;
 }
 
-.carousel-inner .carousel-item {
-    width: 100%;
+.carousel-item img {
     height: 100%;
+    object-fit: contain;
 }
 
-.carousel-inner .carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.carousel-item::before {
-    width: 100%;
-    height: 100%;
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, #fff 0%, black 100%);
-    z-index: 1;
-    mix-blend-mode: multiply;
+.autori {
+    margin-top:5px;
 }
 
 .carousel-caption {
-    font-size: 35px; /* Riduci la dimensione del testo */
-    font-weight: bolder;
-    color: orange;
-    position: absolute;
-    top: 10%;
-    left: 20%;
-    z-index: 2;
+    bottom: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Sofia', cursive;
+    text-transform:lowercase;
+    text-shadow: -5px 3px 24px rgba(0,0,0,1);
+}
+*/
+
+/* CAROSELLO "PER INTERO" */
+
+.carousel-inner {
+    height: 100%; /* Rende l'altezza del contenuto pari a quella del contenitore */
 }
 
-/* Centro anche i controlli del carosello (freccie) */
-.carousel-control-prev,
-.carousel-control-next {
-    width: 30px;
+.carousel-item img {
+    height: 100%; /* Assicura che l'immagine occupi l'intera altezza */
+    object-fit: contain; /* Adatta l'immagine senza distorsioni */
 }
+
+.autori {
+    margin-top:5px;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Sofia', cursive;
+    text-shadow: -5px 3px 24px rgba(0, 0, 0, 1);
+    display: flex; /* Usare flexbox per adattare l'altezza */
+    flex-direction: column; /* Permette al testo di impilarsi */
+    justify-content: center; /* Centra verticalmente il contenuto */
+    align-items: center; /* Centra orizzontalmente il contenuto */
+    max-width: 80%; /* Limita la larghezza nei grandi schermi */
+    padding: 1rem; /* Spazio interno per leggibilità */
+    border-radius: 10px;
+    text-align: center;
+}
+
 
 /* INIZIO DELLE CARD
 --------------------------------------------------*/
 
 /* Modifica la visualizzazione delle card */
-.card-prodotto {
+.card {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -274,7 +288,7 @@ a.text-reset {
     margin-right:10px;
 }
 
-.card-prodotto:hover {
+.card:hover {
     transform: translateY(-20px); /* Effetto di sollevamento */
 }
 
