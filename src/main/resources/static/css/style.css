@@ -329,6 +329,59 @@ a.text-reset {
 /* FINE SEZIONE DELLE CARD
 --------------------------------------------------*/
 
+  /* SEZIONE LA NOSTRA FILOSOFIA */
+   .about-img {
+    max-width: 80%; /* o un valore in pixel es. 400px */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+   }
+
+   h2.animated-title {
+       animation: fadeInDown 5s ease forwards;
+       top: 20%;
+       margin-left: 40%;
+       transform: translate(-50%, -50%); /* Centra il titolo sia orizzontalmente che verticalmente */
+       background-color: white;
+       color: black;
+       font-family: 'Sofia', cursive;
+       font-size: 2.2rem;
+       font-weight: bold;
+       padding: 15px 25px;
+       border-radius: 5px;
+       box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+       position: absolute;
+           white-space: nowrap; /* Evita il salto di riga */
+           width: auto; /* Permette al titolo di estendersi */
+           max-width: 90%; /* Limita la larghezza al 90% del contenitore */
+           text-align: center; /* Centra il testo */
+   }
+
+/* MEDIA QUERY: per dispositivi inferiori a 1200px (tablet e mobile) */
+@media (max-width: 1199.98px) {
+  /* Forza le colonne a occupare il 100% della larghezza, facendo lo stacking */
+  #about-us .col-lg-5,
+  #about-us .col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Riduci il padding-top della colonna descrizione per evitare spazi e sovrapposizioni */
+  #about-us .col-lg-6 {
+    padding-top: 20px !important;
+  }
+
+  /* Centro il titolo sull'immagine (come in mobile) */
+  #about-us .animated-title {
+    top: 50%;
+    left: 50%;
+    margin-left: 0; /* Rimuove il margin-left impostato per desktop */
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem; /* Opzionale: riduce leggermente la dimensione del font */
+  }
+}
+
+
 /* Sezione del FOOTER */
 .footer {
     background-color: #cdb7dd;
