@@ -74,7 +74,7 @@
                                 <div th:if="${successMessage}" class="alert alert-success">
                                     <p th:text="${successMessage}"></p>
                                 </div>
-                                <p th:if="${errore != null}">Accesso Negato! Credenziali Errate</p>
+                                <p th:if="${errore != null}" class="alert alert-danger">Accesso Negato! Credenziali Errate</p>
                             </div>
 
 

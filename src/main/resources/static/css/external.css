@@ -58,7 +58,7 @@ input[readonly] {
 
 
 .custom-header {
-    background-color: #cdb7dd !important; 
+    background-color: #cdb7dd !important;
     color: white !important;
     font-size: 1.1rem;
     text-align: center;
@@ -105,6 +105,34 @@ input[readonly] {
     color: white !important;
 }
 
-/* ----LOGIN----- */
+/* ----RICERCA----- */
+.single-card {
+    min-width: 400px; /* Imposta una larghezza minima */
+}
 
+@media (max-width: 900px) {
+    .single-card {
+        width: 100%; /* Occupa tutta la larghezza sotto i 900px */
+        min-width: auto; /* Rimuove la larghezza minima per evitare problemi di adattamento */
+    }
+}
+.single-card .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.single-card .container .row {
+    flex-grow: 1;
+}
+
+.single-card .price-cart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Spinge in basso il contenitore */
+}
+
+
+/* ----NOME DELLA SEZIONE----- */
 

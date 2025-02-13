@@ -30,6 +30,11 @@ public class ProdottoServiceImpl implements ProdottoService {
     }
 
     @Override
+    public List<Prodotto> elencoSeiProdotti() {
+        return prodottoDao.findTop6ByOrderByNomeAscPrezzoDesc();
+    }
+
+    @Override
     public boolean aggiungiAlCarrello(int idProdotto, HttpSession session) {
         Prodotto prodotto = datiProdotto(idProdotto); // Recupera il prodotto dal database o da un'altra fonte
         List<Prodotto> carrello;
@@ -100,6 +105,16 @@ public class ProdottoServiceImpl implements ProdottoService {
         if(session.getAttribute("carrello") != null)
             return (List<Prodotto>) session.getAttribute("carrello"); // se il carrello esiste, lo recuperiamo e lo ritorniamo
         return null;
+    }
+
+    @Override
+    public List<Prodotto> trovaProdottiPerCategoriaId(int idCategoria) {
+        return prodottoDao.findByCategoriaId(idCategoria);
+    }
+
+    @Override
+    public List<Prodotto> cercaPerNome(String ricerca) {
+        return prodottoDao.findByNomeContainingIgnoreCase(ricerca);
     }
 }
 

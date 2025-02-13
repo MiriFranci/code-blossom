@@ -30,37 +30,38 @@
 <!-- INIZIO del contenuto-->
 <div class="main-content">
 
-    <h1>Benvenuto nel tuo carrello!</h1>
-    <div>
-        <a th:href="@{/}">Torna in home page</a>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Carrello degli ordini</h1>
+        <h4 th:if="${carrello == null and send == null}">Non hai alcun prodotto nel carrello</h4>
+
+        <table th:if="${carrello != null}">
+            <tr th:each="prodotto : ${carrello}">
+                <td><img th:src="${prodotto.foto}" width="100px"/></td>
+                <td th:text="${prodotto.nome}"></td>
+                <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}"></td>
+                <td>
+                    <a th:href="@{/carrello/rimuovi(id=${prodotto.id})}">Rimuovi</a>
+                </td>
+            </tr>
+        </table>
+
+        <h5 th:if="${carrello != null}"
+            th:text="|Totale carrello ${#numbers.formatDecimal(totale, 0, 'POINT', 2, 'COMMA')} euro|"></h5>
+
+        <form th:object="${ordine}" method="post" th:if="${carrello != null}">
+            <input type="text" th:field="*{destinazione}" placeholder="Indirizzo di destinazione" required>
+            <p th:if="${#fields.hasErrors('destinazione')}" th:errors="*{destinazione}"></p>
+            <br/>
+            <input type="text" th:field="*{note}" placeholder="Note per l'ordine (opzionale):">
+            <p th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
+            <br/>
+            <input type="submit" value="Invia ordine">
+        </form>
+
+        <h5 th:if="${send != null}" id="successMessage" class="alert alert-success">Il pagamento con PayPal è andato a buon fine. Il tuo ordine verrà gestito dal punto vendita più vicino. Grazie per averci scelto!</h5>
+        </div>
+
     </div>
-    <h4 th:if="${carrello == null}">Non hai alcun prodotto nel carrello</h4>
-    <table th:if="${carrello != null}">
-        <tr th:each="prodotto : ${carrello}">
-            <td><img th:src="${prodotto.foto}" width="100px"/></td>
-            <td th:text="${prodotto.nome}"></td>
-            <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}"></td>
-            <td>
-                <a th:href="@{/carrello/rimuovi(id=${prodotto.id})}">Rimuovi</a>
-            </td>
-        </tr>
-    </table>
-
-    <h5 th:if="${carrello != null}"
-        th:text="|Totale carrello ${#numbers.formatDecimal(totale, 0, 'POINT', 2, 'COMMA')} euro|"></h5>
-
-    <form th:object="${ordine}" method="post" th:if="${carrello != null}">
-        <input type="text" th:field="*{destinazione}" placeholder="Indirizzo di destinazione" required>
-        <p th:if="${#fields.hasErrors('destinazione')}" th:errors="*{destinazione}"></p>
-        <br/>
-        <input type="text" th:field="*{note}" placeholder="Note per l'ordine (opzionale):">
-        <p th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
-        <br/>
-        <input type="submit" value="Invia ordine">
-    </form>
-
-    <p th:if="${send != null}" id="successMessage">Il pagamento con Paypal è andato a buon fine. L'ordine verrà gestito
-        dal punto vendita più vicino.</p>
 </div> <!-- FINE del contenuto-->
 
 
