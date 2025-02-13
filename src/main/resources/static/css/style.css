@@ -25,6 +25,7 @@ a.text-reset {
     align-items: center;
     justify-content: flex-end;
     width: 100%;
+
 }
 
 .nav-item1 {
@@ -45,7 +46,15 @@ a.text-reset {
     font-size: 2.5rem; /* Impostazione per dimensioni icone */
 }
 
-
+.btn {
+ background-color: #9b7eaf !important; /* Lilla */
+      color: white !important;
+      transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #7e5d8d !important; /* Lilla scuro al passaggio del mouse */
+       color: white !important;
+}
 /* NAVBAR 1: su schermi (≤768px) */
 
 @media (max-width: 768px) {
@@ -252,7 +261,7 @@ a.text-reset {
 --------------------------------------------------*/
 
 /* Modifica la visualizzazione delle card */
-.card {
+.card-prodotto {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -265,7 +274,7 @@ a.text-reset {
     margin-right:10px;
 }
 
-.card:hover {
+.card-prodotto:hover {
     transform: translateY(-20px); /* Effetto di sollevamento */
 }
 

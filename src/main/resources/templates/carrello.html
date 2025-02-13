@@ -29,40 +29,184 @@
 
 <!-- INIZIO del contenuto-->
 <div class="main-content">
+    <section class="h-100 h-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-start h-100">
+                <div class="col-12">
+                    <div class="card-carrello card-registration card-registration-2" style="border-radius: 15px;">
+                        <div class="card-carrello-body p-0">
+                            <div class="row g-0">
+                                <!-- Colonna dei prodotti -->
+                                <div class="col-lg-8" style="overflow-y: auto; max-height: calc(100vh - 150px);">
+                                    <div class="p-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-5">
+                                            <h1 class="fw-bold mb-0">Elenco prodotti</h1>
+                                        </div>
+                                        <hr class="my-4">
 
-    <div class="container my-5">
-        <h1 class="text-center mb-4">Carrello degli ordini</h1>
-        <h4 th:if="${carrello == null and send == null}">Non hai alcun prodotto nel carrello</h4>
+                                        <!-- Prodotti (replica questo blocco per ogni prodotto) -->
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">Shirt</h6>
+                                                <h6 class="mb-0">Cotton T-shirt</h6>
+                                            </div>
 
-        <table th:if="${carrello != null}">
-            <tr th:each="prodotto : ${carrello}">
-                <td><img th:src="${prodotto.foto}" width="100px"/></td>
-                <td th:text="${prodotto.nome}"></td>
-                <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}"></td>
-                <td>
-                    <a th:href="@{/carrello/rimuovi(id=${prodotto.id})}">Rimuovi</a>
-                </td>
-            </tr>
-        </table>
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">€ 44.00</h6>
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">Shirt</h6>
+                                                <h6 class="mb-0">Cotton T-shirt</h6>
+                                            </div>
 
-        <h5 th:if="${carrello != null}"
-            th:text="|Totale carrello ${#numbers.formatDecimal(totale, 0, 'POINT', 2, 'COMMA')} euro|"></h5>
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">€ 44.00</h6>
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">Shirt</h6>
+                                                <h6 class="mb-0">Cotton T-shirt</h6>
+                                            </div>
 
-        <form th:object="${ordine}" method="post" th:if="${carrello != null}">
-            <input type="text" th:field="*{destinazione}" placeholder="Indirizzo di destinazione" required>
-            <p th:if="${#fields.hasErrors('destinazione')}" th:errors="*{destinazione}"></p>
-            <br/>
-            <input type="text" th:field="*{note}" placeholder="Note per l'ordine (opzionale):">
-            <p th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
-            <br/>
-            <input type="submit" value="Invia ordine">
-        </form>
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">€ 44.00</h6>
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">Shirt</h6>
+                                                <h6 class="mb-0">Cotton T-shirt</h6>
+                                            </div>
 
-        <h5 th:if="${send != null}" id="successMessage" class="alert alert-success">Il pagamento con PayPal è andato a buon fine. Il tuo ordine verrà gestito dal punto vendita più vicino. Grazie per averci scelto!</h5>
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">€ 44.00</h6>
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">Shirt</h6>
+                                                <h6 class="mb-0">Cotton T-shirt</h6>
+                                            </div>
+
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">€ 44.00</h6>
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">Shirt</h6>
+                                                <h6 class="mb-0">Cotton T-shirt</h6>
+                                            </div>
+
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">€ 44.00</h6>
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+
+
+
+                                    </div>
+                                </div>
+
+                                <!-- Colonna riepilogo ordine, sempre visibile -->
+                                <div class="col-lg-4 bg-light" style="position: sticky; top: 0; height: 100vh; overflow: auto;">
+                                    <div class="p-5">
+                                        <h3 class="fw-bold mb-5 mt-2 pt-1">Riepilogo ordine</h3>
+                                        <hr class="my-4">
+
+                                        <div class="d-flex justify-content-between mb-4">
+                                            <h5 class="text-uppercase">Costo di consegna</h5>
+                                            <h5>€ 5.00</h5>
+                                        </div>
+
+                                        <hr class="my-4">
+
+                                        <div class="d-flex justify-content-between mb-5">
+                                            <h5 class="text-uppercase">Prezzo totale</h5>
+                                            <h5>€ 93.00</h5>
+                                        </div>
+
+                                        <!-- Form per indirizzo e note -->
+                                        <form method="post">
+                                            <div class="mb-3">
+                                                <label for="destinazione" class="form-label text-uppercase">Indirizzo di destinazione</label>
+                                                <input type="text" class="form-control" id="destinazione" name="destinazione" placeholder="Indirizzo di destinazione" required>
+                                                <div class="invalid-feedback" id="destinazione-error">Questo campo è obbligatorio.</div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="note" class="form-label text-uppercase">Note per l'ordine (opzionale)</label>
+                                                <input type="text" class="form-control" id="note" name="note" placeholder="Note per l'ordine (opzionale)">
+                                                <div class="invalid-feedback" id="note-error">Se presenti, inserisci delle note valide.</div>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary">Invia ordine</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+</div>
 
-    </div>
-</div> <!-- FINE del contenuto-->
 
 
 <!-- Script per gestire il messaggio di "successo" e il redirect alla pagina iniziale -->
@@ -89,3 +233,4 @@
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
+

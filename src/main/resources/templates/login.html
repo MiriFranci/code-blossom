@@ -25,69 +25,85 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Eater&family=Rubik+Wet+Paint&family=Sofia&display=swap"
           rel="stylesheet">
-    <title>Contattaci</title>
+    <title>Login</title>
 </head>
 
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 <!-- INIZIO del contenuto-->
 <div class="main-content">
-
-    <section class="vh-100 gradient-custom">
-        <div class="container py-5 h-100">
-            <div class="row justify-content-center align-items-center h-100">
-
-                <div class="col-12 col-lg-9 col-xl-7">
-                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Login</h3>
-
-
-                            <form action="/login" method="post">
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="text" id="username" name="username" class="form-control form-control-lg"
-                                                   placeholder="Inserisci username"/>
-                                            <label class="form-label" for="username">Username</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="password" id="password" name="password" class="form-control form-control-lg"
-                                                   placeholder="Inserisci password"/>
-                                            <label class="form-label" for="password">Password</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <!-- Bottone Registrati con classe personalizzata -->
-                                        <input data-mdb-ripple-init class="btn btn-lg custom-button" type="submit"
-                                               value="Accedi"/>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div>
-                                <div th:if="${successMessage}" class="alert alert-success">
-                                    <p th:text="${successMessage}"></p>
-                                </div>
-                                <p th:if="${errore != null}" class="alert alert-danger">Accesso Negato! Credenziali Errate</p>
+    <div class="container contenitore">
+        <!-- Intestazione con link di navigazione -->
+        <div class="d-flex justify-content-end mt-2"> <!-- Ho ridotto lo spazio sopra -->
+            <a id="logout-btn" class="btn btn-danger btn-lg d-flex align-items-center px-4 py-2" th:href="@{/profilo/logout}">
+                <i class="fas fa-sign-out-alt me-2 fa-lg"></i> Logout
+            </a>
+        </div>
+        <h1 class="text-center mb-1">Login</h1> <!-- Spazio ulteriormente ridotto tra h1 e il form -->
+        <!-- Sezione Profilo -->
+        <div class="profile-container mt-4 d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <form action="/login" method="post">
+                <div class="row mb-6"> <!-- Aggiunto margine tra le righe -->
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="username">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
+                                <input type="text" name="username" class="form-control" id="username" placeholder="Inserisci il tuo username" required>
                             </div>
+                        </div>
+                    </div>
 
-
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="pwd">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" name="password" class="form-control" id="pwd" placeholder="Password utente" required>
+                                <button type="button" id="pwdButton" class="btn btn-outline-secondary">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="row mb-4"> <!-- Maggiore spazio tra il campo password e il bottone -->
+                    <div class="col-md-12 text-center">
+                        <!-- Bottone Accedi con classe personalizzata e colore viola -->
+                        <button type="submit" class="btn btn-outline-primary btn-lg">Accedi</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div th:if="${successMessage}" class="alert alert-success">
+                        <p th:text="${successMessage}"></p>
+                    </div>
+                    <p th:if="${errore != null}" class="alert alert-danger">Accesso Negato! Credenziali Errate</p>
+                </div>
+            </form>
         </div>
-    </section>
+    </div>
+</div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var pwd = document.getElementById("pwd");
+        pwd.type = "password";
+    });
 
-</div> <!-- FINE del contenuto-->
+    document.getElementById("pwdButton").addEventListener("click", function () {
+        var pwd = document.getElementById("pwd");
+        if (pwd.type == "password") {
+            pwd.type = "text";
+        } else {
+            pwd.type = "password";
+        }
+    });
+</script>
 
-<div th:replace="~{fragments/footer :: footer}"></div>
+<!-- Footer con larghezza completa -->
+<div th:replace="~{fragments/footer :: footer}" class="w-100"></div>
+
 </body>
 </html>

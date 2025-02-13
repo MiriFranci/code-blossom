@@ -33,171 +33,179 @@
 <!-- INIZIO del contenuto-->
 <div class="main-content">
 
-    <section class="vh-100 gradient-custom">
-        <div class="container py-5 h-100">
-            <div class="row justify-content-center align-items-center h-100">
-                <div class="col-12 col-lg-9 col-xl-7">
-                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registrati</h3>
-                            <form th:object="${utente}" method="post">
+    <!-- Contenitore principale -->
+    <div class="container contenitore">
+        <!-- Intestazione con link di navigazione -->
+        <h1 class="text-center mb-4">Registrati</h1>
+        <!-- Sezione Profilo -->
+        <div class="profile-container mt-4">
+            <form th:object="${utente}" method="post">
+                <div class="row">
+                    <!-- Colonna sinistra -->
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <input type="hidden" th:field="*{id}">
+                            <label for="nome">Nome</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" th:field="*{nome}" class="form-control" id="nome"
+                                       placeholder="Inserisci il tuo nome" required>
+                            </div>
+                            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></p>
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
+                        <div class="form-group mb-3">
+                            <label for="cognome">Cognome</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" th:field="*{cognome}" class="form-control" id="cognome"
+                                       placeholder="Inserisci il tuo cognome" required>
+                            </div>
+                            <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" class="text-danger"></p>
+                        </div>
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="text" th:field="*{nome}"  id="firstName" class="form-control form-control-lg"
-                                                   placeholder="Inserisci il tuo nome" required/>
-                                            <label class="form-label" for="firstName">Nome</label>
-                                            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
-                                        </div>
+                        <div class="form-group mb-3">
+                            <label for="username">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
+                                <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Inserisci username" required>
 
-                                    </div>
-                                    <div class="col-md-6 mb-4">
+                            </div>
+                            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                            <p th:if="${duplicato != null}" th:text="${duplicato}"></p>
+                        </div>
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="text" th:field="*{cognome}" id="lastName" class="form-control form-control-lg"
-                                                   placeholder="Inserisci il tuo cognome" required/>
-                                            <label class="form-label" for="lastName">Cognome</label>
-                                            <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
-                                        </div>
+                        <div class="form-group mb-3">
+                            <label for="pwd">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="text" th:field="*{password}" class="form-control" id="pwd"
+                                       placeholder="Inserisci password" required>
+                                <button type="button" id="pwdButton" class="btn btn-outline-secondary">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></p>
+                        </div>
 
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                                        <div data-mdb-input-init class="form-outline datepicker w-100">
-                                            <input type="date" th:field="*{dataDiNascita}" class="form-control form-control-lg" id="birthdayDate" required/>
-                                            <label for="birthdayDate" class="form-label">Data di nascita</label>
-                                            <p th:if="${etaMinima}" th:text="${etaMinima}"></p>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" th:field="*{genere}" name="inlineRadioOptions"
-                                                   id="femaleGender"
-                                                   value="F" required/>
-                                            <label class="form-check-label" for="femaleGender">F</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" th:field="*{genere}" name="inlineRadioOptions"
-                                                   id="maleGender"
-                                                   value="M"/>
-                                            <label class="form-check-label" for="maleGender">M</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" th:field="*{genere}" name="inlineRadioOptions"
-                                                   id="otherGender"
-                                                   value="A"/>
-                                            <label class="form-check-label" for="otherGender">Altro</label>
-                                            <p th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" class="error"></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Inserisci la tua e-mail" required>
+                            </div>
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
+                        </div>
 
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
+                    </div>
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="text" th:field="*{citta}" id="firstName" class="form-control form-control-lg"
-                                                   placeholder="Inserisci la tua città" required/>
-                                            <label class="form-label" for="firstName">Città</label>
-                                            <p th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}"></p>
-                                        </div>
+                    <!-- Colonna destra -->
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="telefono">Telefono</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="text" th:field="*{telefono}" class="form-control" id="telefono"
+                                       placeholder="Inserisci il tuo numero di telefono" required>
+                            </div>
+                            <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" class="text-danger"></p>
+                        </div>
 
-                                    </div>
-                                    <div class="col-md-6 mb-4">
+                        <div class="form-group mb-3">
+                            <label for="dataDiNascita">Data di Nascita</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                                <input type="date" th:field="*{dataDiNascita}" class="form-control" id="dataDiNascita"
+                                       placeholder="Inserisci la tua data di nascita" required>
+                            </div>
+                            <p th:if="${etaMinima}" th:text="${etaMinima}" class="text-danger"></p>
+                        </div>
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="text" th:field="*{indirizzo}" id="lastName" class="form-control form-control-lg"
-                                                   placeholder="Inserisci il tuo indirizzo" required/>
-                                            <label class="form-label" for="lastName">Indirizzo</label>
-                                            <p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></p>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="form-group form-inline mb-3">
+                            <label>Genere</label>
+                            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" th:field="*{genere}" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M" required>
+                                <label class="form-check-label" for="inlineRadio1">Maschio</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" th:field="*{genere}" name="inlineRadioOptions" id="inlineRadio2" value="F">
+                                <label class="form-check-label" for="inlineRadio2">Femmina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"th:field="*{genere}" name="inlineRadioOptions" id="inlineRadio3" value="A">
+                                <label class="form-check-label" for="inlineRadio3">Altro</label>
+                            </div>
+                        </div>
+                        <p th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" class="text-danger"></p>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 pb-2">
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="email" th:field="*{email}" id="emailAddress" class="form-control form-control-lg"
-                                                   placeholder="Inserisci la tua e-mail" required/>
-                                            <label class="form-label" for="emailAddress">Email</label>
-                                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-                                        </div>
 
-                                    </div>
-                                    <div class="col-md-6 mb-4 pb-2">
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="tel" th:field="*{telefono}" id="phoneNumber" class="form-control form-control-lg"
-                                                   placeholder="Inserisci il tuo numero" required/>
-                                            <label class="form-label" for="phoneNumber">Numero di telefono</label>
-                                            <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
-                                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="text" th:field="*{username}" id="firstName" class="form-control form-control-lg"
-                                                   placeholder="Inserisci username" required/>
-                                            <label class="form-label" for="firstName">Username</label>
-                                            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-                                            <p th:if="${duplicato != null}" th:text="${duplicato}"></p>
-                                        </div>
 
-                                    </div>
-                                    <div class="col-md-6 mb-4">
 
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input type="password" th:field="*{password}" id="lastName" class="form-control form-control-lg"
-                                                   placeholder="Inserisci password" required/>
-                                            <label class="form-label" for="lastName">Password</label>
-                                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-                                        </div>
 
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <!-- Bottone Registrati con classe personalizzata -->
-                                        <input data-mdb-ripple-init class="btn btn-lg custom-button" type="submit"
-                                               value="Registrati"/>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <!-- Bottone Annulla con classe personalizzata -->
-                                        <a href="index.html">
-                                            <button data-mdb-ripple-init class="btn btn-lg custom-button" type="button"
-                                                    value="Annulla">Annulla
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
 
-                            </form>
+
+
+                        <div class="form-group mb-3">
+                            <label for="citta">Città</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-city"></i></span>
+                                <input type="text" th:field="*{citta}" class="form-control" id="citta" placeholder="Inserisci la tua città" required>
+                            </div>
+                            <p th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}" class="text-danger"></p>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="indirizzo">Indirizzo</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                <input type="text" th:field="*{indirizzo}" class="form-control" id="indirizzo"
+                                       placeholder="Inserisci il tuo indirizzo" required>
+                            </div>
+                            <p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}" class="text-danger"></p>
                         </div>
                     </div>
-                </div>
-            </div>
-          </div>
-    </section>
 
- </div> <!-- FINE del contenuto-->
+                    <!-- Bottone di invio e reset -->
+                    <div class="form-group text-center mt-4">
+                        <!-- Bottone per la registrazione -->
+                        <button id="registrazione" type="submit" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-check me-2"></i> Registrati
+                        </button>
+
+                        <!-- Bottone per il reset dei campi -->
+                        <button type="reset" class="btn btn-outline-secondary btn-lg ms-3">
+                            <i class="fas fa-undo me-2"></i> Annulla
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div> <!-- Chiudiamo correttamente il div che contiene .container -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var pwd = document.getElementById("pwd");
+        pwd.type = "password";
+    });
+
+    document.getElementById("pwdButton").addEventListener("click", function () {
+        var pwd = document.getElementById("pwd");
+        if (pwd.type == "password") {
+            pwd.type = "text";
+        } else {
+            pwd.type = "password";
+        }
+    });
+</script>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
