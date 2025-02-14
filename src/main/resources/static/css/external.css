@@ -220,15 +220,8 @@ input[readonly] {
 }
 
 /* ----LAVORA CON NOI----- */
-/* Nascondere il file input */
-/* Nascondere il file input */
-.custom-file input[type="file"] {
-  display: none;
-}
 
-/* Personalizzare la label per simularne il comportamento di un placeholder */
-/* Nascondere l'input di tipo file */
-/* Nascondere l'input file */
+
 /* Nascondere l'input file */
 .custom-file input[type="file"] {
   display: none;
@@ -270,7 +263,6 @@ input[readonly] {
 
 /* Quando un file è stato selezionato, mostriamo il nome del file */
 input[type="file"]:valid ~ .custom-file-label::after {
-  content: attr(data-file-name); /* Usa l'attributo data-file-name per il nome del file */
   color: #28a745; /* Colore verde per il successo */
   font-weight: bold;
   text-align: left;

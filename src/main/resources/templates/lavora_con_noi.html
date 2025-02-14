@@ -143,34 +143,20 @@
 </div>
 
 </div> <!-- FINE del contenuto-->
-
 <script>
+const fileInput = document.getElementById('curriculum');
+const fileLabel = document.querySelector('.custom-file-label');
 
-    const fileInput = document.getElementById('curriculum');
-    const fileLabel = document.querySelector('.custom-file-label');
+// Aggiungiamo un evento 'change' per quando il file viene selezionato
+fileInput.addEventListener('change', function() {
+if (fileInput.files.length > 0) {
+const fileName = fileInput.files[0].name;  // Otteniamo il nome del file
+fileLabel.textContent = fileName;  // Aggiorniamo la label con il nome del file
 
-    // Aggiungiamo un evento 'change' per quando il file viene selezionato
-    fileInput.addEventListener('change', function() {
-      const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'File accettati: .pdf, .doc, .docx';
-      fileLabel.textContent = fileName;
-    });
+}
+});
 
-    // Aggiungere un evento di reset al form
-    const form = document.querySelector('form');
-    form.addEventListener('reset', function() {
-        fileLabel.textContent = 'File accettati: .pdf, .doc, .docx'; // Reset della label del file
-         fileInput.value = ''; // Resetta anche il valore dell'input file
-    });
 </script>
-
-
-
-
-
-
-
 <div th:replace="~{fragments/footer :: footer}"></div>
-
-
 </body>
 </html>
