@@ -100,12 +100,19 @@
 
                         <!-- Nuovo campo per caricare un file (Curriculum) -->
                         <div class="form-group mb-3">
-                            <label for="curriculum">Carica il tuo Curriculum</label>
+                            <label for="curriculum">Carica il tuo curriculum</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-upload"></i></span>
-                                <input type="file" class="form-control" id="curriculum" accept=".pdf,.doc,.docx" required>
+                                <div class="custom-file">
+                                    <!-- Il vero input file -->
+                                    <input type="file" class="form-control" id="curriculum" accept=".pdf,.doc,.docx" required>
+                                    <!-- Bottone personalizzato che simula il comportamento di un placeholder -->
+                                    <label for="curriculum" class="custom-file-label">File accettati: .pdf, .doc, .docx</label>
+                                </div>
                             </div>
                         </div>
+
+
 
                         <!-- Nuovo campo Numero di Telefono -->
                         <div class="form-group mb-3">
@@ -137,7 +144,33 @@
 
 </div> <!-- FINE del contenuto-->
 
+<script>
+
+    const fileInput = document.getElementById('curriculum');
+    const fileLabel = document.querySelector('.custom-file-label');
+
+    // Aggiungiamo un evento 'change' per quando il file viene selezionato
+    fileInput.addEventListener('change', function() {
+      const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'File accettati: .pdf, .doc, .docx';
+      fileLabel.textContent = fileName;
+    });
+
+    // Aggiungere un evento di reset al form
+    const form = document.querySelector('form');
+    form.addEventListener('reset', function() {
+        fileLabel.textContent = 'File accettati: .pdf, .doc, .docx'; // Reset della label del file
+         fileInput.value = ''; // Resetta anche il valore dell'input file
+    });
+</script>
+
+
+
+
+
+
 
 <div th:replace="~{fragments/footer :: footer}"></div>
+
+
 </body>
 </html>

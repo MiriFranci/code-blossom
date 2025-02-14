@@ -218,3 +218,80 @@ input[readonly] {
     background-color: #7e5d8d !important;
     color: white !important;
 }
+
+/* ----LAVORA CON NOI----- */
+/* Nascondere il file input */
+/* Nascondere il file input */
+.custom-file input[type="file"] {
+  display: none;
+}
+
+/* Personalizzare la label per simularne il comportamento di un placeholder */
+/* Nascondere l'input di tipo file */
+/* Nascondere l'input file */
+/* Nascondere l'input file */
+.custom-file input[type="file"] {
+  display: none;
+}
+
+/* Impostiamo la label e l'icona per essere affiancate */
+.input-group {
+  display: flex;
+  align-items: center;  /* Allinea verticalmente al centro */
+  width: 100%;
+}
+
+/* Personalizzare la parte dell'icona (piccola) per l'input */
+.input-group-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ height: 38px;
+ width: 40px; /* Puoi adattarlo come desideri */
+ cursor: pointer;
+}
+
+/* Personalizzare la label per simulare il comportamento di un placeholder */
+.custom-file-label {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  cursor: pointer;
+  color: #6c757d; /* Colore simile al placeholder */
+  font-weight: normal;
+  flex-grow: 1; /* Si adatta al contenuto */
+  height: 38px; /* Altezza fissa simile agli altri campi del form */
+  width: calc(645px - 50px);
+  line-height: 1.5; /* Centra il testo verticalmente */
+  overflow: hidden; /* Assicurati che il testo non esca dal contenitore */
+}
+
+/* Quando un file è stato selezionato, mostriamo il nome del file */
+input[type="file"]:valid ~ .custom-file-label::after {
+  content: attr(data-file-name); /* Usa l'attributo data-file-name per il nome del file */
+  color: #28a745; /* Colore verde per il successo */
+  font-weight: bold;
+  text-align: left;
+  padding-left: 10px; /* Distanza tra il nome del file e il bordo */
+}
+
+/* Stile della label quando nessun file è stato selezionato */
+input[type="file"]:not(:valid) ~ .custom-file-label {
+  color: #6c757d; /* Colore grigio simile al placeholder */
+}
+
+/* Cambiare il colore della label quando un file è selezionato */
+input[type="file"]:valid ~ .custom-file-label {
+  color: #28a745; /* Colore verde per successo */
+}
+
+
+
+
+
+
+
+
+
