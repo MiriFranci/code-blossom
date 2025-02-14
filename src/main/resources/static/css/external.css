@@ -58,7 +58,7 @@ input[readonly] {
 
 
 .custom-header {
-    background-color: #cdb7dd !important;
+    background-color: #9b7eaf !important;
     color: white !important;
     font-size: 1.1rem;
     text-align: center;
@@ -72,6 +72,12 @@ input[readonly] {
 .table tbody tr:nth-child(odd) {
     background-color: #f9f6fb; 
 }
+
+.table thead tr {
+    background-color: #9b7eaf !important;
+    color: white !important;
+}
+
 
 .table-hover tbody tr:hover {
     background-color: #e6d5f3 !important; 
@@ -105,6 +111,49 @@ input[readonly] {
     color: white !important;
 }
 
+#annulla {
+    background-color: #9b7eaf !important;
+    color: white !important;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#annulla:hover {
+    background-color: #7e5d8d !important;
+    color: white !important;
+}
+
+#registra {
+    background-color: #9b7eaf !important;
+    color: white !important;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#registra:hover {
+    background-color: #7e5d8d !important;
+    color: white !important;
+}
+
+/* Personalizzazione del bordo della casella */
+.custom-border {
+    border: 1px solid rgba(205, 183, 221, 0.7); /* Colore bordo con opacità */
+}
+
+/* Personalizzazione dei radio button */
+.custom-radio {
+    border: 1px solid rgba(205, 183, 221, 0.7); /* Colore bordo con opacità */
+}
+
+.custom-radio:checked {
+    background-color: #cdb7dd; /* Colore del cerchio al centro quando selezionato */
+    border-color: #cdb7dd; /* Colore del bordo del radio button selezionato */
+}
+
+.custom-radio:focus {
+    box-shadow: 0 0 0 0.2rem rgba(205, 183, 221, 0.25); /* Colore del focus quando cliccato */
+}
+
 /* ----RICERCA----- */
 .single-card {
     min-width: 400px; /* Imposta una larghezza minima */
@@ -136,19 +185,36 @@ input[readonly] {
 
 /* ----CARRELLO----- */
 
-@media (min-width: 1025px) {
-.h-custom {
-height: 100vh !important;
-}
+#riepilogo {
+    position: sticky;
+    top: 100px; /* Distanza dalla parte superiore della finestra */
+    max-height: 80vh; /* Altezza massima per evitare overflow */
+    overflow-y: auto; /* Permette lo scroll interno se il contenuto è troppo lungo */
+    background-color: white; /* Sfondo bianco */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Leggera ombreggiatura */
+    border-radius: 10px; /* Angoli arrotondati */
+    padding: 20px;
 }
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
-font-size: 1rem;
-line-height: 2.15;
-padding-left: .75em;
-padding-right: .75em;
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
 }
 
 .card-registration .select-arrow {
-top: 13px;
+    top: 13px;
+}
+
+#invio-ordine {
+    background-color: #9b7eaf !important;
+    color: white !important;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#invio-ordine:hover {
+    background-color: #7e5d8d !important;
+    color: white !important;
 }

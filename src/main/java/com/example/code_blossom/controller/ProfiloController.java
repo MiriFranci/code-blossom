@@ -66,6 +66,7 @@ public class ProfiloController {
         // Se non ci sono errori, aggiorniamo l'utente nel database e in sessione
         utenteService.registrazioneUtente(utente);
         session.setAttribute("utente", utente);
+        redirectAttributes.addFlashAttribute("successMessage", "Il profilo è stato aggiornato con successo.");
         return "redirect:/profilo";
     }
 }

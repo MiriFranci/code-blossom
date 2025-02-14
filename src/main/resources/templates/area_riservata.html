@@ -42,6 +42,9 @@
             </a>
         </div>
         <h1 class="text-center mb-4">Il mio profilo</h1>
+        <div th:if="${successMessage}" class="alert alert-success w-50  mx-auto text-center p-2 mt-2">
+            <i class="fas fa-check-circle"></i> <span th:text="${successMessage}"></span>
+        </div>
         <!-- Sezione Profilo -->
         <div class="profile-container mt-4">
             <form th:object="${utente}" method="post">
@@ -56,7 +59,9 @@
                                 <input type="text" th:field="*{nome}" class="form-control" id="nome"
                                        placeholder="Nome utente" required>
                             </div>
-                            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></p>
+                            <div th:if="${#fields.hasErrors('nome')}" class="alert alert-danger p-2 mt-2">
+                                <i class="fas fa-exclamation-circle"></i> <span th:errors="*{nome}"></span>
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
@@ -66,7 +71,9 @@
                                 <input type="text" th:field="*{cognome}" class="form-control" id="cognome"
                                        placeholder="Cognome utente" required>
                             </div>
-                            <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" class="text-danger"></p>
+                            <div th:if="${#fields.hasErrors('cognome')}" class="alert alert-danger p-2 mt-2">
+                                <i class="fas fa-exclamation-circle"></i> <span th:errors="*{cognome}"></span>
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
@@ -87,7 +94,9 @@
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </div>
-                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></p>
+                            <div th:if="${#fields.hasErrors('password')}" class="alert alert-danger p-2 mt-2">
+                                <i class="fas fa-exclamation-circle"></i> <span th:errors="*{password}"></span>
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
@@ -96,7 +105,9 @@
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Email" required>
                             </div>
-                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
+                            <div th:if="${#fields.hasErrors('email')}" class="alert alert-danger p-2 mt-2">
+                                <i class="fas fa-exclamation-circle"></i> <span th:errors="*{email}"></span>
+                            </div>
                         </div>
 
                         <div class="form-group mb-3" style="display:none;">
@@ -118,7 +129,9 @@
                                 <input type="text" th:field="*{telefono}" class="form-control" id="telefono"
                                        placeholder="Telefono" required>
                             </div>
-                            <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" class="text-danger"></p>
+                            <div th:if="${#fields.hasErrors('telefono')}" class="alert alert-danger p-2 mt-2">
+                                <i class="fas fa-exclamation-circle"></i> <span th:errors="*{telefono}"></span>
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
@@ -128,7 +141,6 @@
                                 <input type="text" th:field="*{dataDiNascita}" class="form-control" id="dataDiNascita"
                                        placeholder="Data di Nascita" readonly>
                             </div>
-                            <p th:if="${etaMinima}" th:text="${etaMinima}" class="text-danger"></p>
                         </div>
 
                         <div class="form-group mb-3">
@@ -137,7 +149,6 @@
                                 <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
                                 <input type="text" th:field="*{genere}" class="form-control" id="genere" readonly>
                             </div>
-                            <p th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" class="text-danger"></p>
                         </div>
 
                         <div class="form-group mb-3">
@@ -146,7 +157,9 @@
                                 <span class="input-group-text"><i class="fas fa-city"></i></span>
                                 <input type="text" th:field="*{citta}" class="form-control" id="citta" placeholder="Città" required>
                             </div>
-                            <p th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}" class="text-danger"></p>
+                            <div th:if="${#fields.hasErrors('citta')}" class="alert alert-danger p-2 mt-2">
+                                <i class="fas fa-exclamation-circle"></i> <span th:errors="*{citta}"></span>
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
@@ -156,10 +169,12 @@
                                 <input type="text" th:field="*{indirizzo}" class="form-control" id="indirizzo"
                                        placeholder="Indirizzo" required>
                             </div>
-                            <p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}" class="text-danger"></p>
+                            <div th:if="${#fields.hasErrors('indirizzo')}" class="alert alert-danger p-2 mt-2">
+                                <i class="fas fa-exclamation-circle"></i> <span th:errors="*{indirizzo}"></span>
+                            </div>
                         </div>
                     </div>
-
+                </div>
                 <div th:each="ordine, stat : *{ordini}">
                     <input type="hidden" th:field="*{ordini[__${stat.index}__].id}">
                 </div>
@@ -180,7 +195,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover shadow">
                     <thead class="custom-header">
-                    <tr>
+                    <tr class="custom-header">
                         <th>#</th>
                         <th>Prodotti</th>
                         <th>Totale</th>
@@ -208,8 +223,6 @@
             </div>
         </div>
     </div>
-</div>
-
 </div> <!-- FINE del contenuto-->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

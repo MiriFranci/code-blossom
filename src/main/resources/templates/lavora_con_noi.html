@@ -34,7 +34,7 @@
 <div class="main-content">
 
     <!-- Contenitore principale -->
-    <div class="container contenitore">
+    <div class="container my-5 contenitore">
         <!-- Intestazione con link di navigazione -->
         <h1 class="text-center mb-4">Lavora con noi</h1>
         <!-- Sezione Profilo -->
@@ -76,15 +76,6 @@
                             </div>
                         </div>
 
-                        <!-- Nuovo campo Numero di Telefono -->
-                        <div class="form-group mb-3">
-                            <label for="telefono">Numero di Telefono</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                <input type="tel" class="form-control" id="telefono" placeholder="Inserisci il tuo numero di telefono" required>
-                            </div>
-                        </div>
-
                     </div>
 
                     <!-- Colonna destra -->
@@ -116,6 +107,15 @@
                             </div>
                         </div>
 
+                        <!-- Nuovo campo Numero di Telefono -->
+                        <div class="form-group mb-3">
+                            <label for="telefono">Numero di Telefono</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="tel" class="form-control" id="telefono" placeholder="Inserisci il tuo numero di telefono" required>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     <button id="conferma" type="submit" class="btn btn-outline-primary btn-lg">
                         <i class="fas fa-paper-plane me-2"></i> Invia
                     </button>
-                    <button type="reset" class="btn btn-outline btn-lg ms-3">
+                    <button id="annulla" type="reset" class="btn btn-outline-primary btn-lg">
                         <i class="fas fa-trash-alt me-2"></i> Annulla
                     </button>
                 </div>

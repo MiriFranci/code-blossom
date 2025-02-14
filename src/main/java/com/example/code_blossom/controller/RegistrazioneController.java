@@ -50,6 +50,6 @@ public class RegistrazioneController {
         }
         utenteService.registrazioneUtente(utente);
         redirectAttributes.addFlashAttribute("successMessage", "Registrazione avvenuta con successo! Ora puoi accedere.");
-        return "redirect:/login";
+        return "redirect:/registrazione";
     }
 }

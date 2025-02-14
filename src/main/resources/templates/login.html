@@ -30,56 +30,46 @@
 
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
+
 <!-- INIZIO del contenuto-->
 <div class="main-content">
-    <div class="container contenitore">
+    <div class="container my-5 contenitore">
         <!-- Intestazione con link di navigazione -->
-        <div class="d-flex justify-content-end mt-2"> <!-- Ho ridotto lo spazio sopra -->
+        <div class="d-flex justify-content-end mt-2" th:if="${utente != null}" >
             <a id="logout-btn" class="btn btn-danger btn-lg d-flex align-items-center px-4 py-2" th:href="@{/profilo/logout}">
                 <i class="fas fa-sign-out-alt me-2 fa-lg"></i> Logout
             </a>
         </div>
-        <h1 class="text-center mb-1">Login</h1> <!-- Spazio ulteriormente ridotto tra h1 e il form -->
-        <!-- Sezione Profilo -->
-        <div class="profile-container mt-4 d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <form action="/login" method="post">
-                <div class="row mb-6"> <!-- Aggiunto margine tra le righe -->
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            <label for="username">Username</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
-                                <input type="text" name="username" class="form-control" id="username" placeholder="Inserisci il tuo username" required>
-                            </div>
-                        </div>
-                    </div>
+        <h1 class="text-center mb-4">Login</h1> <!-- Spazio ulteriormente ridotto tra h1 e il form -->
+        <p th:if="${errore != null}" class="alert alert-danger p-2 mt-2 w-50 mx-auto text-center">
+            <i class="fas fa-exclamation-circle"></i> Accesso Negato. Credenziali errate o inesistenti!
+        </p>
 
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            <label for="pwd">Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                <input type="password" name="password" class="form-control" id="pwd" placeholder="Password utente" required>
-                                <button type="button" id="pwdButton" class="btn btn-outline-secondary">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
+        <div class="profile-container mt-4 d-flex justify-content-center">
+            <form action="/login" method="post" class="w-50">
+                <div class="form-group mb-3">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Inserisci username" required>
                     </div>
                 </div>
 
-                <div class="row mb-4"> <!-- Maggiore spazio tra il campo password e il bottone -->
+                <div class="form-group mb-3">
+                    <label for="pwd">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password" class="form-control" id="pwd" placeholder="Inserisci password" required>
+                        <button type="button" id="pwdButton" class="btn btn-outline-secondary">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
                     <div class="col-md-12 text-center">
-                        <!-- Bottone Accedi con classe personalizzata e colore viola -->
                         <button type="submit" class="btn btn-outline-primary btn-lg">Accedi</button>
                     </div>
-                </div>
-
-                <div>
-                    <div th:if="${successMessage}" class="alert alert-success">
-                        <p th:text="${successMessage}"></p>
-                    </div>
-                    <p th:if="${errore != null}" class="alert alert-danger">Accesso Negato! Credenziali Errate</p>
                 </div>
             </form>
         </div>
