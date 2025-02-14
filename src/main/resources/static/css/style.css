@@ -13,6 +13,10 @@ a.text-reset {
     text-decoration: none !important;
 }
 
+a.text-reset:hover {
+    color: #28a745 !important; /* Colore del link al passaggio del mouse */
+
+}
 .main-content {
     flex: 1; /* Fa sì che il contenuto occupi lo spazio rimanente, spingendo il footer in basso */
     margin-bottom: 80px; /* Distanza tra il contenuto e il footer */
@@ -38,6 +42,14 @@ a.text-reset {
     position: relative;
 }
 
+.dropdown-item:hover {
+background-color: #9b7eaf !important;
+}
+
+
+.dropdown-toggle::after {
+    display: none; /* Nasconde la freccia */
+}
 .menu-icon {
     font-size: 1.8rem !important; /* Ingrandisce le icone per il miglior effetto */
 }
@@ -238,18 +250,17 @@ a.text-reset {
 */
 
 /* CAROSELLO "PER INTERO" */
-
 .carousel-inner {
     height: 100%; /* Rende l'altezza del contenuto pari a quella del contenitore */
 }
 
 .carousel-item img {
     height: 100%; /* Assicura che l'immagine occupi l'intera altezza */
-    object-fit: contain; /* Adatta l'immagine senza distorsioni */
+    object-fit: cover; /* Adatta l'immagine senza distorsioni */
 }
 
 .autori {
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 .carousel-caption {
@@ -260,15 +271,39 @@ a.text-reset {
     background-color: rgba(0, 0, 0, 0.5);
     font-family: 'Sofia', cursive;
     text-shadow: -5px 3px 24px rgba(0, 0, 0, 1);
-    display: flex; /* Usare flexbox per adattare l'altezza */
+    display: flex;
     flex-direction: column; /* Permette al testo di impilarsi */
     justify-content: center; /* Centra verticalmente il contenuto */
     align-items: center; /* Centra orizzontalmente il contenuto */
-    max-width: 80%; /* Limita la larghezza nei grandi schermi */
+    max-width: 90%; /* Limita la larghezza della caption, anche su schermi grandi */
+    width: 100%; /* Assicura che la larghezza sia adattabile */
     padding: 1rem; /* Spazio interno per leggibilità */
     border-radius: 10px;
     text-align: center;
+    box-sizing: border-box; /* Assicura che il padding non influisca sulla larghezza */
 }
+
+/* Responsività per schermi più piccoli */
+@media (max-width: 768px) {
+    .carousel-caption {
+        padding: 0.5rem; /* Riduce il padding su dispositivi mobili */
+        font-size: 1rem; /* Riduce la dimensione del testo su dispositivi mobili */
+    }
+}
+
+/* Modifiche per schermi desktop (larghezza > 1024px) */
+@media (min-width: 1025px) {
+    .carousel-caption {
+        max-width: 50%; /* Riduce la larghezza della caption */
+        padding: 0.5rem; /* Aumenta il padding per dare più spazio alla caption */
+        font-size: 1.2rem; /* Modifica la dimensione del testo per il desktop */
+        height: 30%; /* Riduce l'altezza del background */
+        top: 50%; /* Sposta il contenuto più in basso per dare un effetto di background più basso */
+        transform: translate(-50%, -70%); /* Modifica il comportamento di traslazione per il nuovo posizionamento */
+    }
+}
+
+
 
 
 /* INIZIO DELLE CARD
