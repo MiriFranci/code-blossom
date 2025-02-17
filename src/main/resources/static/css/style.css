@@ -516,13 +516,23 @@ background-color: #9b7eaf !important;
     background-color: #cdb7dd;
     color: #333;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
+}
+
+#chi {
+text-align: justify;
+padding-right: 100px !important;
 }
 
 /* Media query per schermi più piccoli di 1040px */
 @media (max-width: 1040px) {
     .footer .row {
         flex-wrap: wrap; /* Permette ai div di andare a capo quando non c'è spazio sufficiente */
+
+    }
+    #chi {
+    text-align: justify;
+    padding-right: 10px !important;
     }
 
     /* Fornisce un po' di distanza tra i div, se necessario */
@@ -530,6 +540,7 @@ background-color: #9b7eaf !important;
     .footer .col-md-2,
     .footer .col-md-4 {
         margin-bottom: 20px; /* Distanza tra le colonne quando sono su righe separate */
+
     }
 
     /* Ridurre la dimensione del testo per schermi più piccoli */
@@ -541,6 +552,7 @@ background-color: #9b7eaf !important;
         font-size: 14px;
     }
 }
+
 
 
 
