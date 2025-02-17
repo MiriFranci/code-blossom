@@ -58,8 +58,6 @@ input[readonly] {
 
 
 .custom-header {
-    background-color: #9b7eaf !important;
-    color: white !important;
     font-size: 1.1rem;
     text-align: center;
 }
@@ -73,18 +71,24 @@ input[readonly] {
     background-color: #f9f6fb; 
 }
 
-.table thead tr {
-    background-color: #9b7eaf !important;
-    color: white !important;
+.table thead tr,
+.table thead th { /* <-- Aggiunto th */
+    background-color: #cdb7dd !important;
+    color: black !important;
 }
 
 
+
 .table-hover tbody tr:hover {
-    background-color: #e6d5f3 !important; 
+    background-color: #e9ecef !important;
 }
 
 .text-success {
     font-size: 1.1rem;
+}
+
+#modifica-agg {
+    transition: opacity 0.5s ease-out;
 }
 
 #logout-btn {
@@ -156,15 +160,23 @@ input[readonly] {
 
 /* ----RICERCA----- */
 .single-card {
-    min-width: 400px; /* Imposta una larghezza minima */
+    min-width: 300px;
 }
 
-@media (max-width: 900px) {
-    .single-card {
-        width: 100%; /* Occupa tutta la larghezza sotto i 900px */
-        min-width: auto; /* Rimuove la larghezza minima per evitare problemi di adattamento */
-    }
+.single-card .container img {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+    min-width: 200px;
 }
+
+.single-card .col-lg-6 .col-md-12 {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .single-card .container {
     display: flex;
     flex-direction: column;
@@ -179,9 +191,8 @@ input[readonly] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Spinge in basso il contenitore */
+    margin-top: auto;
 }
-
 
 /* ----CARRELLO----- */
 
@@ -220,7 +231,6 @@ input[readonly] {
 }
 
 /* ----LAVORA CON NOI----- */
-
 
 /* Nascondere l'input file */
 .custom-file input[type="file"] {

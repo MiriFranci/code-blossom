@@ -116,6 +116,11 @@ public class ProdottoServiceImpl implements ProdottoService {
     public List<Prodotto> cercaPerNome(String ricerca) {
         return prodottoDao.findByNomeContainingIgnoreCase(ricerca);
     }
+
+    @Override
+    public List<Prodotto> trovaPerId(Iterable<Integer> ids) {
+        return prodottoDao.findAllById(ids);
+    }
 }
 
 

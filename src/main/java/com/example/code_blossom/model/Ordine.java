@@ -22,7 +22,7 @@ public class Ordine {
     @Column
     private LocalDate dataConsegnaPrevista;
 
-    @Pattern(regexp = "^[a-zA-Z0-9,\\s']+$", message = "L'indirizzo di destinazione deve contenere solo lettere, numeri, virgole e apostrofi.")
+    @Pattern(regexp = "^[a-zA-Z0-9,\\s']+$", message = "La destinazione della spedizione può contenere solo lettere, numeri, virgole, trattini e apostrofi.")
     @Column
     private String destinazione;
 

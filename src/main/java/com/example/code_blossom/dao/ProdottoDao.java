@@ -9,4 +9,5 @@ public interface ProdottoDao extends CrudRepository<Prodotto, Integer>{
     List<Prodotto> findByCategoriaId(int idCategoria);
     List<Prodotto> findTop6ByOrderByNomeAscPrezzoDesc();
     List<Prodotto> findByNomeContainingIgnoreCase(String ricerca);
+    List<Prodotto> findAllById(Iterable<Integer> ids);
 }

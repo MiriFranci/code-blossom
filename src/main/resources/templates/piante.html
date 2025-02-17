@@ -45,8 +45,8 @@
                         <p th:text="${prodotto.descrizione}" class="card-text">Descrizione prodotto</p>
                     </div>
                     <!-- Footer della card -->
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p th:text="'€ ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="card-price"></p>
+                    <div class="card-footer d-flex justify-content-between align-items-center flex-wrap">
+                        <p th:text="'€ ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="card-price" style="margin-right:1%;"></p>
                         <a th:if="${utente != null}" th:href="@{/carrello/aggiungi(id=${prodotto.id})}" class="btn btn-chart btn-sm d-flex align-items-center">
                             <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
                         </a>

@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <!-- Indirizzo della favicon del sito -->
     <link rel="icon" th:href="@{/favicon.png}" type="image/x-icon">
@@ -24,13 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Eater&family=Rubik+Wet+Paint&family=Sofia&display=swap"
           rel="stylesheet">
-    <!-- animated css -->
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-
-    <title>Home page</title>
+      <title>Home page</title>
 </head>
 
 <body>
@@ -105,16 +100,35 @@
 
 <!-- INIZIO del contenuto-->
 <div class="main-content">
+
     <div class="container mt-5" id="cards-container">
         <div class="row justify-content-center g-4">
 
             <!-- Titolo con il nome "CodeBlossom consiglia:" -->
-            <h2 class="text-center" style="font-family: 'Sofia', cursive; font-weight: bold; font-size: 2.5rem; color: #333; text-align: center; margin-bottom: 30px; background-color: #CDB7DD; padding: 15px 25px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+            <h2 class="text-center animate-on-scroll" data-animation="animate__backInRight" data-delay="200" style="font-family: 'Sofia', cursive; font-weight: bold; font-size: 2.5rem; color: #333; text-align: center; margin-bottom: 30px; background-color: #CDB7DD; padding: 15px 25px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
                 CodeBlossom consiglia :</h2>
 
             <div class="row justify-content-center g-4">
 
-            <!-- CARD DEL PRODOTTO -->
+                <!-- CARD DEL PRODOTTO VISUALIZZAZIONE DA 4 -->
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3" th:each="prodotto : ${prodotti}">
+                    <div class="card shadow-sm hover-effect custom-card">
+                        <img th:src="${prodotto.foto}" class="card-img-top img-fluid" style="object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 th:text="${prodotto.nome}" class="card-title">Nome prodotto</h5>
+                            <p th:text="${prodotto.descrizione}" class="card-text">Descrizione prodotto</p>
+                        </div>
+                        <!-- Footer della card -->
+                        <div class="card-footer d-flex justify-content-between align-items-center flex-wrap">
+                            <p th:text="'€ ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="card-price" style="margin-right:1%;"></p>
+                            <a th:if="${utente != null}" th:href="@{/carrello/aggiungi(id=${prodotto.id})}" class="btn btn-chart btn-sm d-flex align-items-center">
+                                <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- CARD DEL PRODOTTO VISUALIZZAZIONE DA 3
             <div class="col-lg-4 col-md-6 col-sm-12 mb-3" th:each="prodotto : ${prodotti}">
                 <div class="card shadow-sm hover-effect custom-card">
                     <img th:src="${prodotto.foto}" class="card-img-top img-fluid">
@@ -122,7 +136,7 @@
                         <h5 th:text="${prodotto.nome}" class="card-title">Nome prodotto</h5>
                         <p th:text="${prodotto.descrizione}" class="card-text">Descrizione prodotto</p>
                     </div>
-                    <!-- Footer della card -->
+
                     <div class="card-footer d-flex justify-content-between align-items-center">
                         <p th:text="'€ ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="card-price"></p>
                         <a th:if="${utente != null}" th:href="@{/carrello/aggiungi(id=${prodotto.id})}" class="btn btn-chart btn-sm d-flex align-items-center">
@@ -130,44 +144,46 @@
                             </a>
                     </div>
                 </div>
-            </div>
+            </div> FINE CARD -->
 
             </div><!-- FINE della row -->
         </div>
     </div> <!-- FINE del container -->
 </div> <!-- FINE del contenuto main content-->
 
-    <!-- Sezione la nostra filosofia -->
-    <section id="about-us" class="mt-5" style="background-color: #CDB7DD;">
-        <div class="container-fluid px-4">
-            <div class="row justify-content-center align-items-center">
-                <!-- Colonna immagine con titolo animato -->
-                <div class="col-lg-5 position-relative">
-                    <img th:src="@{/fioriaestetic.jpg}" alt="Chi Siamo" class="img-fluid about-img rounded">
-                    <h2 class="animated-title position-absolute start-50 translate-middle text-center">
-                        La nostra filosofia
-                    </h2>
-                </div>
-                <!-- Colonna descrizione -->
-                <div class="col-lg-6" style="padding-top: 200px;">
-                    <div class="p-3 mx-auto w-85">
-                        <p class="fs-5">
-                            Da Code Blossom, crediamo che la natura sia molto più di un semplice elemento decorativo: è fonte di ispirazione, benessere e autenticità. La nostra missione è portare la bellezza e la serenità dei fiori e delle piante direttamente nelle vostre vite, trasformando ogni ambiente in un'oasi di pace.
-                        </p>
-                        <p class="fs-5">
-                            <strong>Passione:</strong> Ogni composizione, ogni bouquet nasce dalla passione per la bellezza naturale e il desiderio di condividere emozioni autentiche.<br>
-                            <strong>Sostenibilità:</strong> Crediamo in un approccio responsabile, che rispetti il ciclo della natura e promuova pratiche ecologiche per un futuro migliore.<br>
-                            <strong>Condivisione:</strong> Consideriamo ogni cliente parte integrante della nostra famiglia, unito da un comune amore per la natura e la ricerca di esperienze che arricchiscono la vita quotidiana.
-                        </p>
-                    </div>
+<section id="about-us" class="animate-on-scroll mt-5" data-animation="animate__fadeIn" data-delay="100" style="background-color: #CDB7DD;">
+    <div class="container-fluid px-4">
+        <div class="row justify-content-center align-items-center">
+            <div class="label-wrapper">
+                <h2 class="filosofia-titolo">La nostra filosofia</h2>
+            </div>
+
+            <!-- Colonna sinistra per l'immagine -->
+            <div class="col-lg-5">
+                <img th:src="@{/fioriaestetic.jpg}" alt="Chi Siamo" class="img-fluid about-img rounded">
+            </div>
+
+            <!-- Colonna destra per il testo -->
+            <div class="col-lg-6">
+                <div id="testo">
+                    <p>
+                        Da Code Blossom, crediamo che la natura sia molto più di un semplice elemento decorativo: è fonte di ispirazione, benessere e autenticità. La nostra missione è portare la bellezza e la serenità dei fiori e delle piante direttamente nelle vostre vite, trasformando ogni ambiente in un'oasi di pace.
+                    </p>
+                    <p>
+                        <strong>Passione:</strong> Ogni composizione, ogni bouquet nasce dalla passione per la bellezza naturale e il desiderio di condividere emozioni autentiche.<br>
+                        <strong>Sostenibilità:</strong> Crediamo in un approccio responsabile, che rispetti il ciclo della natura e promuova pratiche ecologiche per un futuro migliore.<br>
+                        <strong>Condivisione:</strong> Consideriamo ogni cliente parte integrante della nostra famiglia, unito da un comune amore per la natura e la ricerca di esperienze che arricchiscono la vita quotidiana.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!--Inizio sezione eleganza, arte, persone-->
 
-    <div class="container flower-section" style="margin: 70px auto; max-width: 90%;">
+<!--Inizio sezione eleganza, arte, persone-->
+
+    <div class="container flower-section animate-on-scroll mt-5" data-animation="animate__fadeInUp" data-duration="3s" style="margin: 70px auto; max-width: 90%;">
         <div class="row text-center d-flex justify-content-center mx-auto">
             <!-- Eleganza dei Fiori -->
             <div class="col-md-4 mb-4">
@@ -207,5 +223,32 @@
     <!--Fine sezione-->
 
 <div th:replace="~{fragments/footer :: footer}"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let elements = document.querySelectorAll(".animate-on-scroll");
+
+        let observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        let animation = entry.target.getAttribute("data-animation");
+                        let delay = entry.target.getAttribute("data-delay") || 0; // Default: 0ms
+                        let duration = entry.target.getAttribute("data-duration") || "1s"; // Default 1s
+
+                        setTimeout(() => {
+                            entry.target.classList.add("animate__animated", animation, "show");
+                        }, delay);
+
+                        observer.unobserve(entry.target); // Evita ripetizioni
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        elements.forEach((element) => observer.observe(element));
+    });
+</script>
+
 </body>
 </html>

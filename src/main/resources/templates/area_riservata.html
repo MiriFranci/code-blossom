@@ -42,7 +42,7 @@
             </a>
         </div>
         <h1 class="text-center mb-4">Il mio profilo</h1>
-        <div th:if="${successMessage}" class="alert alert-success w-50  mx-auto text-center p-2 mt-2">
+        <div th:if="${successMessage}" id="modifica-agg" class="alert alert-success w-50  mx-auto text-center p-2 mt-2">
             <i class="fas fa-check-circle"></i> <span th:text="${successMessage}"></span>
         </div>
         <!-- Sezione Profilo -->
@@ -195,7 +195,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover shadow">
                     <thead class="custom-header">
-                    <tr class="custom-header">
+                    <tr>
                         <th>#</th>
                         <th>Prodotti</th>
                         <th>Totale</th>
@@ -227,17 +227,28 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var pwd = document.getElementById("pwd");
-        pwd.type = "password";
-    });
-
-    document.getElementById("pwdButton").addEventListener("click", function () {
-        var pwd = document.getElementById("pwd");
-        if (pwd.type == "password") {
-            pwd.type = "text";
-        } else {
+        if (pwd) {
             pwd.type = "password";
         }
+
+        var pwdButton = document.getElementById("pwdButton");
+        if (pwdButton && pwd) {
+            pwdButton.addEventListener("click", function () {
+                pwd.type = pwd.type === "password" ? "text" : "password";
+            });
+        }
+
+        setTimeout(function () {
+            let modAggiornata = document.querySelector(".alert-success");
+            if (modAggiornata) {
+                modAggiornata.style.transition = "opacity 0.5s";
+                modAggiornata.style.opacity = "0";
+                setTimeout(() => modAggiornata.style.display = "none", 500);
+            }
+        }, 2000);
+
     });
+
 </script>
 
 <div th:replace="~{fragments/footer :: footer}"></div>

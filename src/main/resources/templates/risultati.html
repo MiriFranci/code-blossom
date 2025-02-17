@@ -37,7 +37,7 @@
         <h2 class="text-center mb-8">Risultati della ricerca</h2>
         <br/>
         <div th:if="${prodottiTrovati.isEmpty()}">
-            <p class="text-muted">Nessun prodotto trovato.</p>
+            <h4 class="alert alert-danger">Nessun prodotto trovato.</h4>
         </div>
 
         <div class="row justify-content-center mb-8">
@@ -46,18 +46,15 @@
                 <div class="container border shadow-sm p-4 rounded bg-white d-flex flex-column h-100">
                     <div class="row align-items-center h-100">
                         <!-- Immagine sopra nelle versioni mobile, a sinistra nelle versioni desktop -->
-                        <div class="col-12 col-md-4 mb-3">
-                            <img th:src="${prodotto.foto}" class="img-fluid rounded" alt="Foto prodotto"
-                                 style="object-fit: cover; height: 200px;">
+                        <div class="col-lg-6 col-md-12 mb-3">
+                            <img th:src="${prodotto.foto}" class="img-fluid rounded" alt="Foto prodotto">
                         </div>
 
                         <!-- Informazioni prodotto sotto l'immagine nelle versioni mobile, a destra nelle versioni desktop -->
-                        <div class="col-12 col-md-8 d-flex flex-column">
-                            <!-- Nome prodotto (più grande e in grassetto) -->
+                        <div class="col-lg-6 col-md-12 d-flex flex-column">
                             <h4 th:text="${prodotto.nome}" class="fw-bold text-dark mb-2" style="font-size: 1.5rem;">
                                 Nome prodotto</h4>
 
-                            <!-- Categoria prodotto (maiuscolo, grigio, corsivo) -->
                             <h5 th:if="${prodotto.categoria.id == 1}"
                                 class="text-uppercase text-secondary fst-italic mb-1">Fiori Sfusi</h5>
                             <h5 th:if="${prodotto.categoria.id == 2}"
@@ -65,27 +62,24 @@
                             <h5 th:if="${prodotto.categoria.id == 3}"
                                 class="text-uppercase text-secondary fst-italic mb-1">Piante</h5>
 
-                            <!-- Descrizione prodotto -->
                             <p th:text="${prodotto.descrizione}" class="text-muted mb-2" style="font-size: 1.2rem;">
                                 Descrizione prodotto</p>
 
-                            <!-- Prezzo e pulsante (bloccati in basso) -->
                             <div class="price-cart-container">
                                 <p th:text="'€ ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}"
-                                   class="fw-bold text-dark mb-0"
-                                   style="font-size: 1.4rem;">
+                                   class="fw-bold text-dark mb-0" style="font-size: 1.4rem;">
                                 </p>
                                 <a th:if="${utente != null}" th:href="@{/carrello/aggiungi(id=${prodotto.id})}"
                                    class="btn btn-chart btn-sm">
                                     <i class="fas fa-cart-plus me-2"></i> Aggiungi al carrello
                                 </a>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
     </div> <!-- FINE del container -->
 </div> <!-- FINE del contenuto main content-->

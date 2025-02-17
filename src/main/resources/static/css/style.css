@@ -17,6 +17,17 @@ a.text-reset:hover {
     color: #28a745 !important; /* Colore del link al passaggio del mouse */
 
 }
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .main-content {
     flex: 1; /* Fa sì che il contenuto occupi lo spazio rimanente, spingendo il footer in basso */
     margin-bottom: 80px; /* Distanza tra il contenuto e il footer */
@@ -387,58 +398,118 @@ background-color: #9b7eaf !important;
 /* FINE SEZIONE DELLE CARD
 --------------------------------------------------*/
 
-  /* SEZIONE LA NOSTRA FILOSOFIA */
-   .about-img {
-    max-width: 80%; /* o un valore in pixel es. 400px */
+/* SEZIONE ABOUT US */
+.about-img {
+    width: 100%;
     height: auto;
-    display: block;
-    margin: 0 auto;
-   }
-
-   h2.animated-title {
-       animation: fadeInDown 5s ease forwards;
-       top: 20%;
-       margin-left: 40%;
-       transform: translate(-50%, -50%); /* Centra il titolo sia orizzontalmente che verticalmente */
-       background-color: white;
-       color: black;
-       font-family: 'Sofia', cursive;
-       font-size: 2.2rem;
-       font-weight: bold;
-       padding: 15px 25px;
-       border-radius: 5px;
-       box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-       position: absolute;
-           white-space: nowrap; /* Evita il salto di riga */
-           width: auto; /* Permette al titolo di estendersi */
-           max-width: 90%; /* Limita la larghezza al 90% del contenitore */
-           text-align: center; /* Centra il testo */
-   }
-
-/* MEDIA QUERY: per dispositivi inferiori a 1200px (tablet e mobile) */
-@media (max-width: 1199.98px) {
-  /* Forza le colonne a occupare il 100% della larghezza, facendo lo stacking */
-  #about-us .col-lg-5,
-  #about-us .col-lg-6 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  /* Riduci il padding-top della colonna descrizione per evitare spazi e sovrapposizioni */
-  #about-us .col-lg-6 {
-    padding-top: 20px !important;
-  }
-
-  /* Centro il titolo sull'immagine (come in mobile) */
-  #about-us .animated-title {
-    top: 50%;
-    left: 50%;
-    margin-left: 0; /* Rimuove il margin-left impostato per desktop */
-    transform: translate(-50%, -50%);
-    font-size: 1.8rem; /* Opzionale: riduce leggermente la dimensione del font */
-  }
+    object-fit: contain;
+    border-radius: 10px;
 }
 
+#about-us .row {
+    position: relative;
+    font-size:24px;
+}
+
+.label-wrapper {
+    position: absolute;
+    top: 30px;
+    left: 45%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    white-space: nowrap;
+    width: auto;
+    max-width: 40%;
+}
+
+/* Titolo dell'etichetta */
+.filosofia-titolo {
+    font-family: 'Sofia', cursive;
+    font-size: 2.2rem;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+}
+
+#testo {
+    padding-top:100px;
+    height:65%;
+}
+
+@media (max-width: 1090px) {
+    .about-img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        padding-top:20px;
+    }
+
+   #about-us .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .label-wrapper {
+        top: 24%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 80%;
+    }
+
+    #testo {
+        padding-top:0px;
+        width:100%;
+        text-align: justify;
+}
+
+    #about-us .col-lg-6 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .about-img {
+        width: 60%;
+        display: block;
+        margin: 0 auto
+        padding-top:20px;
+    }
+
+    .label-wrapper {
+        top: 200px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        max-width: 50%;
+        padding: 0.8vw 1.5vw;
+    }
+}
+
+@media (max-width: 632px) {
+    .about-img {
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+        padding-top:20px;
+    }
+    .label-wrapper {
+        top: 14%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        max-width: 50%;
+        padding: 0.8vw 1.5vw;
+    }
+    .filosofia-titolo {
+        font-size: 5vw;
+    }
+}
 
 /* Sezione del FOOTER */
 .footer {

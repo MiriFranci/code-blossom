@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -27,7 +28,8 @@ public class IndexController {
             model.addAttribute("utente", utente);
             model.addAttribute("cartCount", session.getAttribute("carrelloCount"));
         }
-        List<Prodotto> prodotti = prodottoService.elencoSeiProdotti();
+        List<Integer> ids = Arrays.asList(25,26,27,28);
+        List<Prodotto> prodotti = prodottoService.trovaPerId(ids);
         model.addAttribute("prodotti", prodotti);
         return "index";
     }
