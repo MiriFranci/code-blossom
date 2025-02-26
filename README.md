@@ -1,15 +1,15 @@
 # 🌸 Code-Blossom: E-Commerce Floreale 🌸
 
-Code-Blossom è un progetto di e-commerce floreale sviluppato con Spring Boot, realizzato nell’ambito del corso Cod(H)er di Generation. L'obiettivo è offrire una piattaforma intuitiva per l'acquisto e la gestione di fiori e composizioni floreali, sia per privati che per attività commerciali.
+Code-Blossom è un progetto di e-commerce floreale sviluppato con *Spring Boot*, realizzato nell’ambito del corso Cod(H)er di Generation. L'obiettivo è offrire una piattaforma intuitiva per l'acquisto di fiori e composizioni floreali.
 
 ## Funzionalità principali 📌
 
-| Area libera                          | Area amministrativa                            |
+| Area libera                          | Area amministrativa                          |
 |--------------------------------------|----------------------------------------------|
-| Funzione Cerca                       | Pulsanti per acquistare articoli floreali   |
-| Elenco punti vendita                 | Carrello                                    |
-| Catalogo articoli floreali           | Storico acquisti                            |
-| Accesso login/registrazione          | Logout                                           |
+| Catalogo articoli floreali           | Pulsanti per acquistare articoli floreali    |
+| Elenco punti vendita                 | Carrello                                     |
+| Funzione Cerca                       | Storico acquisti                             |
+| Accesso login/registrazione          | Logout                                       |
 
 
 ## Tecnologie Utilizzate 💻
@@ -23,7 +23,7 @@ Code-Blossom è un progetto di e-commerce floreale sviluppato con Spring Boot, r
 | Spring Boot   | [![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)](https://spring.io/)|
 | MySQL/phpMyAdmin | [![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/) |
 
-## Strumenti Utilizzati 💻
+## Strumenti Utilizzati 🔧
 
 | Strumenti    | Badge                     |
 |--------------|---------------------------|
@@ -31,7 +31,7 @@ Code-Blossom è un progetto di e-commerce floreale sviluppato con Spring Boot, r
 | Visual Studio | [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-%235C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)](https://visualstudio.microsoft.com/) |
 
 
-## Team di Sviluppo ‍💻👩🏻
+## Team di Sviluppo ‍👩‍💻
 
 *   Rossella Martino (rossellamrtn@gmail.com)
 *   Maria Parasiliti Palumbo(marypp.work@gmail.com)
@@ -53,16 +53,35 @@ Code-Blossom è un progetto di e-commerce floreale sviluppato con Spring Boot, r
     *   Importare `database/code-blossom.sql` in phpMyAdmin.
 
 3.  **Backend (Java/Spring):**
-  
-    *   Aggiungere `src/main/resources/application.properties`:
-        ```properties
-        spring.datasource.url=jdbc:mysql://localhost/code-blossom
-        spring.datasource.username=[tuo username]
-        spring.datasource.password=[tua password]
+    *  All'interno della cartella `src/main/resources/`, crea il file `application.properties` e aggiungi le configurazioni necessarie:  
+    
+     ```properties
+     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+     spring.datasource.url=jdbc:mysql://localhost/code-blossom
+     spring.datasource.username=[tuo username]
+     spring.datasource.password=[tua password]
+     spring.jpa.show-sql=true
+     ```
+        
+4. **Compilare il progetto con Maven**
+
+    * Dalla cartella principale del progetto (dove si trova pom.xml), eseguire:
+        ```bash
+        mvn clean install
         ```
-5. **Esecuzione:**
-   
-   * Lanciare il progetto su Intellij.
+        
+5. **Eseguire l'applicazione**
+
+    * Con Maven (senza bisogno di eseguire manualmente il JAR):
+        ```bash
+        mvn spring-boot:run
+        ```
+        
+6. **Accedere all'applicazione**
+    * Una volta avviata correttamente, l'applicazione sarà accessibile all'indirizzo:
+    
+    🔗 http://localhost:8080
+
      
 ## Presentazione (Demo) 🎬
 
